@@ -343,7 +343,13 @@ function App() {
         <div className="w-full h-20 overflow-hidden bg-white flex items-center">
            <div className="flex animate-scroll-logo-left" style={{ minWidth: 'max-content' }}>
             {Array.from({ length: 24 }, (_, i) => (
-              <PictureImg key={i} src="/images/pizza-ok-logo.png" alt="Pizza OK Logo" className="h-40 w-auto mx-2 flex-shrink-0" />
+              <PictureImg 
+                key={i} 
+                src="/images/pizza-ok-logo.png" 
+                alt="Pizza OK Logo" 
+                className="h-40 w-auto mx-2 flex-shrink-0"
+                loading={i < 3 ? 'eager' : 'lazy'}
+              />
             ))}
           </div>
         </div>
@@ -355,7 +361,13 @@ function App() {
         <div className="w-full h-20 overflow-hidden bg-white flex items-center">
            <div className="flex animate-scroll-logo-right" style={{ minWidth: 'max-content' }}>
             {Array.from({ length: 24 }, (_, i) => (
-              <PictureImg key={i} src="/images/pizza-ok-logo.png" alt="Pizza OK Logo" className="h-40 w-auto mx-2 flex-shrink-0" />
+              <PictureImg 
+                key={i} 
+                src="/images/pizza-ok-logo.png" 
+                alt="Pizza OK Logo" 
+                className="h-40 w-auto mx-2 flex-shrink-0"
+                loading={i < 3 ? 'eager' : 'lazy'}
+              />
             ))}
           </div>
         </div>
@@ -382,16 +394,21 @@ type PictureImgProps = {
   className?: string;
   style?: React.CSSProperties;
   onClick?: () => void;
+  loading?: 'lazy' | 'eager';
+  decoding?: 'async' | 'auto' | 'sync';
+  sizes?: string;
+  width?: number;
+  height?: number;
 };
 
-function PictureImg({ src, alt, className, style, onClick }: PictureImgProps) {
+function PictureImg({ src, alt, className, style, onClick, loading = 'lazy', decoding = 'async', sizes, width, height }: PictureImgProps) {
   const avif = src.replace(/\.(png|jpg|jpeg)$/i, '.avif');
   const webp = src.replace(/\.(png|jpg|jpeg)$/i, '.webp');
   return (
     <picture>
       <source srcSet={avif} type="image/avif" />
       <source srcSet={webp} type="image/webp" />
-      <img src={src} alt={alt} className={className} style={style} onClick={onClick} loading="lazy" decoding="async" />
+      <img src={src} alt={alt} className={className} style={style} onClick={onClick} loading={loading} decoding={decoding} sizes={sizes} width={width} height={height} />
     </picture>
   );
 }

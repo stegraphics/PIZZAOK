@@ -85,7 +85,7 @@ const Hero: React.FC = () => {
                   ? 'filter brightness-125 saturate-150 drop-shadow-[0_0_14px_rgba(183,69,57,0.85)] md:filter-none md:drop-shadow-none'
                   : ''
               }`}
-              loading="lazy"
+              loading="eager"
               decoding="async"
             />
           </div>

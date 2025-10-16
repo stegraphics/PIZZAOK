@@ -72,7 +72,7 @@ const Header = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
               <img 
                 src={logoImage} 
                 alt="Pizza OK Logo" 
-                className="h-16 sm:h-20 md:h-96 object-contain mt-2 md:mt-8 cursor-pointer" 
+                className="h-24 sm:h-28 md:h-96 object-contain mt-2 md:mt-8 cursor-pointer" 
                 loading="lazy"
                 decoding="async"
                 onClick={() => onNavigate?.('home')}
