@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, MapPin, Phone, Instagram, Facebook } from 'lucide-react';
-import logoImage from '/images/Logo vettoriale Pizza ok.png';
+import logoImage from '/images/Logo vettoriale Pizza ok.webp';
 
 const Header = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,24 +71,14 @@ const Header = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
             
             {/* Logo Centrale */}
             <div className="flex items-center justify-center">
-              {(() => {
-                const logoAvif = logoImage.replace(/\.(png|jpg|jpeg)$/i, '.avif');
-                const logoWebp = logoImage.replace(/\.(png|jpg|jpeg)$/i, '.webp');
-                return (
-                  <picture>
-                    <source srcSet={logoAvif} type="image/avif" />
-                    <source srcSet={logoWebp} type="image/webp" />
-                    <img 
-                      src={logoImage} 
-                      alt="Pizza OK Logo" 
-                      className="h-16 sm:h-20 md:h-96 object-contain mt-2 md:mt-8 cursor-pointer" 
-                      loading="lazy"
-                      decoding="async"
-                      onClick={() => onNavigate?.('home')}
-                    />
-                  </picture>
-                );
-              })()}
+              <img 
+                src={logoImage} 
+                alt="Pizza OK Logo" 
+                className="h-16 sm:h-20 md:h-96 object-contain mt-2 md:mt-8 cursor-pointer" 
+                loading="lazy"
+                decoding="async"
+                onClick={() => onNavigate?.('home')}
+              />
             </div>
             
             {/* Right Navigation */}
