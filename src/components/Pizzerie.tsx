@@ -54,12 +54,18 @@ const [vieniTop, setVieniTop] = useState<number | null>(null);
   return (
     <section id="pizzerie" className="py-20 relative">
       {/* Sfondo immagine sfocata al posto del grigio */}
-      <img
-        src="/images/8ott25-pizzaok%2046%20WEB.jpg"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover blur-[52.4px] -z-10 pointer-events-none select-none"
-      />
+      <picture>
+        <source srcSet="/images/8ott25-pizzaok%2046%20WEB.avif" type="image/avif" />
+        <source srcSet="/images/8ott25-pizzaok%2046%20WEB.webp" type="image/webp" />
+        <img
+          src="/images/8ott25-pizzaok%2046%20WEB.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover blur-[52.4px] -z-10 pointer-events-none select-none"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <div className="container mx-auto px-4">
         <div ref={wrapperRef} className="max-w-6xl mx-auto relative -translate-y-2">
           {/* Decorazione braccia aperte come sfondo, dietro slideshow e mappa */}
@@ -78,28 +84,41 @@ const [vieniTop, setVieniTop] = useState<number | null>(null);
             alt="Vieni"
             className="absolute left-1/2 -translate-x-1/2 transform translate-x-[-2rem] sm:translate-x-[-3rem] md:translate-x-[-5rem] lg:translate-x-[-6rem] xl:translate-x-[-7rem] z-0 w-auto max-w-[18rem] sm:max-w-[22rem] md:max-w-[24rem] lg:max-w-[28rem] xl:max-w-[32rem] opacity-95 select-none pointer-events-none drop-shadow-[0_10px_25px_rgba(0,0,0,0.3)]"
             style={{ top: vieniTop ?? undefined }}
+            loading="lazy"
+            decoding="async"
           />
 
           <div className="relative z-10 text-right mb-12">
-            <img
-              src="/images/titolo%20la%20nostra%20pizzeria.png"
-              alt="Titolo La Nostra Pizzeria"
-              className="mx-auto max-w-[92%] h-auto pr-0 -translate-y-[2rem] sm:-translate-y-[3rem] md:-translate-y-[6rem] lg:-translate-y-[8rem] xl:-translate-y-[10rem] translate-x-0 md:translate-x-[14.5rem] lg:translate-x-[18.5rem] xl:translate-x-[22.5rem]"
-            />
+            <picture>
+              <source srcSet="/images/titolo%20la%20nostra%20pizzeria.avif" type="image/avif" />
+              <source srcSet="/images/titolo%20la%20nostra%20pizzeria.webp" type="image/webp" />
+              <img
+                src="/images/titolo%20la%20nostra%20pizzeria.png"
+                alt="Titolo La Nostra Pizzeria"
+                className="mx-auto max-w-[92%] h-auto pr-0 -translate-y-[2rem] sm:-translate-y-[3rem] md:-translate-y-[6rem] lg:-translate-y-[8rem] xl:-translate-y-[10rem] translate-x-0 md:translate-x-[14.5rem] lg:translate-x-[18.5rem] xl:translate-x-[22.5rem]"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </div>
 
           <div className="relative z-10 grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-14 lg:gap-16 xl:gap-16 items-start">
             {/* Slideshow a sinistra */}
             <div ref={slideshowRef} className="relative z-10 w-full md:max-w-[30rem] lg:max-w-[32rem] xl:max-w-[34rem] rounded-2xl overflow-hidden bg-[#3b4550] ring-1 ring-white/10 p-0 md:p-0 shadow-[0_30px_100px_rgba(0,0,0,0.6)] -mt-[10rem] sm:-mt-[16rem] md:-mt-[31rem] lg:-mt-[42rem] xl:-mt-[50rem] md:-ml-52 lg:-ml-96 xl:-ml-[26rem]" style={{ aspectRatio: aspect }}>
               {images.map((src, idx) => (
-                <img
-                  key={src}
-                  src={src}
-                  alt="La nostra pizzeria"
-                  className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${
-                     current === idx ? 'opacity-100' : 'opacity-0'
-                   }`}
-                />
+                <picture key={src}>
+                  <source srcSet={src.replace(/\.(jpg|jpeg|png)$/i, '.avif')} type="image/avif" />
+                  <source srcSet={src.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
+                  <img
+                    src={src}
+                    alt="La nostra pizzeria"
+                    className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${
+                      current === idx ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
               ))}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
                 {images.map((_, idx) => (
@@ -155,6 +174,8 @@ const [vieniTop, setVieniTop] = useState<number | null>(null);
             alt="Benvenuto"
             className="absolute left-0 z-10 transform origin-top-left scale-[1.25] md:scale-[1.45] lg:scale-[1.5] xl:scale-[1.55] w-auto max-w-[18rem] sm:max-w-[22rem] md:max-w-[32rem] lg:max-w-[34rem] xl:max-w-[36rem] h-auto md:-ml-52 lg:-ml-96 xl:-ml-[26rem] select-none filter brightness-0 invert"
             style={{ top: benveTop ?? undefined }}
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>

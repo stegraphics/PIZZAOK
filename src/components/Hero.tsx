@@ -26,17 +26,29 @@ const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center">
       {/* Background Images with Slideshow */}
-      {images.map((image, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
-            index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{
-            backgroundImage: `url('${image}')`
-          }}
-        />
-      ))}
+      {images.map((image, index) => {
+        const avif = image.replace(/\.(jpg|jpeg|png)$/i, '.avif');
+        const webp = image.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+        return (
+          <picture
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <source srcSet={avif} type="image/avif" />
+            <source srcSet={webp} type="image/webp" />
+            <img
+              src={image}
+              alt=""
+              aria-hidden="true"
+              className="w-full h-full object-cover object-center"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        );
+      })}
       
       {/* Dark overlay */}
       <div 
@@ -66,6 +78,8 @@ const Hero: React.FC = () => {
                 textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
                 transition: 'filter 0.3s ease, transform 0.3s ease'
               }}
+              loading="lazy"
+              decoding="async"
               onMouseEnter={(e) => {
                 e.currentTarget.style.filter = 'brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%)';
               }}

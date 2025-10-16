@@ -52,23 +52,35 @@ const PizzaModal: React.FC<PizzaModalProps> = ({ isOpen, onClose, pizzaImage, pi
             overflow: 'hidden'
           }}
         >
-          <img
-            src={pizzaImage}
-            alt={pizzaAlt}
-            className="mx-auto mb-6 rounded-lg"
-            style={{ 
-              animation: 'none !important', 
-              transform: 'none !important',
-              transition: 'none !important',
-              position: 'static !important',
-              maxWidth: '400px',
-              maxHeight: '400px',
-              width: 'auto',
-              height: 'auto',
-              display: 'block',
-              overflow: 'hidden'
-            }}
-          />
+          {(() => {
+            const avif = pizzaImage.replace(/\.(png|jpg|jpeg)$/i, '.avif');
+            const webp = pizzaImage.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+            return (
+              <picture>
+                <source srcSet={avif} type="image/avif" />
+                <source srcSet={webp} type="image/webp" />
+                <img
+                  src={pizzaImage}
+                  alt={pizzaAlt}
+                  className="mx-auto mb-6 rounded-lg"
+                  style={{ 
+                    animation: 'none !important', 
+                    transform: 'none !important',
+                    transition: 'none !important',
+                    position: 'static !important',
+                    maxWidth: '400px',
+                    maxHeight: '400px',
+                    width: 'auto',
+                    height: 'auto',
+                    display: 'block',
+                    overflow: 'hidden'
+                  }}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            );
+          })()}
         </div>
         {/* Testo rimosso come richiesto */}
       </div>

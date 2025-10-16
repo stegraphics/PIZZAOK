@@ -71,12 +71,24 @@ const Header = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
             
             {/* Logo Centrale */}
             <div className="flex items-center justify-center">
-              <img 
-                src={logoImage} 
-                alt="Pizza OK Logo" 
-                className="h-16 sm:h-20 md:h-96 object-contain mt-2 md:mt-8 cursor-pointer" 
-                onClick={() => onNavigate?.('home')}
-              />
+              {(() => {
+                const logoAvif = logoImage.replace(/\.(png|jpg|jpeg)$/i, '.avif');
+                const logoWebp = logoImage.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+                return (
+                  <picture>
+                    <source srcSet={logoAvif} type="image/avif" />
+                    <source srcSet={logoWebp} type="image/webp" />
+                    <img 
+                      src={logoImage} 
+                      alt="Pizza OK Logo" 
+                      className="h-16 sm:h-20 md:h-96 object-contain mt-2 md:mt-8 cursor-pointer" 
+                      loading="lazy"
+                      decoding="async"
+                      onClick={() => onNavigate?.('home')}
+                    />
+                  </picture>
+                );
+              })()}
             </div>
             
             {/* Right Navigation */}

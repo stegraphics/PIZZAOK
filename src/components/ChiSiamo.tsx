@@ -18,6 +18,8 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
                 src="/images/omino-ok.svg"
                 alt="Omino Pizza OK"
                 className="w-full max-w-md h-auto cursor-pointer transform transition-all duration-500 ease-in-out hover:scale-110 hover:rotate-3 hover:drop-shadow-2xl active:scale-95 active:rotate-0"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             
@@ -71,12 +73,23 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
             </div>
             {/* Immagine a destra */}
             <div className="flex items-center justify-center md:justify-end mt-6 md:mt-0">
-              <img
-                src={perWeb}
-                alt="Per web"
-                className="h-64 sm:h-72 md:h-[720px] lg:h-[740px] w-auto object-contain md:mr-16 lg:mr-20 md:-mt-20 lg:-mt-24"
-                loading="lazy"
-              />
+              {(() => {
+                const avif = perWeb.replace(/\.(png|jpg|jpeg)$/i, '.avif');
+                const webp = perWeb.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+                return (
+                  <picture>
+                    <source srcSet={avif} type="image/avif" />
+                    <source srcSet={webp} type="image/webp" />
+                    <img
+                      src={perWeb}
+                      alt="Per web"
+                      className="h-64 sm:h-72 md:h-[720px] lg:h-[740px] w-auto object-contain md:mr-16 lg:mr-20 md:-mt-20 lg:-mt-24"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                );
+              })()}
             </div>
           </div>
         </div>

@@ -67,6 +67,8 @@ const PizzaIconeForno: React.FC<PizzaIconeFornoProps> = ({ onNavigate }) => {
               src="/images/menu-momo-nuovo.svg" 
               alt="Menu Pizza OK" 
               className="w-full h-auto"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
