@@ -41,6 +41,7 @@ const PizzaModal: React.FC<PizzaModalProps> = ({ isOpen, onClose, pizzaImage, pi
           overflow: 'hidden',
           position: 'relative'
         }}
+        onClick={(e) => e.stopPropagation()}
       >
         <div 
           className="modal-image" 
@@ -62,16 +63,12 @@ const PizzaModal: React.FC<PizzaModalProps> = ({ isOpen, onClose, pizzaImage, pi
                 <img
                   src={pizzaImage}
                   alt={pizzaAlt}
-                  className="mx-auto mb-6 rounded-lg"
+                  className="mx-auto mb-6 rounded-lg w-[92vw] md:w-[400px] h-[60vh] md:h-auto object-contain"
                   style={{ 
                     animation: 'none !important', 
                     transform: 'none !important',
                     transition: 'none !important',
                     position: 'static !important',
-                    maxWidth: '400px',
-                    maxHeight: '400px',
-                    width: 'auto',
-                    height: 'auto',
                     display: 'block',
                     overflow: 'hidden'
                   }}

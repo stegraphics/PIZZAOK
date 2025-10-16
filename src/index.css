@@ -60,20 +60,55 @@ html, body {
 }
 
 .animate-scroll-left {
-  animation: scroll-left 600s linear infinite;
+  animation: scroll-left 80s linear infinite;
+  will-change: transform;
 }
 
 .animate-scroll-right {
-  animation: scroll-right 600s linear infinite;
+  animation: scroll-right 80s linear infinite;
+  will-change: transform;
 }
 
 /* Classi specifiche per i loghi Pizza OK più lenti */
 .animate-scroll-logo-left {
   animation: scroll-left 80s linear infinite;
+  will-change: transform;
 }
 
 .animate-scroll-logo-right {
   animation: scroll-right 80s linear infinite;
+  will-change: transform;
+}
+
+/* Migliora l’animazione su mobile: aumentiamo la velocità e ottimizziamo il rendering */
+@media (max-width: 768px) {
+  .animate-scroll-logo-left {
+    animation: scroll-left 40s linear infinite;
+    will-change: transform;
+  }
+  .animate-scroll-logo-right {
+    animation: scroll-right 40s linear infinite;
+    will-change: transform;
+  }
+  /* opzionale: se il carosello pizze appare fermo, velocizzalo su mobile */
+  .animate-scroll-left {
+    animation: scroll-left 300s linear infinite;
+    will-change: transform;
+  }
+  .animate-scroll-right {
+    animation: scroll-right 300s linear infinite;
+    will-change: transform;
+  }
+}
+
+/* Nasconde le scrollbar nei container scrollabili senza disabilitare lo scroll */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE e Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 @keyframes gentle-pulse {

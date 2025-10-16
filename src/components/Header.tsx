@@ -44,9 +44,7 @@ const Header = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
       name: 'Pizzerie', 
       href: '#pizzerie',
       submenu: [
-        { name: 'Pizza OK Città Studi', href: '#citta-studi' },
-        { name: 'Pizza OK Porta Genova', href: '#porta-genova' },
-        { name: 'Pizza OK Sempione', href: '#sempione' }
+        { name: 'Pizza OK Crema', href: '#pizzerie' }
       ]
     },
     ...rightNavItems,
@@ -105,10 +103,8 @@ const Header = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
                 <button onClick={() => { onNavigate?.('chi-siamo'); setIsMenuOpen(false); }} className="block text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm cursor-pointer transition-colors duration-300">Chi Siamo</button>
                 <a href="#la-nostra-pizza" className="block text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>La Nostra Pizza</a>
                 <a href="#pizzerie" className="block text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Pizzerie</a>
-                <div className="ml-4 mt-2 space-y-2">
-                  <a href="#citta-studi" className="block text-[#b74539] hover:text-[#9a3a30] text-xs transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Pizza OK Città Studi</a>
-                  <a href="#porta-genova" className="block text-[#b74539] hover:text-[#9a3a30] text-xs transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Pizza OK Porta Genova</a>
-                  <a href="#sempione" className="block text-[#b74539] hover:text-[#9a3a30] text-xs transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Pizza OK Sempione</a>
+                <div className="ml-4 mt-2">
+                  <a href="#pizzerie" className="block text-[#b74539] hover:text-[#9a3a30] text-xs transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Pizza OK Crema</a>
                 </div>
                 {/* Link Menù rimosso nel menu mobile */}
                 <a href="#lavora" className="block text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Lavora Con Noi</a>

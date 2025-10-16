@@ -72,11 +72,11 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
               </div>
             </div>
             {/* Immagine a destra */}
-            <div className="flex items-center justify-center md:justify-end mt-6 md:mt-0">
+            <div className="flex items-center justify-center md:justify-end mt-0 md:mt-0">
               <img
                 src={perWeb}
                 alt="Per web"
-                className="h-64 sm:h-72 md:h-[720px] lg:h-[740px] w-auto object-contain md:mr-16 lg:mr-20 md:-mt-20 lg:-mt-24"
+                className="h-[540px] sm:h-[600px] md:h-[720px] lg:h-[740px] w-auto object-contain -mt-24 sm:-mt-28 md:mr-16 lg:mr-20 md:-mt-20 lg:-mt-24"
                 loading="lazy"
                 decoding="async"
               />
@@ -92,7 +92,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           <div className="h-full flex flex-col md:flex-row items-start justify-between gap-8">
             <div
               aria-label="Icona Pizza Cola"
-              className="bg-[#363f48] w-[440px] md:w-[480px] lg:w-[500px] h-[520px] md:h-[540px] lg:h-[548px]"
+              className="bg-[#363f48] w-[360px] md:w-[480px] lg:w-[500px] h-[430px] md:h-[540px] lg:h-[548px]"
               style={{
                 WebkitMaskImage: `url(${pizzaCola})`,
                 maskImage: `url(${pizzaCola})`,

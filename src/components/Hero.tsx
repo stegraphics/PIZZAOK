@@ -12,6 +12,7 @@ const Hero: React.FC = () => {
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [titleGlow, setTitleGlow] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,6 +23,12 @@ const Hero: React.FC = () => {
 
     return () => clearInterval(interval);
   }, [images.length]);
+
+  const handleTitleClick = () => {
+    // Effetto glow rosso temporaneo al click (solo visibile su mobile)
+    setTitleGlow(true);
+    setTimeout(() => setTitleGlow(false), 600);
+  };
 
   return (
     <section id="home" className="relative min-h-screen flex items-center">
@@ -72,20 +79,14 @@ const Hero: React.FC = () => {
             <img 
               src="/images/scopri-il-piacere-titolo.svg" 
               alt="Scopri il piacere con lo stile" 
-              className="mx-auto max-w-[85%] md:max-w-full h-auto drop-shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer"
-              style={{
-                filter: 'brightness(0) invert(1)', 
-                textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-                transition: 'filter 0.3s ease, transform 0.3s ease'
-              }}
+              onClick={handleTitleClick}
+              className={`mx-auto max-w-[90%] md:max-w-full h-auto drop-shadow-lg transition-transform duration-300 hover:scale-110 cursor-pointer ${
+                titleGlow
+                  ? 'filter brightness-125 saturate-150 drop-shadow-[0_0_14px_rgba(183,69,57,0.85)] md:filter-none md:drop-shadow-none'
+                  : ''
+              }`}
               loading="lazy"
               decoding="async"
-              onMouseEnter={(e) => {
-                e.currentTarget.style.filter = 'brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.filter = 'brightness(0) invert(1)';
-              }}
             />
           </div>
           
