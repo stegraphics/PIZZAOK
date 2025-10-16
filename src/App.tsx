@@ -1,0 +1,292 @@
+import React, { useState } from 'react';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import ChiSiamo from './components/ChiSiamo';
+import PizzaIconeForno from './components/PizzaIconeForno';
+import LanostraPizza from './components/LanostraPizza';
+import Pizzerie from './components/Pizzerie';
+import PizzaModal from './components/PizzaModal';
+
+function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPizza, setSelectedPizza] = useState({
+    image: '',
+    name: '',
+    alt: '',
+    ingredients: ''
+  });
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handlePizzaClick = (pizzaInfo: { image: string; name: string; alt: string; ingredients: string }) => {
+    setSelectedPizza(pizzaInfo);
+    setIsModalOpen(true);
+  };
+  
+  const handleScrollLeft = () => {
+    const scrollContainer = document.getElementById('pizza-scroll-container');
+    if (scrollContainer) {
+      // Calcola la nuova posizione senza fermare l'animazione
+      const currentScroll = scrollContainer.scrollLeft;
+      const newPosition = currentScroll - 500;
+      
+      // Scorri a sinistra con animazione fluida
+      scrollContainer.scrollTo({
+        left: newPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+  
+  const handleScrollRight = () => {
+    const scrollContainer = document.getElementById('pizza-scroll-container');
+    if (scrollContainer) {
+      // Calcola la nuova posizione senza fermare l'animazione
+      const currentScroll = scrollContainer.scrollLeft;
+      const newPosition = currentScroll + 500;
+      
+      // Scorri a destra con animazione fluida
+      scrollContainer.scrollTo({
+        left: newPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  if (currentPage === 'chi-siamo') {
+    return (
+      <div className="min-h-screen">
+        <Header onNavigate={setCurrentPage} />
+        <ChiSiamo onNavigate={setCurrentPage} />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen">
+      <Header onNavigate={setCurrentPage} />
+      <Hero />
+      {/* Large Color Strip with Pizza Images */}
+      <div className="w-full h-[500px] bg-[#363f48] flex items-center justify-center overflow-hidden relative">
+        {/* Controlli di navigazione */}
+        <button 
+          onClick={handleScrollLeft} 
+          className="absolute left-4 z-10 bg-white bg-opacity-20 hover:bg-opacity-40 rounded-full p-3 text-white transition-all duration-300"
+          aria-label="Scorri a sinistra"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button 
+          onClick={handleScrollRight} 
+          className="absolute right-4 z-10 bg-white bg-opacity-20 hover:bg-opacity-40 rounded-full p-3 text-white transition-all duration-300"
+          aria-label="Scorri a destra"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+        <div id="pizza-scroll-container" className="flex animate-scroll-left space-x-8 overflow-x-auto" style={{ minWidth: 'max-content', scrollBehavior: 'smooth' }}>
+          {/* Sequenze multiple per garantire continuità perfetta senza spazi vuoti */}
+          {Array.from({ length: 8 }, (_, sequenceIndex) => (
+            <React.Fragment key={sequenceIndex}>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300" 
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/AMERICANA.png",
+                  name: "AMERICANA",
+                  alt: "Pizza Americana",
+                  ingredients: "pomodoro, mozzarella, wurstel, patatine fritte"
+                })}>
+                <img src="/images/pizze-sito/AMERICANA.png" alt="Pizza Americana" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/BUFALINA.png",
+                  name: "BUFALINA",
+                  alt: "Pizza Bufalina",
+                  ingredients: "pomodoro, mozzarella di bufala, basilico"
+                })}>
+                <img src="/images/pizze-sito/BUFALINA.png" alt="Pizza Bufalina" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/DIAVOLA.png",
+                  name: "DIAVOLA",
+                  alt: "Pizza Diavola",
+                  ingredients: "pomodoro, mozzarella, salame piccante"
+                })}>
+                <img src="/images/pizze-sito/DIAVOLA.png" alt="Pizza Diavola" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/FUME'.png",
+                  name: "FUMÈ",
+                  alt: "Pizza Fumè",
+                  ingredients: "pomodoro, mozzarella, scamorza affumicata, speck"
+                })}>
+                <img src="/images/pizze-sito/FUME'.png" alt="Pizza Fumè" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/GUSTOSA.png",
+                  name: "GUSTOSA",
+                  alt: "Pizza Gustosa",
+                  ingredients: "pomodoro, mozzarella, salsiccia, funghi, grana"
+                })}>
+                <img src="/images/pizze-sito/GUSTOSA.png" alt="Pizza Gustosa" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/MARGHERITA.png",
+                  name: "MARGHERITA",
+                  alt: "Pizza Margherita",
+                  ingredients: "pomodoro, mozzarella, basilico"
+                })}>
+                <img src="/images/pizze-sito/MARGHERITA.png" alt="Pizza Margherita" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/MARINARA.png",
+                  name: "MARINARA",
+                  alt: "Pizza Marinara",
+                  ingredients: "pomodoro, aglio, origano"
+                })}>
+                <img src="/images/pizze-sito/MARINARA.png" alt="Pizza Marinara" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/NAPOLI.png",
+                  name: "NAPOLI",
+                  alt: "Pizza Napoli",
+                  ingredients: "pomodoro, mozzarella, acciughe, origano"
+                })}>
+                <img src="/images/pizze-sito/NAPOLI.png" alt="Pizza Napoli" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300" 
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/OK.png",
+                  name: "PIZZA OK",
+                  alt: "Pizza OK",
+                  ingredients: "pomodoro, mozzarella, prosciutto cotto, funghi, olive, carciofi"
+                })}>
+                <img src="/images/pizze-sito/OK.png" alt="Pizza OK" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/ORTOLANA.png",
+                  name: "ORTOLANA",
+                  alt: "Pizza Ortolana",
+                  ingredients: "pomodoro, mozzarella, verdure grigliate miste"
+                })}>
+                <img src="/images/pizze-sito/ORTOLANA.png" alt="Pizza Ortolana" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/PARMIGIANA.png",
+                  name: "PARMIGIANA",
+                  alt: "Pizza Parmigiana",
+                  ingredients: "pomodoro, mozzarella, melanzane fritte, grana"
+                })}>
+                <img src="/images/pizze-sito/PARMIGIANA.png" alt="Pizza Parmigiana" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/PRIMAVERA.png",
+                  name: "PRIMAVERA",
+                  alt: "Pizza Primavera",
+                  ingredients: "pomodoro, mozzarella, pomodorini, rucola, grana"
+                })}>
+                <img src="/images/pizze-sito/PRIMAVERA.png" alt="Pizza Primavera" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/PUGLIESE.png",
+                  name: "PUGLIESE",
+                  alt: "Pizza Pugliese",
+                  ingredients: "pomodoro, mozzarella, cipolle"
+                })}>
+                <img src="/images/pizze-sito/PUGLIESE.png" alt="Pizza Pugliese" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/ROMANA.png",
+                  name: "ROMANA",
+                  alt: "Pizza Romana",
+                  ingredients: "pomodoro, mozzarella, acciughe, capperi, olive"
+                })}>
+                <img src="/images/pizze-sito/ROMANA.png" alt="Pizza Romana" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/SALSICCIA E ZOLA.png",
+                  name: "SALSICCIA E ZOLA",
+                  alt: "Pizza Salsiccia e Zola",
+                  ingredients: "pomodoro, mozzarella, salsiccia, gorgonzola"
+                })}>
+                <img src="/images/pizze-sito/SALSICCIA E ZOLA.png" alt="Pizza Salsiccia e Zola" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/SCARFACE.png",
+                  name: "SCARFACE",
+                  alt: "Pizza Scarface",
+                  ingredients: "pomodoro, mozzarella, salame piccante, peperoni, olive"
+                })}>
+                <img src="/images/pizze-sito/SCARFACE.png" alt="Pizza Scarface" className="h-80 w-auto object-contain" />
+              </div>
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
+                onClick={() => handlePizzaClick({
+                  image: "/images/pizze-sito/VALTELLINA.png",
+                  name: "VALTELLINA",
+                  alt: "Pizza Valtellina",
+                  ingredients: "pomodoro, mozzarella, bresaola, rucola, grana"
+                })}>
+                <img src="/images/pizze-sito/VALTELLINA.png" alt="Pizza Valtellina" className="h-80 w-auto object-contain" />
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+      {/* Animated Logo Strip Top */}
+        <div className="w-full h-20 overflow-hidden bg-white flex items-center">
+           <div className="flex animate-scroll-logo-left" style={{ minWidth: 'max-content' }}>
+            {Array.from({ length: 80 }, (_, i) => (
+              <img key={i} src="/images/pizza-ok-logo.png" alt="Pizza OK Logo" className="h-40 w-auto mx-2 flex-shrink-0" />
+            ))}
+          </div>
+        </div>
+      
+      {/* Pizza Icone Forno Section */}
+      <PizzaIconeForno onNavigate={setCurrentPage} />
+      
+      {/* Animated Logo Strip Bottom */}
+        <div className="w-full h-20 overflow-hidden bg-white flex items-center">
+           <div className="flex animate-scroll-logo-right" style={{ minWidth: 'max-content' }}>
+            {Array.from({ length: 80 }, (_, i) => (
+              <img key={i} src="/images/pizza-ok-logo.png" alt="Pizza OK Logo" className="h-40 w-auto mx-2 flex-shrink-0" />
+            ))}
+          </div>
+        </div>
+      <LanostraPizza />
+      <Pizzerie />
+      {/* Sezioni Menu e Prenota/Ordina rimosse su richiesta */}
+      
+      {/* Pizza Modal */}
+      <PizzaModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        pizzaImage={selectedPizza.image}
+        pizzaName={selectedPizza.name}
+        pizzaAlt={selectedPizza.alt}
+        ingredients={selectedPizza.ingredients}
+      />
+    </div>
+  );
+}
+
+export default App;
