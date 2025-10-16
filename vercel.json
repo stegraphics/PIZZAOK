@@ -2,6 +2,5 @@
   "installCommand": "npm install",
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
-  "outputDirectory": "dist",
-  "ignoredCommand": "echo 'Using default ignore rules'"
+  "outputDirectory": "dist"
 }
