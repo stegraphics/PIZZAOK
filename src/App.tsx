@@ -26,30 +26,44 @@ function App() {
   const handleScrollLeft = () => {
     const scrollContainer = document.getElementById('pizza-scroll-container');
     if (scrollContainer) {
+      // Metti in pausa l'animazione dello strip durante lo scroll programmato
+      pausePizzaStrip(true, 500);
       // Calcola la nuova posizione senza fermare l'animazione
       const currentScroll = scrollContainer.scrollLeft;
       const newPosition = currentScroll - 500;
       
       // Scorri a sinistra con animazione fluida
-      scrollContainer.scrollTo({
-        left: newPosition,
-        behavior: 'smooth'
-      });
+      scrollContainer.scrollTo({ left: newPosition, behavior: 'auto' });
     }
   };
   
   const handleScrollRight = () => {
     const scrollContainer = document.getElementById('pizza-scroll-container');
     if (scrollContainer) {
+      // Metti in pausa l'animazione dello strip durante lo scroll programmato
+      pausePizzaStrip(true, 500);
       // Calcola la nuova posizione senza fermare l'animazione
       const currentScroll = scrollContainer.scrollLeft;
       const newPosition = currentScroll + 500;
       
       // Scorri a destra con animazione fluida
-      scrollContainer.scrollTo({
-        left: newPosition,
-        behavior: 'smooth'
-      });
+      scrollContainer.scrollTo({ left: newPosition, behavior: 'auto' });
+    }
+  };
+
+  // Funzione di utilità per mettere in pausa/riprendere l'animazione dello strip pizze
+  const pausePizzaStrip = (paused: boolean, timeoutMs?: number) => {
+    const strip = document.getElementById('pizza-strip');
+    if (!strip) return;
+    if (paused) {
+      strip.classList.add('paused');
+      if (timeoutMs && timeoutMs > 0) {
+        window.setTimeout(() => {
+          strip.classList.remove('paused');
+        }, timeoutMs);
+      }
+    } else {
+      strip.classList.remove('paused');
     }
   };
 
@@ -91,8 +105,16 @@ function App() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
-        <div id="pizza-scroll-container" className="w-full overflow-x-auto no-scrollbar" style={{ scrollBehavior: 'smooth' }}>
-          <div className="flex space-x-8 animate-scroll-left px-8" style={{ minWidth: 'max-content' }}>
+        <div
+          id="pizza-scroll-container"
+          className="w-full overflow-x-auto no-scrollbar"
+          style={{ scrollBehavior: 'auto' }}
+          onTouchStart={() => pausePizzaStrip(true)}
+          onTouchEnd={() => pausePizzaStrip(false)}
+          onPointerDown={() => pausePizzaStrip(true)}
+          onPointerUp={() => pausePizzaStrip(false)}
+        >
+          <div id="pizza-strip" className="flex space-x-8 animate-scroll-left px-8" style={{ minWidth: 'max-content' }}>
             {/* Sequenze multiple per garantire continuità perfetta senza spazi vuoti */}
             {Array.from({ length: 3 }, (_, sequenceIndex) => (
               <React.Fragment key={sequenceIndex}>

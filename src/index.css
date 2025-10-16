@@ -43,41 +43,45 @@ html, body {
 
 @keyframes scroll-left {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @keyframes scroll-right {
   0% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
   100% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .animate-scroll-left {
   animation: scroll-left 600s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
 }
 
 .animate-scroll-right {
   animation: scroll-right 600s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Classi specifiche per i loghi Pizza OK più lenti */
 .animate-scroll-logo-left {
   animation: scroll-left 40s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
 }
 
 .animate-scroll-logo-right {
   animation: scroll-right 40s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Migliora l’animazione su mobile: aumentiamo la velocità e ottimizziamo il rendering */
@@ -94,10 +98,12 @@ html, body {
   .animate-scroll-left {
     animation: scroll-left 300s linear infinite;
     will-change: transform;
+    backface-visibility: hidden;
   }
   .animate-scroll-right {
     animation: scroll-right 300s linear infinite;
     will-change: transform;
+    backface-visibility: hidden;
   }
 }
 
@@ -154,4 +160,9 @@ html, body {
 
 .pizza-hover:hover {
   filter: brightness(0.9) sepia(1) saturate(1.5) hue-rotate(350deg) contrast(1.1);
+}
+
+/* Consente di mettere in pausa le animazioni durante interazione/scroll programmato */
+.paused {
+  animation-play-state: paused !important;
 }
