@@ -1,1 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" data-name="Livello 1" viewBox="0 0 1116 302.71"><text style="font-family:PWDottedFont,PWDottedFont;font-size:183.98px" transform="translate(1.47 261.68)"><tspan x="0" y="0">SCOPRI IL PIACERE</tspan></text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-label="SCOPRI IL PIACERE">
+  <defs>
+    <style type="text/css"><![CDATA[
+      @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        src: url('/fonts/Montserrat-700.ttf') format('truetype');
+      }
+      text { font-family: 'Montserrat', Arial, sans-serif; font-weight: 700; }
+    ]]></style>
+  </defs>
+  <text x="50%" y="62%" text-anchor="middle" dominant-baseline="middle" font-size="184" fill="#000">SCOPRI IL PIACERE</text>
+</svg>

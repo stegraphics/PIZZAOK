@@ -371,6 +371,7 @@ function App() {
                 alt="Pizza OK Logo" 
                 className="h-40 w-auto mx-2 flex-shrink-0"
                 loading={i < 6 ? 'eager' : 'lazy'}
+                fetchPriority={i < 6 ? 'high' : 'low'}
               />
             ))}
           </div>
@@ -389,6 +390,7 @@ function App() {
                 alt="Pizza OK Logo" 
                 className="h-40 w-auto mx-2 flex-shrink-0"
                 loading={i < 6 ? 'eager' : 'lazy'}
+                fetchPriority={i < 6 ? 'high' : 'low'}
               />
             ))}
           </div>
@@ -421,16 +423,17 @@ type PictureImgProps = {
   sizes?: string;
   width?: number;
   height?: number;
+  fetchPriority?: 'high' | 'low' | 'auto';
 };
 
-function PictureImg({ src, alt, className, style, onClick, loading = 'lazy', decoding = 'async', sizes, width, height }: PictureImgProps) {
+function PictureImg({ src, alt, className, style, onClick, loading = 'lazy', decoding = 'async', sizes, width, height, fetchPriority = 'auto' }: PictureImgProps) {
   const avif = src.replace(/\.(png|jpg|jpeg)$/i, '.avif');
   const webp = src.replace(/\.(png|jpg|jpeg)$/i, '.webp');
   return (
     <picture>
       <source srcSet={avif} type="image/avif" />
       <source srcSet={webp} type="image/webp" />
-      <img src={src} alt={alt} className={className} style={style} onClick={onClick} loading={loading} decoding={decoding} sizes={sizes} width={width} height={height} />
+      <img src={src} alt={alt} className={className} style={style} onClick={onClick} loading={loading} decoding={decoding} sizes={sizes} width={width} height={height} fetchpriority={fetchPriority as any} />
     </picture>
   );
 }

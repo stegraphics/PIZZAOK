@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import heroTitle from '../../images/SCOPRI PIACERE.png';
 
 const Hero: React.FC = () => {
   const images = [
@@ -74,20 +75,20 @@ const Hero: React.FC = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center text-white">
+        <div className="max-w-7xl mx-auto text-center text-white">
           <div className="mb-6 relative">
             <img 
-              src="/images/scopri-il-piacere-titolo.svg" 
-              alt="Scopri il piacere con lo stile" 
+              src={heroTitle}
+              alt="Scopri il piacere"
               onClick={handleTitleClick}
-              className={`mx-auto max-w-[90%] md:max-w-full h-auto drop-shadow-lg transition-transform duration-300 hover:scale-110 cursor-pointer ${
+              className={`mx-auto w-full max-w-[98%] sm:max-w-[98%] md:max-w-[1200px] lg:max-w-[1400px] xl:max-w-[1600px] h-auto drop-shadow-lg transition-transform duration-300 hover:scale-110 cursor-pointer ${
                 titleGlow
                   ? 'filter brightness-125 saturate-150 drop-shadow-[0_0_14px_rgba(183,69,57,0.85)] md:filter-none md:drop-shadow-none'
                   : ''
               }`}
               loading="eager"
               decoding="async"
-            />
+           />
           </div>
           
           {/* CTA Prenota Ora rimossa per coerenza con l’eliminazione della sezione Prenota/Ordina */}
