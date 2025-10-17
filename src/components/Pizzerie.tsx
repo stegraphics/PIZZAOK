@@ -16,13 +16,13 @@ const Pizzerie = () => {
   return (
     <section id="pizzerie" className="relative overflow-hidden bg-[#363f48] pt-6 pb-6 md:pt-0 md:pb-0 h-auto md:h-[15cm]">
       <div className="container mx-auto px-0 md:px-4 md:h-full relative">
-        <picture className="block md:absolute md:left-0 md:top-[4cm] w-[98%] md:w-auto max-w-none md:max-w-full ml-auto mr-4 mt-4 md:ml-0 md:mr-0 md:mt-0 select-none">
+        <picture className="block md:absolute md:left-0 md:top-[4cm] w-full md:w-auto max-w-none md:max-w-full px-4 md:px-0 mt-4 md:mt-0 select-none">
           <source srcSet="/images/titolo%20la%20nostra%20pizzeria.avif" type="image/avif" />
           <source srcSet="/images/titolo%20la%20nostra%20pizzeria.webp" type="image/webp" />
           <img
-            src="/images/titolo%20la%20nostra%20pizzeria.png"
+            src="/images/titolo%20la%20nostra%20pizzeria.webp"
             alt="Titolo La Nostra Pizzeria"
-            className="h-auto"
+            className="w-full md:w-auto h-auto mx-auto block"
             loading="lazy"
             decoding="async"
           />
