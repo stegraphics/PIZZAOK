@@ -17,6 +17,29 @@ const PizzaIconeForno: React.FC<PizzaIconeFornoProps> = ({ onNavigate }) => {
 
   return (
     <>
+      {/* Strip scorrevole del logo - duplicata sopra */}
+      <div className="w-full bg-white h-20 md:h-24 overflow-hidden select-none" aria-hidden="true">
+        <div className="animate-scroll-logo-left flex items-center flex-nowrap" style={{ minWidth: '200%' }}>
+          {Array.from({ length: 2 }, (_, seq) => (
+            <div key={seq} className="flex items-center gap-10 px-4 flex-shrink-0">
+              {Array.from({ length: 12 }, (_, i) => (
+                <picture key={`${seq}-${i}`}>
+                  <source srcSet="/images/pizza-ok-logo.avif" type="image/avif" />
+                  <source srcSet="/images/pizza-ok-logo.webp" type="image/webp" />
+                  <img
+                    src="/images/pizza-ok-logo.png"
+                    alt="Pizza OK logo"
+                    className="block h-20 md:h-24 w-auto transform scale-[1.35] md:scale-[1.5] origin-center align-middle"
+                    loading={seq === 0 && i < 2 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                </picture>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="relative w-full h-auto overflow-hidden">
         {/* Immagine principale */}
         <img 
@@ -32,12 +55,35 @@ const PizzaIconeForno: React.FC<PizzaIconeFornoProps> = ({ onNavigate }) => {
         <div
           role="button"
           aria-label="Sfoglia menù"
-          className="absolute left-[60%] transform -translate-x-1/2 bg-[#9E493F] text-white px-0.5 py-0 md:px-6 md:py-4 rounded-md cursor-pointer hover:bg-[#8a3f35] transition-colors duration-300 flex items-center gap-0 md:gap-3 shadow-lg whitespace-nowrap pointer-events-auto bottom-0 md:bottom-auto md:top-3/4 md:-translate-y-1/2 md:left-[69%]"
+          className="absolute z-10 left-[60%] transform -translate-x-1/2 bg-[#9E493F] text-white px-0.5 py-0 md:px-6 md:py-4 rounded-md cursor-pointer hover:bg-[#8a3f35] transition-colors durata-300 flex items-center gap-0 md:gap-3 shadow-lg whitespace-nowrap pointer-events-auto bottom-0 md:bottom-auto md:top-3/4 md:-translate-y-1/2 md:left-[69%]"
           onClick={handleMenuClick}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleMenuClick()}
           tabIndex={0}
         >
           <span className="font-semibold text-[10px] md:text-lg">Sfoglia menù</span>
+        </div>
+      </div>
+
+      {/* Strip scorrevole del logo - riposizionato qui */}
+      <div className="w-full bg-white h-20 md:h-24 overflow-hidden select-none" aria-hidden="true">
+        <div className="animate-scroll-logo-left flex items-center flex-nowrap" style={{ minWidth: '200%' }}>
+          {Array.from({ length: 2 }, (_, seq) => (
+            <div key={seq} className="flex items-center gap-10 px-4 flex-shrink-0">
+              {Array.from({ length: 12 }, (_, i) => (
+                <picture key={`${seq}-${i}`}>
+                  <source srcSet="/images/pizza-ok-logo.avif" type="image/avif" />
+                  <source srcSet="/images/pizza-ok-logo.webp" type="image/webp" />
+                  <img
+                    src="/images/pizza-ok-logo.png"
+                    alt="Pizza OK logo"
+                    className="block h-20 md:h-24 w-auto transform scale-[1.35] md:scale-[1.5] origin-center align-middle"
+                    loading={seq === 0 && i < 2 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                </picture>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
 
@@ -55,7 +101,7 @@ const PizzaIconeForno: React.FC<PizzaIconeFornoProps> = ({ onNavigate }) => {
             {/* Pulsante di chiusura */}
             <button
               onClick={handleCloseMenu}
-              className="absolute top-4 right-4 z-20 bg-[#9E493F] text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#8a3f35] transition-colors duration-300"
+              className="absolute top-4 right-4 z-20 bg-[#9E493F] text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#8a3f35] transition-colors durata-300"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

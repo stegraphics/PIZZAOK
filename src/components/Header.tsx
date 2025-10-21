@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, MapPin, Phone, Instagram, Facebook } from 'lucide-react';
-import logoImage from '/images/Logo vettoriale Pizza ok.webp';
+import logoImage from '../../images/Logo vettoriale Pizza ok.png';
 
 const Header = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -73,7 +73,7 @@ const Header = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
                 src={logoImage} 
                 alt="Pizza OK Logo" 
                 className="h-24 sm:h-28 md:h-96 object-contain mt-2 md:mt-8 cursor-pointer" 
-                loading="lazy"
+                loading="eager"
                 decoding="async"
                 onClick={() => onNavigate?.('home')}
               />

@@ -6,6 +6,7 @@ import PizzaIconeForno from './components/PizzaIconeForno';
 import LanostraPizza from './components/LanostraPizza';
 import Pizzerie from './components/Pizzerie';
 import PizzaModal from './components/PizzaModal';
+import Footer from './components/Footer';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -107,7 +108,7 @@ function App() {
         </button>
         <div
           id="pizza-scroll-container"
-          className="w-full overflow-x-auto no-scrollbar"
+          className="w-full overflow-x-auto overflow-y-hidden no-scrollbar"
           style={{ scrollBehavior: 'auto' }}
           onTouchStart={() => pausePizzaStrip(true)}
           onTouchEnd={() => pausePizzaStrip(false)}
@@ -230,7 +231,7 @@ function App() {
                   ingredients: "pomodoro, mozzarella, acciughe, origano"
                 })} />
               </div>
-              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300" 
+              <div className="bg-white bg-opacity-10 rounded-lg p-4 flex-shrink-0 cursor-pointer hover:bg-opacity-20 transition-all duration-300"
                 onClick={() => handlePizzaClick({
                   image: "/images/pizze-sito/OK.png",
                   name: "PIZZA OK",
@@ -361,43 +362,44 @@ function App() {
           </div>
         </div>
       </div>
-      {/* Animated Logo Strip Top */}
-        <div className="w-full h-20 overflow-hidden bg-white flex items-center">
-           <div className="flex animate-scroll-logo-left" style={{ minWidth: 'max-content' }}>
-            {Array.from({ length: 24 }, (_, i) => (
-              <PictureImg 
-                key={i} 
-                src="/images/pizza-ok-logo.png" 
-                alt="Pizza OK Logo" 
-                className="h-40 w-auto mx-2 flex-shrink-0"
-                loading={i < 6 ? 'eager' : 'lazy'}
-                fetchPriority={i < 6 ? 'high' : 'low'}
-              />
-            ))}
-          </div>
-        </div>
       
       {/* Pizza Icone Forno Section */}
       <PizzaIconeForno onNavigate={setCurrentPage} />
       
-      {/* Animated Logo Strip Bottom */}
-        <div className="w-full h-20 overflow-hidden bg-white flex items-center">
-           <div className="flex animate-scroll-logo-right" style={{ minWidth: 'max-content' }}>
-            {Array.from({ length: 24 }, (_, i) => (
-              <PictureImg 
-                key={i} 
-                src="/images/pizza-ok-logo.png" 
-                alt="Pizza OK Logo" 
-                className="h-40 w-auto mx-2 flex-shrink-0"
-                loading={i < 6 ? 'eager' : 'lazy'}
-                fetchPriority={i < 6 ? 'high' : 'low'}
-              />
-            ))}
-          </div>
-        </div>
       <LanostraPizza />
       <Pizzerie />
+      <div className="w-full bg-[#9f483f] h-[12cm]">
+        <div className="container mx-auto px-4 h-full">
+          <div className="h-full flex items-center">
+            <div className="w-full text-white">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+                <div className="flex justify-center items-end md:items-center h-full translate-y-[4.5rem] md:translate-y-0">
+                  <img
+                    src="/images/3 PIZZE.png"
+                    alt="Tre pizze"
+                    className="h-auto w-auto max-h-[95%] max-w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="flex justify-center items-center h-full">
+                  <img
+                    src="/images/logo%20bianco.png"
+                    alt="Logo Pizza OK bianco"
+                    className="h-auto w-auto max-h-[95%] max-w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       {/* Sezioni Menu e Prenota/Ordina rimosse su richiesta */}
+      
+      {/* Footer */}
+      <Footer />
       
       {/* Pizza Modal */}
       <PizzaModal

@@ -6,8 +6,7 @@ const Footer = () => {
     { name: 'Home', href: '#home' },
     { name: 'Chi siamo', href: '#chi-siamo' },
     { name: 'La nostra pizza', href: '#la-nostra-pizza' },
-    { name: 'Pizzerie', href: '#pizzerie' },
-    { name: 'Lavora con noi', href: '#lavora' }
+    { name: 'Pizzerie', href: '#pizzerie' }
   ];
 
   const locations = [
@@ -30,21 +29,31 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#363f47] text-white">
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mb-12">
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mb-6">
             {/* Brand Section */}
             <div className="lg:col-span-1">
-              <h3 className="text-3xl font-bold mb-4">FILANTE</h3>
-              <p className="text-lg font-semibold text-[#b74639] mb-4">
-                TENIAMO ALTO IL GUSTO
+              <div className="flex items-start gap-4">
+                <img
+                  src="/images/logo bianco.png"
+                  alt="Logo Pizza OK bianco"
+                  className="w-auto h-48 -mt-6"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <p className="text-lg font-semibold text-[#b74639] mb-4 -mt-8">
+                TUTTO UN ALTRO GUSTO
               </p>
               <p className="text-gray-300 mb-6 leading-relaxed">
                 Dal 2020 la vera pizza al trancio milanese. 
                 Impasto a lievitazione lenta e ingredienti di prima qualità.
               </p>
               <div className="flex space-x-4">
-                <Instagram className="w-6 h-6 text-gray-300 hover:text-[#b74639] cursor-pointer transition-colors" />
+                <a href="https://www.instagram.com/pizzaokcrema?igsh=MWc2MzVyOTlpZ3ZjNw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram Pizza OK">
+                  <Instagram className="w-6 h-6 text-gray-300 hover:text-[#b74639] cursor-pointer transition-colors" />
+                </a>
                 <Facebook className="w-6 h-6 text-gray-300 hover:text-[#b74639] cursor-pointer transition-colors" />
               </div>
             </div>
@@ -68,17 +77,12 @@ const Footer = () => {
 
             {/* Locations */}
             <div>
-              <h4 className="text-xl font-bold mb-6">Le Nostre Sedi</h4>
+              <h4 className="text-xl font-bold mb-6">La Nostra Sede</h4>
               <div className="space-y-4">
-                {locations.map((location, index) => (
-                  <div key={index} className="text-sm">
-                    <h5 className="font-semibold text-white mb-1">
-                      Filante {location.name}
-                    </h5>
-                    <p className="text-gray-300 mb-1">{location.address}</p>
-                    <p className="text-[#b74639]">{location.phone}</p>
-                  </div>
-                ))}
+                <div className="text-sm">
+                  <h5 className="font-semibold text-white mb-1">PIZZA OK CREMA</h5>
+                  <p className="text-gray-300">Via Repubblica 17</p>
+                </div>
               </div>
             </div>
 
@@ -91,10 +95,10 @@ const Footer = () => {
                   <div>
                     <p className="text-white font-semibold">Email</p>
                     <a
-                      href="mailto:info@filantepizza.com"
+                      href="mailto:Pizzaokdicrema@gmail.com"
                       className="text-gray-300 hover:text-[#b74639] transition-colors"
                     >
-                      info@filantepizza.com
+                      Pizzaokdicrema@gmail.com
                     </a>
                   </div>
                 </div>
@@ -110,8 +114,7 @@ const Footer = () => {
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-5 h-5 text-[#b74639] mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-white font-semibold">Milano</p>
-                    <p className="text-gray-300">3 sedi in città</p>
+                    <p className="text-white font-semibold">Crema</p>
                   </div>
                 </div>
               </div>
@@ -124,7 +127,7 @@ const Footer = () => {
           <div className="border-t border-gray-600 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div className="text-sm text-gray-400">
-                <p>© 2024 FOOD COUNTY S.R.L. - P.IVA 12345678901</p>
+                <p>© PIZZA OK - P.IVA 13359510966</p>
                 <p className="mt-1">Tutti i diritti riservati</p>
               </div>
               
