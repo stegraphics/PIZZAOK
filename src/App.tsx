@@ -369,24 +369,24 @@ function App() {
       <LanostraPizza />
       <Pizzerie />
       <div className="w-full bg-[#9f483f] h-[12cm]">
-        <div className="container mx-auto px-4 h-full">
+        <div className="container mx-auto px-2 md:px-4 h-full">
           <div className="h-full flex items-center">
             <div className="w-full text-white">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
-                <div className="flex justify-center items-end md:items-center h-full translate-y-[4.5rem] md:translate-y-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 h-full">
+                <div className="flex justify-center items-end md:items-center h-full translate-y-[8rem] md:translate-y-0">
                   <img
                     src="/images/3 PIZZE.png"
                     alt="Tre pizze"
-                    className="h-auto w-auto max-h-[95%] max-w-full object-contain"
+                    className="h-auto w-full md:w-auto max-h-[100%] md:max-h-[95%] object-contain"
                     loading="lazy"
                     decoding="async"
                   />
                 </div>
-                <div className="flex justify-center items-center h-full">
+                <div className="flex justify-center items-start md:items-center h-full -translate-y-[2rem] -translate-x-2 md:translate-y-0 md:translate-x-0">
                   <img
                     src="/images/logo%20bianco.png"
                     alt="Logo Pizza OK bianco"
-                    className="h-auto w-auto max-h-[95%] max-w-full object-contain"
+                    className="h-auto w-full md:w-auto max-h-[100%] md:max-h-[95%] object-contain"
                     loading="lazy"
                     decoding="async"
                   />

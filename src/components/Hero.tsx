@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import heroTitle from '../../images/SCOPRI PIACERE.png';
 
 const Hero: React.FC = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [titleGlow, setTitleGlow] = useState(false);
+
   const images = [
     '/images/1.jpeg',
     '/images/2.jpeg',
@@ -12,18 +15,14 @@ const Hero: React.FC = () => {
     '/images/7.jpeg'
   ];
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [titleGlow, setTitleGlow] = useState(false);
+  // removed: const heroTitle = '/images/hero-title.png';
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 4000); // Cambia immagine ogni 4 secondi
-
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 4000);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, []);
 
   const handleTitleClick = () => {
     // Effetto glow rosso temporaneo al click (solo visibile su mobile)
@@ -94,7 +93,7 @@ const Hero: React.FC = () => {
           {/* CTA Prenota Ora rimossa per coerenza con l’eliminazione della sezione Prenota/Ordina */}
 
           {/* Location Quick Links */}
-          <div className="flex justify-center">
+          <div className="flex justify-center md:-translate-y-6 lg:-translate-y-8">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 hover:bg-white/20 transition-all duration-200 cursor-pointer">
               <h3 className="font-semibold text-lg">CREMA</h3>
               <p className="text-sm text-white/80 mt-1">via repubblica 17/19</p>
@@ -104,7 +103,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce md:hidden">
         <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
           <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
         </div>

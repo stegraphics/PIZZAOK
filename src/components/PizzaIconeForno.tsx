@@ -110,7 +110,7 @@ const PizzaIconeForno: React.FC<PizzaIconeFornoProps> = ({ onNavigate }) => {
             
             {/* Immagine del menu */}
             <img 
-              src="/images/menu-momo-nuovo.svg" 
+              src="/images/MENU' FINALE GIUSTO.jpg" 
               alt="Menu Pizza OK" 
               className="w-full h-auto"
               loading="lazy"
