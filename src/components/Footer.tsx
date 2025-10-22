@@ -47,7 +47,7 @@ const Footer = () => {
                 TUTTO UN ALTRO GUSTO
               </p>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                Dal 2020 la vera pizza al trancio milanese. 
+                Dal 2025 la vera pizza al trancio. 
                 Impasto a lievitazione lenta e ingredienti di prima qualità.
               </p>
               <div className="flex space-x-4">
