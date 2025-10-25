@@ -63,7 +63,7 @@ const Header = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
             {/* Left Navigation */}
             <nav className="hidden lg:flex items-center space-x-6 lg:flex-1 justify-start">
               <button onClick={() => onNavigate?.('chi-siamo')} className="text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm cursor-pointer transition-colors duration-300">Chi Siamo</button>
-              <a href="#la-nostra-pizza" className="text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm transition-colors duration-300">La Nostra Pizza</a>
+              <button onClick={() => onNavigate?.('la-nostra-pizza')} className="text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm cursor-pointer transition-colors duration-300">La Nostra Pizza</button>
               <a href="#pizzerie" className="text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm transition-colors duration-300">Pizzerie</a>
             </nav>
             
@@ -98,11 +98,11 @@ const Header = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           {isMenuOpen && (
             <div className="lg:hidden py-4 border-t border-gray-200">
               <nav className="space-y-4">
-                <button onClick={() => { onNavigate?.('chi-siamo'); setIsMenuOpen(false); }} className="block text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm cursor-pointer transition-colors duration-300">Chi Siamo</button>
-                <a href="#la-nostra-pizza" className="block text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>La Nostra Pizza</a>
+                <button onClick={() => { onNavigate?.('chi-siamo'); setIsMenuOpen(false); }} className="block text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm cursor-pointer transition-colors durata-300">Chi Siamo</button>
+                <button onClick={() => { onNavigate?.('la-nostra-pizza'); setIsMenuOpen(false); }} className="block text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm cursor-pointer transition-colors duration-300">La Nostra Pizza</button>
                 <a href="#pizzerie" className="block text-[#b74539] hover:text-[#9a3a30] font-medium uppercase text-sm transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Pizzerie</a>
                 <div className="ml-4 mt-2">
-                  <a href="#pizzerie" className="block text-[#b74539] hover:text-[#9a3a30] text-xs transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Pizza OK Crema</a>
+                  <a href="#pizzerie" className="block text-[#b74539] hover:text-[#9a3a30] text-xs transition-colors durata-300" onClick={() => setIsMenuOpen(false)}>Pizza OK Crema</a>
                 </div>
                 {/* Link Menù rimosso nel menu mobile */}
                 {/* Sezioni Lavora Con Noi e Domande rimosse */}

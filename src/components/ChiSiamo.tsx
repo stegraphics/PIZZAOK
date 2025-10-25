@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import perWeb from '../../images/per web.webp';
 import pizzaCola from '../../images/PIZZA COLA.svg';
+import braccio from '../../images/braccio.png';
 
 const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
   useEffect(() => {
@@ -17,7 +18,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
               <img 
                 src="/images/omino-ok.svg"
                 alt="Omino Pizza OK"
-                className="w-full max-w-md h-auto cursor-pointer transform transition-all duration-500 ease-in-out hover:scale-110 hover:rotate-3 hover:drop-shadow-2xl active:scale-95 active:rotate-0"
+                className="w-full max-w-md h-auto cursor-pointer transform transition-all duration-500 ease-in-out hover:scale-105 hover:rotate-3 hover:drop-shadow-2xl active:scale-95 active:rotate-0"
                 loading="lazy"
                 decoding="async"
               />
@@ -71,7 +72,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
                 </p>
               </div>
             </div>
-            {/* Immagine a destra */}
+            {/* Immagine a destra (ripristinata) */}
             <div className="flex items-center justify-center md:justify-end mt-0 md:mt-0">
               <img
                 src={perWeb}

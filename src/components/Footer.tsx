@@ -1,7 +1,11 @@
 import React from 'react';
 import { MapPin, Mail, Phone, Instagram, Facebook, Clock } from 'lucide-react';
 
-const Footer = () => {
+type FooterProps = {
+  onNavigate?: (page: string) => void;
+};
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const quickLinks = [
     { name: 'Home', href: '#home' },
     { name: 'Chi siamo', href: '#chi-siamo' },

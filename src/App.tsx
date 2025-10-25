@@ -77,6 +77,18 @@ function App() {
       <div className="min-h-screen">
         <Header onNavigate={setCurrentPage} />
         <ChiSiamo onNavigate={setCurrentPage} />
+        <Footer />
+      </div>
+    );
+  }
+
+  // Nuova pagina: La Nostra Pizza
+  if (currentPage === 'la-nostra-pizza') {
+    return (
+      <div className="min-h-screen">
+        <Header onNavigate={setCurrentPage} />
+        <LanostraPizza />
+        <Footer />
       </div>
     );
   }
@@ -366,7 +378,8 @@ function App() {
       {/* Pizza Icone Forno Section */}
       <PizzaIconeForno onNavigate={setCurrentPage} />
       
-      <LanostraPizza />
+      {/* Rimuovo la sezione La Nostra Pizza dalla home */}
+      {/* <LanostraPizza /> */}
       <Pizzerie />
       <div className="w-full bg-[#9f483f] h-[12cm]">
         <div className="container mx-auto px-2 md:px-4 h-full">
