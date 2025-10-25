@@ -94,7 +94,7 @@ const LanostraPizza = () => {
             />
             {/* Desktop and larger screens keep original */}
             <img
-              src="/images/PIZZA FRECCE.png"
+              src="/images/PIZZA%20FRECCE.png"
               alt="Pizza frecce"
               className="w-auto h-[460px] sm:h-[520px] md:h-[640px] lg:h-[720px] object-contain transform scale-[1.2] hidden md:block"
               loading="eager"
