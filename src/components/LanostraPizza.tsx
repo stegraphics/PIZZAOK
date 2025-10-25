@@ -12,6 +12,7 @@ import contentoMobile from '../../images/contento mobile.png';
 import vieni from '../../images/vieni a trovarci.png';
 import pizzaMobile from '../../images/pizza mobile.png';
 import vieniMobile from '../../images/vieni mobile.png';
+import pizzaFrecce from '../../images/PIZZA FRECCE.png';
 
 const LanostraPizza = () => {
   return (
@@ -94,7 +95,7 @@ const LanostraPizza = () => {
             />
             {/* Desktop and larger screens keep original */}
             <img
-              src="/images/pizza-frecce.png"
+              src={pizzaFrecce}
               alt="Pizza frecce"
               className="w-auto h-[460px] sm:h-[520px] md:h-[640px] lg:h-[720px] object-contain transform scale-[1.2] hidden md:block"
               loading="eager"
