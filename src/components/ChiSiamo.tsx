@@ -43,7 +43,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
         <img
           src="/images/storia.png"
           alt="Storia decorativo"
-          className="absolute top-0 right-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform translate-x-[0.5cm] translate-y-[6.7cm] scale-[1.0] md:-translate-x-[3cm] md:translate-y-[1cm] md:scale-[1]"
+          className="absolute top-0 right-0 z-30 md:z-0 pointer-events-none h-auto w-auto transform translate-x-[0.5rem] translate-y-[calc(4.5rem+4.5cm)] scale-[1.0] md:-translate-x-[3cm] md:translate-y-[1cm] md:scale-[1]"
           loading="lazy"
           decoding="async"
         />
@@ -143,7 +143,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           <img
             src={impegno}
             alt="Impegno"
-            className="absolute left-0 top-0 h-[280px] md:h-[340px] lg:h-[380px] w-auto object-contain transform origin-top-left scale-[1.7] translate-x-[-0.3cm] md:translate-x-[-0.2cm] translate-y-[11cm] md:-translate-y-[2cm] z-20 pointer-events-none"
+            className="absolute left-0 top-0 h-[280px] md:h-[340px] lg:h-[380px] w-auto object-contain transform origin-top-left scale-[1.7] translate-x-[-0.4cm] md:translate-x-[-0.2cm] translate-y-[11cm] md:-translate-y-[2cm] z-20 pointer-events-none"
             loading="lazy"
             decoding="async"
           />
