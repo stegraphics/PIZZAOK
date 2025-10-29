@@ -7,7 +7,8 @@ const Header = ({ onNavigate, currentPage }: { onNavigate?: (page: string) => vo
   const [isSticky, setIsSticky] = useState(false);
   const [isDeliveryOpen, setIsDeliveryOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const deliveryRef = useRef<HTMLDivElement | null>(null);
+  const mobileDeliveryRef = useRef<HTMLDivElement | null>(null);
+  const desktopDeliveryRef = useRef<HTMLDivElement | null>(null);
   const deliveryToggleRef = useRef<HTMLButtonElement | null>(null);
   const contactRef = useRef<HTMLDivElement | null>(null);
   const contactToggleRef = useRef<HTMLButtonElement | null>(null);
@@ -46,9 +47,13 @@ const Header = ({ onNavigate, currentPage }: { onNavigate?: (page: string) => vo
     if (!isDeliveryOpen && !isContactOpen) return;
     const onDown = (e: MouseEvent) => {
       const target = e.target as Node;
-      if (deliveryRef.current && !deliveryRef.current.contains(target)) {
-        if (deliveryToggleRef.current && deliveryToggleRef.current.contains(target)) return;
-        setIsDeliveryOpen(false);
+      const insideMobileDelivery = mobileDeliveryRef.current?.contains(target);
+      const insideDesktopDelivery = desktopDeliveryRef.current?.contains(target);
+      if (isDeliveryOpen) {
+        if (!insideMobileDelivery && !insideDesktopDelivery) {
+          if (deliveryToggleRef.current && deliveryToggleRef.current.contains(target)) return;
+          setIsDeliveryOpen(false);
+        }
       }
       if (contactRef.current && !contactRef.current.contains(target)) {
         if (contactToggleRef.current && contactToggleRef.current.contains(target)) return;
@@ -178,13 +183,13 @@ const Header = ({ onNavigate, currentPage }: { onNavigate?: (page: string) => vo
 
           {/* Mobile Dropdown Prenota da casa */}
           {isDeliveryOpen && (
-            <div className="lg:hidden absolute z-50" style={{ top: '100%', marginTop: '2cm', left: '50%', transform: 'translateX(-50%)' }}>
+            <div ref={mobileDeliveryRef} className="lg:hidden absolute z-[1000] pointer-events-auto" style={{ top: '100%', marginTop: '2cm', left: '50%', transform: 'translateX(-50%)' }}>
               <div className="flex items-center justify-center space-x-4">
                 <a
                   href="https://deliveroo.it/it/menu/crema/crema/pizza-ok-viale-repubblica-17-19"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                  className="flex items-center justify-center p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200 cursor-pointer"
                 >
                   <img
                     src="/images/Deliveroo-1.webp"
@@ -196,7 +201,7 @@ const Header = ({ onNavigate, currentPage }: { onNavigate?: (page: string) => vo
                   href="https://glovoapp.com/it/it/crema/stores/pizza-ok-cem-1ea6y"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                  className="flex items-center justify-center p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200 cursor-pointer"
                 >
                   <img
                     src="/images/Glovo.webp"
@@ -226,7 +231,7 @@ const Header = ({ onNavigate, currentPage }: { onNavigate?: (page: string) => vo
         {/* Dropdown Prenota da casa */}
         {isDeliveryOpen && (
           <div
-            ref={deliveryRef}
+            ref={desktopDeliveryRef}
             className="absolute top-full mt-2 bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 z-50"
             style={{ left: '1250px' }}
           >

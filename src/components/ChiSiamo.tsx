@@ -37,11 +37,11 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
         loading="lazy"
         decoding="async"
       />
-      {/* Immagine "nostra storia" in alto a destra: usa la stessa immagine anche su mobile per garantire visibilità del testo */}
+      {/* Immagine "nostra storia" in alto a destra: SOLO su mobile usa /images/LA STORIA.png mantenendo stesse dimensioni; su desktop usa nostraStoria */}
       <picture>
         <source media="(min-width:768px)" srcSet={nostraStoria} />
         <img
-          src={nostraStoria}
+          src="/images/LA STORIA.png"
           alt="Nostra storia decorativo"
           className="absolute top-0 right-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform translate-x-[0.5cm] translate-y-[6.7cm] scale-[1.0] md:-translate-x-[3cm] md:translate-y-[1cm] md:scale-[1]"
           loading="lazy"
@@ -143,7 +143,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           <img
             src={impegno}
             alt="Impegno"
-            className="absolute left-0 top-0 h-[280px] md:h-[340px] lg:h-[380px] w-auto object-contain transform origin-top-left scale-[1.7] translate-x-[-0.2cm] translate-y-[11cm] md:-translate-y-[2cm] z-20 pointer-events-none"
+            className="absolute left-0 top-0 h-[280px] md:h-[340px] lg:h-[380px] w-auto object-contain transform origin-top-left scale-[1.7] translate-x-[-0.3cm] md:translate-x-[-0.2cm] translate-y-[11cm] md:-translate-y-[2cm] z-20 pointer-events-none"
             loading="lazy"
             decoding="async"
           />
