@@ -48,13 +48,13 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
 
       {/* Blocco testo mobile al posto dell'immagine */}
       <div
-        className="absolute top-0 right-0 md:hidden pointer-events-none origin-top-right transform translate-x-[calc(0.5rem-0.45cm)] translate-y-[7cm] scale-[0.97] flex flex-col items-start gap-1 max-w-[95vw]"
+        className="absolute top-0 right-0 md:hidden z-20 pointer-events-none origin-top-right transform translate-x-[calc(0.5rem-0.45cm)] translate-y-[7cm] scale-[0.97] flex flex-col items-start gap-1 max-w-[95vw]"
         style={{ fontFamily: 'Montserrat, sans-serif' }}
       >
         <span className="text-[#9f483f] font-bold uppercase text-[13px] tracking-wide whitespace-nowrap">
           LA NOSTRA STORIA
         </span>
-        <span className="text-[#9f483f] font-bold uppercase text-[10px] leading-tight flex-1">
+        <span className="text-[#9f483f] font-bold uppercase text-[10px] leading-[1.42] flex-1">
           Pizza OK nasce a Crema nel 2025 come progetto di ristorazione contemporanea dedicato alla pizza al trancio. L'idea alla base è quella di dare nuova vita a una tradizione amata, proponendo un prodotto gustoso, di qualità e al passo con i tempi, capace di conquistare un pubblico trasversale e attento alle nuove tendenze del food.
         </span>
       </div>
@@ -153,10 +153,27 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           <img
             src={impegno}
             alt="Impegno"
-            className="absolute left-0 top-0 h-[280px] md:h-[340px] lg:h-[380px] w-auto object-contain transform origin-top-left scale-[1.7] translate-x-[-0.4cm] md:translate-x-[-0.2cm] translate-y-[11cm] md:-translate-y-[2cm] z-20 pointer-events-none"
+            className="absolute left-0 top-0 h-[280px] md:h-[340px] lg:h-[380px] w-auto object-contain transform origin-top-left scale-[1.7] translate-x-[-0.4cm] md:translate-x-[-0.2cm] translate-y-[11cm] md:-translate-y-[2cm] z-20 pointer-events-none hidden md:block"
             loading="lazy"
             decoding="async"
           />
+          {/* Sostituzione mobile: testo al posto di impegno.png con stile La Nostra Storia */}
+          <div
+            className="absolute left-0 top-0 md:hidden z-20 pointer-events-none transform origin-top-left translate-x-[0.1cm] translate-y-[16cm] scale-[1.27]"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
+          >
+            <div className="flex flex-col items-start gap-1 max-w-[95vw]">
+              <span className="text-[#9f483f] font-bold uppercase text-[13px] tracking-wide whitespace-nowrap">
+                IL NOSTRO IMPEGNO
+              </span>
+              <span className="text-[#9f483f] font-bold uppercase text-[10px] leading-[1.42]">
+                Elevare la pizza al trancio a un nuovo step<br/>
+                Innovando gusto, leggerezza e benessere,<br/>
+                Ampliando il modo di viverla e condividerla,<br/>
+                Disegnando un marchio che lasci il segno.
+              </span>
+            </div>
+          </div>
           <img
             src={pizzaGrande}
             alt="Pizza Grande"
