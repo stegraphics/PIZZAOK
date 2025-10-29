@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import perWeb from '../../images/per web.webp';
-import pizzaCola from '../../images/PIZZA COLA.svg';
 import braccio from '../../images/braccio.png';
+import ominoOk from '../../images/OMINO OK.svg';
+import nostraStoria from '../../images/nostra storia.png';
+import daAlto from '../../images/da alto.png';
+import pizzaGrande from '../../images/PIZZA GRANDE.png';
+import salame from '../../images/salame.png';
+import impegno from '../../images/impegno.png';
 
 const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
   useEffect(() => {
@@ -9,41 +14,85 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
   }, []);
   return (
     <>
-    <section id="chi-siamo" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="chi-siamo" className="py-20 bg-[#363f48] relative overflow-hidden">
+      {/* Overlay spostato a destra con modalità sovrapponi e opacità 30% */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute right-0 bottom-0 w-fit transform translate-x-[25cm]">
+          <img
+            src="/images/POSTO PIZZA OK 2.webp"
+            alt="Sfondo Pizza OK"
+            className="mix-blend-overlay opacity-20 max-w-[80%] md:max-w-[60%] lg:max-w-[50%] h-auto"
+            loading="lazy"
+            decoding="async"
+          />
+          {/* Velo nero leggero sopra SOLO l'immagine di sfondo */}
+          <div className="absolute inset-0 bg-black/20 pointer-events-none z-10" aria-hidden="true" />
+        </div>
+      </div>
+      {/* Angolo decorativo in alto a sinistra */}
+      <img
+        src="/images/angolo.png"
+        alt="Angolo decorativo"
+        className="absolute top-0 left-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform translate-x-[-0.2cm] md:translate-x-0 origin-top-left scale-[0.7] md:scale-50"
+        loading="lazy"
+        decoding="async"
+      />
+      {/* Immagine "nostra storia" in alto a destra: usa storia.png su mobile, nostraStoria su desktop */}
+      <picture>
+        <source media="(min-width:768px)" srcSet={nostraStoria} />
+        <img
+          src="/images/storia.png"
+          alt="Nostra storia decorativo"
+          className="absolute top-0 right-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform translate-x-[0.5cm] translate-y-[6.7cm] scale-[1.0] md:-translate-x-[3cm] md:translate-y-[1cm] md:scale-[1]"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      {/* Immagine centrale su mobile: pizza ok posto 2.webp */}
+      <img
+        src="/images/POSTO PIZZA OK 2.webp"
+        alt="Pizza OK posto 2 (mobile)"
+        className="absolute top-1/2 left-1/2 z-0 mix-blend-overlay opacity-20 pointer-events-none h-auto w-auto object-contain transform origin-center scale-[2] -translate-x-1/2 -translate-y-1/2 translate-x-[5cm] block md:hidden"
+        loading="lazy"
+        decoding="async"
+      />
+      {/* Immagine "da alto" in basso a destra */}
+      <img
+        src={daAlto}
+        alt="Da alto decorativo"
+        className="absolute top-0 md:top-auto right-0 md:bottom-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform origin-top-right md:origin-bottom-right scale-[0.43] md:scale-[0.33] translate-x-0 translate-y-0 md:-translate-x-[4cm] md:translate-y-[1cm]"
+        loading="lazy"
+        decoding="async"
+      />
+      {/* Logo bianco in basso a destra */}
+      <img
+        src="/images/logo bianco.webp"
+        alt="Logo Pizza OK bianco"
+        className="absolute bottom-0 right-0 z-10 md:z-0 pointer-events-none h-auto w-auto object-contain transform origin-bottom-right scale-[0.5] md:scale-[1] -translate-x-[0.3cm] md:translate-x-0 -translate-y-[0.5cm] md:translate-y-0"
+        loading="lazy"
+        decoding="async"
+      />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Immagine OMINO OK.svg a sinistra */}
-            <div className="flex justify-center animate-fade-in-left">
+            <div className="flex justify-center md:animate-fade-in-left">
               <img 
-                src="/images/omino-ok.svg"
+                src={ominoOk}
                 alt="Omino Pizza OK"
-                className="w-full max-w-md h-auto cursor-pointer transform transition-all duration-500 ease-in-out hover:scale-105 hover:rotate-3 hover:drop-shadow-2xl active:scale-95 active:rotate-0"
+                className="w-full max-w-md h-auto cursor-pointer transform scale-[0.5] md:scale-100 -translate-x-[2cm] translate-y-[6cm] md:translate-x-[1cm] md:translate-y-[2cm] md:transition-all md:duration-500 md:ease-in-out md:hover:scale-105 md:hover:rotate-3 md:hover:drop-shadow-2xl md:active:scale-95 md:active:rotate-0"
                 loading="lazy"
                 decoding="async"
               />
             </div>
             
-            {/* Titolo e testo a destra */}
+            {/* Testo a destra */}
             <div className="space-y-6 animate-fade-in-right">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#363f47] uppercase">
-                LA NOSTRA STORIA
-              </h2>
-              <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
-                <p>
-                  Pizza OK nasce a Crema nel 2025 come progetto di ristorazione contemporanea dedicato alla pizza al trancio. L'idea alla base è quella di dare nuova vita a una tradizione amata, proponendo un prodotto gustoso, di qualità e al passo con i tempi, capace di conquistare un pubblico trasversale e attento alle nuove tendenze del food.
-                </p>
-                <p>
-                  Il locale si presenta come uno spazio moderno e accogliente, dove la pizza diventa non solo un piatto da condividere, ma anche un'esperienza capace di raccontare uno stile di vita giovane, urbano e inclusivo.
-                </p>
-                <p>
-                  Con questa prima apertura a Crema, Pizza OK getta le fondamenta di un percorso di crescita che punta a portare la pizza al trancio in una dimensione nuova, pronta a farsi apprezzare non solo nella città d'origine, ma anche oltre i suoi confini.
-                </p>
-              </div>
+              
               <div className="pt-6">
                 <button 
                   onClick={() => onNavigate?.('home')} 
-                  className="px-8 py-3 bg-[#b74639] hover:bg-[#a03d32] text-white font-semibold rounded-lg transition-colors duration-200"
+                  className="hidden md:inline-block px-8 py-3 bg-[#b74639] hover:bg-[#a03d32] text-white font-semibold rounded-lg transition-colors duration-200"
                 >
                   Torna alla Home
                 </button>
@@ -59,11 +108,11 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
         <div className="max-w-6xl mx-auto min-h-[540px] md:h-[560px] lg:h-[568px] overflow-hidden">
           <div className="h-full flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Testo a sinistra */}
-            <div className="w-full max-w-xl md:max-w-xl py-2 md:py-4 pr-2 md:pr-6 text-white">
-              <h3 className="text-3xl md:text-4xl font-bold text-white uppercase">
+            <div className="w-full max-w-xl md:max-w-xl py-2 md:py-4 pr-2 md:pr-6 text-white transform translate-y-[1cm] md:translate-y-0">
+              <h3 className="text-2xl md:text-4xl font-bold text-white uppercase">
                 NON SOLO UN TRANCIO
               </h3>
-              <div className="space-y-4 text-lg text-white leading-relaxed">
+              <div className="space-y-4 text-base md:text-lg text-white leading-relaxed">
                 <p>
                   Un trancio di pizza può contenere più emozioni di mille parole. Dentro trovi la leggerezza di un sorriso, la forza di un momento condiviso, la bellezza delle cose semplici. È un invito a rallentare, a godersi il presente, a ritrovare il piacere di stare insieme.
                 </p>
@@ -86,42 +135,39 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
         </div>
       </div>
     </section>
-    {/* Banner bianco con icona PIZZA COLA a sinistra - posizionato sotto il rosso */}
-    <section id="banner-cola" className="bg-white">
+    {/* Banner ripristinato: sfondo #363f48 con immagini PIZZA GRANDE a sinistra e salame a destra */}
+    <section id="banner-cola" className="bg-[#363f48] md:-mb-[2cm]">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto min-h-[540px] md:h-[560px] lg:h-[568px] overflow-hidden">
-          <div className="h-full flex flex-col md:flex-row items-start justify-between gap-8">
-            <div
-              aria-label="Icona Pizza Cola"
-              className="bg-[#363f48] w-[360px] md:w-[480px] lg:w-[500px] h-[430px] md:h-[540px] lg:h-[548px]"
-              style={{
-                WebkitMaskImage: `url(${pizzaCola})`,
-                maskImage: `url(${pizzaCola})`,
-                WebkitMaskRepeat: 'no-repeat',
-                maskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'top left',
-                maskPosition: 'top left',
-                WebkitMaskSize: 'contain',
-                maskSize: 'contain',
-              }}
-            />
-            {/* Testo a destra dell'icona, stile coerente con Chi Siamo */}
-            <div className="w-full max-w-xl md:max-w-2xl self-center mt-6 md:mt-0">
-              <h3 className="text-3xl md:text-4xl font-bold text-[#363f47] uppercase">
-                IL NOSTRO IMPEGNO
-              </h3>
-              <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
-                <p>
-                  Elevare la pizza al trancio a un nuovo standard di qualità ed esperienza:
-                </p>
-                <ul className="list-disc pl-6 space-y-2">
-                  <li>Innovando gusto, leggerezza e benessere;</li>
-                  <li>Ampliando il modo di viverla e condividerla;</li>
-                  <li>Disegnando un marchio che lasci il segno.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div className="max-w-6xl mx-auto min-h-[calc(540px+6cm)] md:h-[560px] lg:h-[568px] relative overflow-visible pb-[6cm] md:pb-0">
+          {/* Immagini isolate e indipendenti, posizionate assolute */}
+          <img
+            src={impegno}
+            alt="Impegno"
+            className="absolute left-0 top-0 h-[280px] md:h-[340px] lg:h-[380px] w-auto object-contain transform origin-top-left scale-[1.7] translate-x-[-0.2cm] translate-y-[11cm] md:-translate-y-[2cm] z-20 pointer-events-none"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src={pizzaGrande}
+            alt="Pizza Grande"
+            className="absolute left-0 bottom-0 h-[380px] md:h-[480px] lg:h-[520px] w-auto object-contain transform origin-left scale-[1.1] md:scale-[1.3] translate-x-[-0.7cm] md:translate-x-[15cm] -translate-y-[5cm] md:-translate-y-[5cm] z-10 pointer-events-none"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src={salame}
+            alt="Salame"
+            className="absolute right-0 bottom-0 h-[380px] md:h-[480px] lg:h-[520px] w-auto object-contain transform translate-x-[0.8cm] md:translate-x-[8cm] -translate-y-[11cm] md:-translate-y-[9cm] z-10 pointer-events-none"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/images/logo bianco.webp"
+            alt="Logo Pizza OK bianco"
+            className="absolute top-0 right-0 h-[120px] md:h-[140px] w-auto object-contain transform translate-y-[12cm] md:translate-y-[12cm] translate-x-[-1cm] md:translate-x-[1cm] scale-[1.5] md:scale-[1.9] z-20 pointer-events-none"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
     </section>

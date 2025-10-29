@@ -55,7 +55,7 @@ const PizzaIconeForno: React.FC<PizzaIconeFornoProps> = ({ onNavigate }) => {
         <div
           role="button"
           aria-label="Sfoglia menù"
-          className="absolute z-10 left-[60%] transform -translate-x-1/2 bg-[#9E493F] text-white px-0.5 py-0 md:px-6 md:py-4 rounded-md cursor-pointer hover:bg-[#8a3f35] transition-colors durata-300 flex items-center gap-0 md:gap-3 shadow-lg whitespace-nowrap pointer-events-auto bottom-0 md:bottom-auto md:top-3/4 md:-translate-y-1/2 md:left-[69%]"
+          className="absolute z-10 left-[calc(60%+0.7cm)] transform -translate-x-1/2 bg-[#9E493F] text-white px-0.5 py-0 md:px-6 md:py-4 rounded-md cursor-pointer hover:bg-[#8a3f35] transition-colors durata-300 flex items-center gap-0 md:gap-3 shadow-lg whitespace-nowrap pointer-events-auto bottom-0 md:bottom-auto md:top-3/4 md:-translate-y-1/2 md:left-[69%]"
           onClick={handleMenuClick}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleMenuClick()}
           tabIndex={0}

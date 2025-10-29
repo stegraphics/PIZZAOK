@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import heroTitle from '../../images/SCOPRI PIACERE.png';
+// Foto header importate dal percorso images/foto header
+import headerImg1 from '../../images/foto header/8ott25-pizzaok 2 WEB.jpg';
+import headerImg2 from '../../images/foto header/8ott25-pizzaok 15 WEB.jpg';
+import headerImg3 from '../../images/foto header/8ott25-pizzaok 48 WEB.jpg';
+import headerImg4 from '../../images/foto header/8ott25-pizzaok 68 WEB.jpg';
+import headerImg5 from '../../images/foto header/8ott25-pizzaok 105 WEB.jpg';
+import headerImg6 from '../../images/foto header/8ott25-pizzaok 119 WEB.jpg';
 
 const Hero: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [titleGlow, setTitleGlow] = useState(false);
 
+  // Sostituzione: utilizzo le foto dell'header fornite
   const images = [
-    '/images/1.jpeg',
-    '/images/2.jpeg',
-    '/images/3.jpeg',
-    '/images/4.jpeg',
-    '/images/5.jpeg',
-    '/images/6.jpeg',
-    '/images/7.jpeg'
+    headerImg1,
+    headerImg2,
+    headerImg3,
+    headerImg4,
+    headerImg5,
+    headerImg6,
   ];
 
   // removed: const heroTitle = '/images/hero-title.png';
@@ -34,26 +41,18 @@ const Hero: React.FC = () => {
     <section id="home" className="relative min-h-screen flex items-center">
       {/* Background Images with Slideshow */}
       {images.map((image, index) => {
-        const avif = image.replace(/\.(jpg|jpeg|png)$/i, '.avif');
-        const webp = image.replace(/\.(jpg|jpeg|png)$/i, '.webp');
         return (
-          <picture
+          <img
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
+            src={image}
+            alt=""
+            aria-hidden="true"
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${
               index === currentImageIndex ? 'opacity-100' : 'opacity-0'
             }`}
-          >
-            <source srcSet={avif} type="image/avif" />
-            <source srcSet={webp} type="image/webp" />
-            <img
-              src={image}
-              alt=""
-              aria-hidden="true"
-              className="w-full h-full object-cover object-center"
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
+            loading="lazy"
+            decoding="async"
+          />
         );
       })}
       

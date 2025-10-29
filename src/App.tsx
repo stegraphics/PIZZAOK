@@ -75,9 +75,9 @@ function App() {
   if (currentPage === 'chi-siamo') {
     return (
       <div className="min-h-screen">
-        <Header onNavigate={setCurrentPage} />
+        <Header onNavigate={setCurrentPage} currentPage={currentPage} />
         <ChiSiamo onNavigate={setCurrentPage} />
-        <Footer />
+        <Footer currentPage={currentPage} onNavigate={setCurrentPage} />
       </div>
     );
   }
@@ -86,16 +86,16 @@ function App() {
   if (currentPage === 'la-nostra-pizza') {
     return (
       <div className="min-h-screen">
-        <Header onNavigate={setCurrentPage} />
+        <Header onNavigate={setCurrentPage} currentPage={currentPage} />
         <LanostraPizza />
-        <Footer />
+        <Footer currentPage={currentPage} onNavigate={setCurrentPage} />
       </div>
     );
   }
 
   return (
     <div className="min-h-screen">
-      <Header onNavigate={setCurrentPage} />
+      <Header onNavigate={setCurrentPage} currentPage={currentPage} />
       <Hero />
       {/* Large Color Strip with Pizza Images */}
       <div className="w-full h-[500px] bg-[#363f48] flex items-center justify-center overflow-hidden relative">
@@ -412,7 +412,7 @@ function App() {
       {/* Sezioni Menu e Prenota/Ordina rimosse su richiesta */}
       
       {/* Footer */}
-      <Footer />
+      <Footer currentPage={currentPage} onNavigate={setCurrentPage} />
       
       {/* Pizza Modal */}
       <PizzaModal
