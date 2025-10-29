@@ -37,11 +37,11 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
         loading="lazy"
         decoding="async"
       />
-      {/* Immagine "nostra storia" in alto a destra: usa storia.png su mobile, nostraStoria su desktop */}
+      {/* Immagine "nostra storia" in alto a destra: usa la stessa immagine anche su mobile per garantire visibilità del testo */}
       <picture>
         <source media="(min-width:768px)" srcSet={nostraStoria} />
         <img
-          src="/images/storia.png"
+          src={nostraStoria}
           alt="Nostra storia decorativo"
           className="absolute top-0 right-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform translate-x-[0.5cm] translate-y-[6.7cm] scale-[1.0] md:-translate-x-[3cm] md:translate-y-[1cm] md:scale-[1]"
           loading="lazy"
