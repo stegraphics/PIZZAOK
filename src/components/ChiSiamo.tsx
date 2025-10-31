@@ -16,7 +16,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
     <>
     <section id="chi-siamo" className="py-20 bg-[#363f48] relative overflow-hidden">
       {/* Overlay spostato a destra con modalità sovrapponi e opacità 30% */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="hidden md:block absolute inset-0 z-0 pointer-events-none">
         <div className="absolute right-0 bottom-0 w-fit transform translate-x-[25cm]">
           <img
             src="/images/POSTO PIZZA OK 2.webp"
@@ -33,7 +33,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
       <img
         src="/images/angolo.png"
         alt="Angolo decorativo"
-        className="absolute top-0 left-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform translate-x-[-0.2cm] md:translate-x-0 origin-top-left scale-[0.7] md:scale-50"
+        className="absolute top-0 left-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform translate-x-[-2vw] md:translate-x-0 origin-top-left scale-[0.7] md:scale-50"
         loading="lazy"
         decoding="async"
       />
@@ -48,7 +48,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
 
       {/* Blocco testo mobile al posto dell'immagine */}
       <div
-        className="nostra-storia-text absolute top-0 right-0 md:hidden z-20 pointer-events-none origin-top-right transform translate-x-[calc(0.5rem-0.45cm)] translate-y-[7cm] scale-[0.97] flex flex-col items-start gap-1 max-w-[95vw]"
+        className="nostra-storia-text absolute top-0 right-0 md:hidden z-20 pointer-events-none origin-top-right transform -translate-x-[2vw] translate-y-[calc(36dvh-0.5cm)] scale-[0.97] flex flex-col items-start gap-1 max-w-[95vw]"
         style={{ fontFamily: 'Montserrat, sans-serif' }}
       >
         <span className="text-[#9f483f] font-bold uppercase text-[13px] tracking-wide whitespace-nowrap">
@@ -62,7 +62,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
       <img
         src="/images/POSTO PIZZA OK 2.webp"
         alt="Pizza OK posto 2 (mobile)"
-        className="absolute top-1/2 left-1/2 z-0 mix-blend-overlay opacity-20 pointer-events-none h-auto w-auto object-contain transform origin-center scale-[2] -translate-x-1/2 -translate-y-1/2 translate-x-[5cm] block md:hidden"
+        className="absolute top-1/2 left-1/2 z-0 mix-blend-overlay opacity-20 pointer-events-none h-auto w-auto object-contain transform origin-center scale-[1.8] -translate-x-1/2 -translate-y-1/2 translate-x-[12vw] block md:hidden"
         loading="lazy"
         decoding="async"
       />
@@ -78,7 +78,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
       <img
         src="/images/logo bianco.webp"
         alt="Logo Pizza OK bianco"
-        className="absolute bottom-0 right-0 z-10 md:z-0 pointer-events-none h-auto w-auto object-contain transform origin-bottom-right scale-[0.5] md:scale-[1] -translate-x-[0.3cm] md:translate-x-0 -translate-y-[0.5cm] md:translate-y-0"
+        className="absolute bottom-0 right-0 z-10 md:z-0 pointer-events-none h-auto w-auto object-contain transform origin-bottom-right scale-[0.5] md:scale-[1] -translate-x-[2.5vw] md:translate-x-0 -translate-y-[6dvh] md:translate-y-0"
         loading="lazy"
         decoding="async"
       />
@@ -90,7 +90,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
               <img 
                 src={ominoOk}
                 alt="Omino Pizza OK"
-                className="w-full max-w-md h-auto cursor-pointer transform scale-[0.5] md:scale-100 -translate-x-[2cm] translate-y-[6cm] md:translate-x-[1cm] md:translate-y-[2cm] md:transition-all md:duration-500 md:ease-in-out md:hover:scale-105 md:hover:rotate-3 md:hover:drop-shadow-2xl md:active:scale-95 md:active:rotate-0"
+                className="w-full max-w-md h-auto cursor-pointer transform scale-[0.6] md:scale-100 -translate-x-[8vw] translate-y-[28dvh] md:translate-x-[1cm] md:translate-y-[2cm] md:transition-all md:duration-500 md:ease-in-out md:hover:scale-105 md:hover:rotate-3 md:hover:drop-shadow-2xl md:active:scale-95 md:active:rotate-0"
                 loading="lazy"
                 decoding="async"
               />
@@ -118,7 +118,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
         <div className="max-w-6xl mx-auto min-h-[540px] md:h-[560px] lg:h-[568px] overflow-hidden">
           <div className="h-full flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Testo a sinistra */}
-            <div className="w-full max-w-xl md:max-w-xl py-2 md:py-4 pr-2 md:pr-6 text-white transform translate-y-[1cm] md:translate-y-0">
+            <div className="w-full max-w-xl md:max-w-xl py-2 md:py-4 pr-2 md:pr-6 text-white transform translate-y-[6dvh] md:translate-y-0">
               <h3 className="text-2xl md:text-4xl font-bold text-white uppercase">
                 NON SOLO UN TRANCIO
               </h3>
@@ -177,21 +177,14 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           <img
             src={pizzaGrande}
             alt="Pizza Grande"
-            className="absolute left-0 bottom-0 h-[380px] md:h-[480px] lg:h-[520px] w-auto object-contain transform origin-left scale-[1.1] md:scale-[1.3] translate-x-[-0.7cm] md:translate-x-[15cm] -translate-y-[5cm] md:-translate-y-[5cm] z-10 pointer-events-none banner-pizza-grande"
+            className="absolute left-0 bottom-0 h-[380px] md:h-[480px] lg:h-[520px] w-auto object-contain transform origin-left scale-[1.1] md:scale-[1.3] translate-x-[-3vw] md:translate-x-[15cm] -translate-y-[27dvh] md:-translate-y-[5cm] z-10 pointer-events-none banner-pizza-grande"
             loading="lazy"
             decoding="async"
           />
           <img
             src={salame}
             alt="Salame"
-            className="absolute right-0 bottom-0 h-[380px] md:h-[480px] lg:h-[520px] w-auto object-contain transform translate-x-[0.8cm] md:translate-x-[8cm] -translate-y-[11cm] md:-translate-y-[9cm] z-10 pointer-events-none banner-salame"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            src="/images/logo bianco.webp"
-            alt="Logo Pizza OK bianco"
-            className="absolute top-0 right-0 h-[120px] md:h-[140px] w-auto object-contain transform translate-y-[12cm] md:translate-y-[12cm] translate-x-[-1cm] md:translate-x-[1cm] scale-[1.5] md:scale-[1.9] z-20 pointer-events-none"
+            className="absolute right-0 bottom-0 h-[380px] md:h-[480px] lg:h-[520px] w-auto object-contain transform translate-x-[3vw] md:translate-x-[8cm] -translate-y-[55dvh] md:-translate-y-[9cm] z-10 pointer-events-none banner-salame"
             loading="lazy"
             decoding="async"
           />

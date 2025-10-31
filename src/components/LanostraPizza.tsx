@@ -163,7 +163,7 @@ const LanostraPizza = () => {
           <img
             src={vieniMobile}
             alt="Vieni a trovarci (mobile)"
-            className="absolute left-0 bottom-0 h-[25%] md:h-[30%] w-auto object-contain pointer-events-none transform translate-x-[1cm] -translate-y-[2cm] origin-bottom-left scale-[3.5] block md:hidden"
+            className="absolute left-0 bottom-0 h-[25%] md:h-[30%] w-auto object-contain pointer-events-none transform translate-x-[4vw] -translate-y-[10dvh] origin-bottom-left scale-[3.3] block md:hidden"
             loading="eager"
             decoding="async"
           />
@@ -184,7 +184,7 @@ const LanostraPizza = () => {
         <img
           src={contentoMobile}
           alt="Omino contento (mobile)"
-          className="absolute left-0 bottom-0 h-[30%] md:h-[35%] w-auto object-contain pointer-events-none transform translate-x-[0cm] origin-bottom-left scale-[3.55] block md:hidden"
+          className="absolute left-0 bottom-0 h-[30%] md:h-[35%] w-auto object-contain pointer-events-none transform translate-x-[0vw] origin-bottom-left scale-[3.4] block md:hidden"
           loading="eager"
           decoding="async"
         />

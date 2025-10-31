@@ -215,7 +215,7 @@ const Header = ({ onNavigate, currentPage }: { onNavigate?: (page: string) => vo
 
           {/* Mobile Dropdown Contattaci */}
           {isContactOpen && (
-            <div className="lg:hidden absolute z-50" style={{ top: '100%', marginTop: '2cm', left: '50%', transform: 'translateX(-50%)' }}>
+            <div className="lg:hidden absolute z-50" style={{ top: '100%', marginTop: '12dvh', left: '50%', transform: 'translateX(-50%)' }}>
               <div className="flex items-center justify-center">
                 <a
                   href="tel:0373185580"

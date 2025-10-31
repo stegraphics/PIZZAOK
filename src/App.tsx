@@ -98,7 +98,7 @@ function App() {
       <Header onNavigate={setCurrentPage} currentPage={currentPage} />
       <Hero />
       {/* Large Color Strip with Pizza Images */}
-      <div className="w-full h-[500px] bg-[#363f48] flex items-center justify-center overflow-hidden relative">
+      <div className="w-full h-[45dvh] md:h-[500px] bg-[#363f48] flex items-center justify-center overflow-hidden relative">
         {/* Controlli di navigazione */}
         <button 
           onClick={handleScrollLeft} 
@@ -381,12 +381,12 @@ function App() {
       {/* La Nostra Pizza non deve apparire in home */}
       {/* <LanostraPizza /> */}
       <Pizzerie />
-      <div className="w-full bg-[#9f483f] h-[12cm]">
+      <div className="w-full bg-[#9f483f] h-[50dvh] md:h-[40dvh] lg:h-[45dvh]">
         <div className="container mx-auto px-2 md:px-4 h-full">
           <div className="h-full flex items-center">
             <div className="w-full text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 h-full">
-                <div className="flex justify-center items-end md:items-center h-full translate-y-[8rem] md:translate-y-0">
+                <div className="flex justify-center items-end md:items-center h-full translate-y-[25dvh] md:translate-y-0">
                   <img
                     src="/images/3 PIZZE.png"
                     alt="Tre pizze"

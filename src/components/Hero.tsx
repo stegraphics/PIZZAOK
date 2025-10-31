@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
               src={heroTitle}
               alt="Scopri il piacere"
               onClick={handleTitleClick}
-              className={`mx-auto w-full max-w-[100%] sm:max-w-[75%] md:max-w-[900px] lg:max-w-[1100px] xl:max-w-[1200px] h-auto drop-shadow-lg transition-transform duration-300 scale-[1.15] sm:scale-100 hover:scale-110 cursor-pointer ${
+              className={`mx-auto w-full max-w-[92%] sm:max-w-[75%] md:max-w-[900px] lg:max-w-[1100px] xl:max-w-[1200px] h-auto drop-shadow-lg transition-transform duration-300 scale-[1.08] sm:scale-100 hover:scale-110 cursor-pointer ${
                 titleGlow
                   ? 'filter brightness-125 saturate-150 drop-shadow-[0_0_14px_rgba(183,69,57,0.85)] md:filter-none md:drop-shadow-none'
                   : ''

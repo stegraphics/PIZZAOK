@@ -89,7 +89,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, currentPage }) => {
                 <img
                   src="/images/logo bianco.webp"
                   alt="Logo Pizza OK bianco"
-                  className="w-auto h-48 -mt-6 transform translate-y-[1.2cm] -translate-x-[0.6cm] md:translate-y-[0.7cm] md:translate-x-0"
+                  className="w-auto h-48 -mt-6 transform translate-y-[6dvh] -translate-x-[5vw] md:translate-y-[0.7cm] md:translate-x-0"
                   loading="lazy"
                   decoding="async"
                 />
@@ -110,7 +110,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, currentPage }) => {
             </div>
 
             {/* Quick Links */}
-            <div className="transform translate-y-[0.5cm] md:translate-y-[2cm]">
+            <div className="transform translate-y-[3dvh] md:translate-y-[2cm]">
               <h4 className="text-xl font-bold mb-6">Link Utili</h4>
               <ul className="space-y-3">
                 {quickLinks.slice(0, 8).map((link) => (
@@ -128,7 +128,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, currentPage }) => {
             </div>
 
             {/* Locations */}
-            <div className="transform translate-y-[0.5cm] md:translate-y-[2cm]">
+            <div className="transform translate-y-[3dvh] md:translate-y-[2cm]">
               <h4 className="text-xl font-bold mb-6">La Nostra Sede</h4>
               <div className="space-y-4">
                 <div className="text-sm">

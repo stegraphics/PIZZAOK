@@ -63,7 +63,8 @@ body {
     max-width: 70vw !important;
   }
 
-  /* Override mirati per la sezione PIZZA GRANDE su iOS grandi */
+  /* Override mirati per la sezione PIZZA GRANDE su mobile */
+@media (max-width: 768px) {
   .banner-pizza-grande {
     /* Approx dai valori originali (0.7cm ~ 26px, 5cm ~ 189px) ma resi responsivi */
     transform: translateX(-3vw) translateY(-27dvh) scale(1.1) !important;
@@ -77,6 +78,7 @@ body {
     bottom: 0 !important;
     max-width: 65vw !important;
   }
+}
   
   /* Override per braccio su iOS grandi - abbassa di 3cm aggiuntivi */
   .braccio-image {
@@ -86,7 +88,7 @@ body {
   
   /* Override per testo "LA NOSTRA STORIA" su iOS grandi - sposta leggermente più in basso */
   .nostra-storia-text {
-    transform: translateX(calc(0.5rem - 0.45cm)) translateY(7.5cm) scale(0.97) !important;
+    transform: translateX(calc(0.5rem - 0.45cm)) translateY(7cm) scale(0.97) !important;
   }
   
   /* Override per teglia piccola su iOS grandi - sposta leggermente a sinistra */
@@ -171,6 +173,17 @@ body {
 
 /* Migliora l’animazione su mobile: aumentiamo la velocità e ottimizziamo il rendering */
 @media (max-width: 768px) {
+  /* Utility mobile-only per layout e spaziature */
+  .mobile-flex-col { flex-direction: column !important; }
+  .mobile-center { justify-content: center !important; align-items: center !important; }
+  .mobile-pad { padding: 4vw !important; }
+  .mobile-gap { gap: 3vw !important; }
+  .mobile-hide { display: none !important; }
+  .mobile-show { display: block !important; }
+  .mobile-h-45dvh { height: 45dvh !important; }
+  .mobile-maxw-92 { max-width: 92vw !important; }
+  .mobile-text-sm { font-size: 0.95rem !important; line-height: 1.25rem !important; }
+
   .animate-scroll-logo-left {
     animation: scroll-left 40s linear infinite;
     will-change: transform;
@@ -274,7 +287,7 @@ body {
   
   /* Aggiusta la posizione della teglia piccola */
   .teglia-piccola {
-    transform: translateX(-12cm) translateY(-4cm) scale(0.7) !important;
+    transform: translateX(-12cm) translateY(-3.5cm) scale(0.7) !important;
   }
   
   /* Aggiusta l'immagine "PIZZA GRANDE" */
@@ -554,7 +567,7 @@ body {
 /* SOLUZIONE RESPONSIVE SPECIFICA SOLO PER LA SEZIONE CHI SIAMO */
 @media screen and (max-width: 768px) {
   #chi-siamo img[alt="Logo Pizza OK bianco"] {
-    transform: scale(0.2) !important;
+    transform: translateX(-2.5vw) translateY(-3cm) scale(0.2) !important;
     width: 20% !important;
     height: auto !important;
     max-width: 80px !important;
@@ -562,10 +575,75 @@ body {
   }
 }
 
+/* Mobile generico: normalizza proporzioni su schermi piccoli (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  /* La Nostra Pizza: grande teglia più centrata e proporzionata */
+  #la-nostra-pizza .teglia-grande {
+    transform: translateX(6vw) translateY(-18dvh) scale(0.9) !important;
+    height: auto !important;
+    max-width: 70vw !important;
+  }
+
+  /* Braccio a destra: abbassa in base a altezza viewport */
+  #la-nostra-pizza .braccio-image {
+    transform: translateY(calc(22dvh - 2cm)) scale(1.35) !important;
+    transform-origin: bottom right !important;
+    height: auto !important;
+    max-width: 55vw !important;
+  }
+
+  /* Teglia piccola: evita overflow orizzontale su mobile */
+  #la-nostra-pizza .teglia-piccola {
+    transform: translateX(-32vw) translateY(calc(-16dvh + 0.5cm)) scale(0.85) !important;
+    height: auto !important;
+    max-width: 60vw !important;
+  }
+
+  /* Sezione frecce: impasto/farina/cottura bilanciati con viewport */
+  #la-nostra-pizza-frecce img[alt="Impasto"] {
+    transform: translateX(-6vw) translateY(-22dvh) scale(0.9) !important;
+    height: auto !important;
+    max-width: 50vw !important;
+  }
+  #la-nostra-pizza-frecce img[alt="Farina"] {
+    transform: translateX(-8vw) translateY(calc(12dvh + 2cm)) scale(0.9) !important;
+    height: auto !important;
+    max-width: 50vw !important;
+  }
+  #la-nostra-pizza-frecce img[alt="Cottura"] {
+    transform: translateX(6vw) translateY(-22dvh) scale(0.9) !important;
+    height: auto !important;
+    max-width: 50vw !important;
+  }
+
+  /* Farciture: usa viewport units al posto dei cm per coerenza cross-device */
+  #la-nostra-pizza img[alt="Farciture"],
+  #la-nostra-pizza .farciture-image {
+    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
+    transform-origin: bottom right !important;
+    height: auto !important;
+    max-width: 55vw !important;
+  }
+
+  /* La sezione bianca (vieni a trovarci) — mobile assets */
+  #la-nostra-pizza-bianca img[alt="Vieni a trovarci (mobile)"] {
+    transform: translateX(4vw) translateY(-10dvh) scale(1.5) !important;
+    transform-origin: bottom left !important;
+    height: auto !important;
+    max-width: 60vw !important;
+  }
+  #la-nostra-pizza-bianca img[alt="Omino contento (mobile)"] {
+    transform: translateX(0) translateY(0) scale(2.4) !important;
+    transform-origin: bottom left !important;
+    height: auto !important;
+    max-width: 55vw !important;
+  }
+}
+
 /* EXTRA SMALL per iPhone e dispositivi molto piccoli - SOLO CHI SIAMO */
 @media screen and (max-width: 480px) {
   #chi-siamo img[alt="Logo Pizza OK bianco"] {
-    transform: scale(0.15) !important;
+    transform: translateX(-2.5vw) translateY(-3cm) scale(0.15) !important;
     width: 15% !important;
     height: auto !important;
     max-width: 60px !important;
@@ -576,7 +654,7 @@ body {
 /* Fallback specifico (match esatto 393x852) per iPhone 16 Pro */
 @media screen and (width: 393px) and (height: 852px) {
   #chi-siamo img[alt="Logo Pizza OK bianco"] {
-    transform: scale(0.5) !important;
+    transform: translateX(-2.5vw) translateY(-3cm) scale(0.5) !important;
     width: auto !important;
     height: auto !important;
     max-width: none !important;
@@ -584,19 +662,19 @@ body {
   }
 }
 
-/* iPhone 16 Plus: sposta braccio.png in basso di 2cm (solo La Nostra Pizza) */
+/* iPhone 16 Plus: usa unità viewport per coerenza (solo La Nostra Pizza) */
 @media screen and (width: 430px) and (height: 932px) and (orientation: portrait),
        screen and (min-width: 428px) and (max-width: 432px) and (min-height: 928px) and (max-height: 936px) and (orientation: portrait) {
   #la-nostra-pizza .braccio-image {
-    transform: translateY(3cm) scale(1) !important;
+    transform: translateY(22dvh) scale(1) !important;
   }
 }
 
-/* iOS fix: Farciture — normalizza posizione su iPhone 16 Plus */
+/* iOS fix: Farciture — iPhone 16 Plus con unità viewport */
 @media screen and (width: 430px) and (height: 932px) and (orientation: portrait) {
   #la-nostra-pizza img[alt="Farciture"],
   #la-nostra-pizza .farciture-image {
-    transform: translateX(1.5cm) translateY(6.5cm) scale(0.44) !important;
+    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
     transform-origin: bottom right !important;
   }
 }
@@ -604,21 +682,21 @@ body {
 @media screen and (width: 430px) and (orientation: portrait) {
   #la-nostra-pizza img[alt="Farciture"],
   #la-nostra-pizza .farciture-image {
-    transform: translateX(1.5cm) translateY(6.5cm) scale(0.44) !important;
+    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
     transform-origin: bottom right !important;
   }
 }
 @media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
   #la-nostra-pizza img[alt="Farciture"],
   #la-nostra-pizza .farciture-image {
-    transform: translateX(1.5cm) translateY(6.5cm) scale(0.44) !important;
+    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
     transform-origin: bottom right !important;
   }
 }
 @media only screen and (min-device-width: 428px) and (max-device-width: 432px) and (min-device-height: 928px) and (max-device-height: 936px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
   #la-nostra-pizza img[alt="Farciture"],
   #la-nostra-pizza .farciture-image {
-    transform: translateX(1.5cm) translateY(6.5cm) scale(0.44) !important;
+    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
     transform-origin: bottom right !important;
   }
 }
@@ -626,14 +704,14 @@ body {
 @media only screen and (min-width: 428px) and (max-width: 432px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
   #la-nostra-pizza img[alt="Farciture"],
   #la-nostra-pizza .farciture-image {
-    transform: translateX(1.5cm) translateY(6.5cm) scale(0.44) !important;
+    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
     transform-origin: bottom right !important;
   }
 }
 /* Range larghezza senza DPR (fallback) */
 @media screen and (min-width: 428px) and (max-width: 432px) and (orientation: portrait) {
   #la-nostra-pizza .farciture-image {
-    transform: translateX(1.5cm) translateY(6.5cm) scale(0.44) !important;
+    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
     transform-origin: bottom right !important;
   }
 }
@@ -641,7 +719,7 @@ body {
 @media screen and (min-width: 428px) and (max-width: 432px) and (min-height: 900px) and (max-height: 960px) and (orientation: portrait) {
   #la-nostra-pizza img[alt="Farciture"].absolute.right-0.bottom-0.farciture-image,
   #la-nostra-pizza .absolute.right-0.bottom-0.farciture-image {
-    transform: translateX(1.5cm) translateY(6.5cm) scale(0.44) !important;
+    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
     transform-origin: bottom right !important;
   }
 }
@@ -672,13 +750,13 @@ body {
 /* iPhone 16 Plus robust (iOS Safari specific) */
 @media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
   #la-nostra-pizza .braccio-image {
-    transform: translateY(3cm) scale(1) !important;
+    transform: translateY(calc(22dvh - 2cm)) scale(1.35) !important;
   }
 }
 
 /* iOS portrait with width≈430, height≈932, DPR 3 (tollerante) */
 @media only screen and (min-device-width: 428px) and (max-device-width: 432px) and (min-device-height: 928px) and (max-device-height: 936px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
   #la-nostra-pizza .braccio-image {
-    transform: translateY(3cm) scale(1) !important;
+    transform: translateY(calc(22dvh - 2cm)) scale(1.35) !important;
   }
 }
