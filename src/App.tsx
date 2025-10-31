@@ -98,7 +98,7 @@ function App() {
       <Header onNavigate={setCurrentPage} currentPage={currentPage} />
       <Hero />
       {/* Large Color Strip with Pizza Images */}
-      <div className="w-full h-[45dvh] md:h-[500px] bg-[#363f48] flex items-center justify-center overflow-hidden relative">
+      <div className="w-full h-[50dvh] md:h-[500px] bg-[#363f48] flex items-center justify-center overflow-hidden relative">
         {/* Controlli di navigazione */}
         <button 
           onClick={handleScrollLeft} 

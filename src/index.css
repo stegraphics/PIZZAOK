@@ -39,74 +39,7 @@ body {
   transition: none !important;
 }
 
-/* Fix per dispositivi iOS grandi (iPhone 16 Pro Max, etc.) */
-@media screen and (max-width: 430px) and (min-height: 900px) and (-webkit-min-device-pixel-ratio: 3),
-       screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
-  /* Aggiusta le immagini con translate-x in cm per dispositivi iOS grandi */
-  .absolute img[class*="translate-x-["] {
-    max-width: 90vw !important;
-    height: auto !important;
-  }
-  
-  /* Aggiusta le immagini con scale per dispositivi iOS grandi */
-  .absolute img[class*="scale-["] {
-    transform-origin: center !important;
-  }
-  
-  /* Specifica per l'immagine di sfondo: neutralizza la traslazione del container
-     e sposta l'immagine leggermente a sinistra per rientrare nel viewport */
-  .absolute.right-0.bottom-0 {
-    transform: translateX(0) !important;
-  }
-  .absolute.right-0.bottom-0 img {
-    transform: translateX(-12vw) !important;
-    max-width: 70vw !important;
-  }
-
-  /* Override mirati per la sezione PIZZA GRANDE su mobile */
-@media (max-width: 768px) {
-  .banner-pizza-grande {
-    /* Approx dai valori originali (0.7cm ~ 26px, 5cm ~ 189px) ma resi responsivi */
-    transform: translateX(-3vw) translateY(-27dvh) scale(1.1) !important;
-    left: 0 !important;
-    bottom: 0 !important;
-    max-width: 65vw !important;
-  }
-  .banner-salame {
-    transform: translateX(3vw) translateY(-55dvh) !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    max-width: 65vw !important;
-  }
-}
-  
-  /* Override per braccio su iOS grandi - abbassa di 3cm aggiuntivi */
-  .braccio-image {
-    transform: translateY(6cm) scale(1) !important;
-    transform-origin: bottom right !important;
-  }
-  
-  /* Override per testo "LA NOSTRA STORIA" su iOS grandi - sposta leggermente più in basso */
-  .nostra-storia-text {
-    transform: translateX(calc(0.5rem - 0.45cm)) translateY(7cm) scale(0.97) !important;
-  }
-  
-  /* Override per teglia piccola su iOS grandi - sposta leggermente a sinistra */
-.teglia-piccola {
-  transform: translateX(-11cm) translateY(-5cm) scale(0.5) !important;
-}
-}
-
-/* Media query alternativa per iPhone 16 Pro Max */
-@media screen and (min-height: 900px) and (max-width: 450px) {
-  .nostra-storia-text {
-    transform: translateX(calc(0.5rem - 0.45cm)) translateY(7.5cm) scale(0.97) !important;
-  }
-  
-.teglia-piccola {
-  transform: translateX(-11cm) translateY(-5cm) scale(0.5) !important;
-}
-}
+/* (RIMOSSO) Media query iOS grandi e alternativa iPhone 16 Pro Max */
 
 /* Forza il blocco di tutte le animazioni nel modal */
 .modal-container * {
@@ -173,6 +106,31 @@ body {
 
 /* Migliora l’animazione su mobile: aumentiamo la velocità e ottimizziamo il rendering */
 @media (max-width: 768px) {
+  /* Banner pizze scorrevole: altezza immagini e padding card */
+  #pizza-strip picture img {
+    height: 30dvh !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+  #pizza-strip .bg-white.bg-opacity-10.rounded-lg {
+    padding: 0.5rem !important; /* p-2 */
+  }
+  #pizza-strip {
+    padding-left: 1rem !important; /* px-4 */
+    padding-right: 1rem !important;
+  }
+  .banner-pizza-grande {
+    transform: translateX(-3vw) translateY(calc(-27dvh + 2cm)) scale(1.1) !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    max-width: 65vw !important;
+  }
+  .banner-salame {
+    transform: translateX(3vw) translateY(calc(-55dvh + 2cm)) !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    max-width: 65vw !important;
+  }
   /* Utility mobile-only per layout e spaziature */
   .mobile-flex-col { flex-direction: column !important; }
   .mobile-center { justify-content: center !important; align-items: center !important; }
@@ -265,304 +223,13 @@ body {
   animation-play-state: paused !important;
 }
 
-/* Media query per Microsoft Surface Duo */
-@media screen and (min-width: 1100px) and (max-width: 1120px) and (min-height: 700px) and (max-height: 710px) and (-webkit-min-device-pixel-ratio: 2.5) {
-  /* Aggiustamenti per Surface Duo - risoluzione CSS 1114x705px */
-  
-  /* Ridimensiona l'immagine di sfondo principale */
-  .bg-cover {
-    background-size: 85% auto !important;
-    background-position: center top !important;
-  }
-  
-  /* Aggiusta la posizione del testo "LA NOSTRA STORIA" (abbassato di 2cm) */
-  .nostra-storia-text {
-    transform: translateX(calc(0.5rem - 0.3cm)) translateY(7.5cm) scale(0.85) !important;
-  }
-  
-  /* Aggiusta la posizione dell'immagine del braccio */
-  .braccio-image {
-    transform: translateX(-8cm) translateY(-3cm) scale(0.7) !important;
-  }
-  
-  /* Aggiusta la posizione della teglia piccola */
-  .teglia-piccola {
-    transform: translateX(-12cm) translateY(-3.5cm) scale(0.7) !important;
-  }
-  
-  /* Aggiusta l'immagine "PIZZA GRANDE" */
-  .banner-pizza-grande {
-    transform: translateX(-2cm) translateY(-3cm) scale(0.8) !important;
-  }
-  
-  /* Aggiusta l'immagine "3 PIZZE" */
-  .tre-pizze-image {
-    transform: translateX(0.2cm) translateY(1cm) !important;
-    max-height: 80% !important;
-  }
-  
-  /* Sposta l'immagine "POSTO PIZZA OK 2" solo su Surface Duo */
-  .posto2-image {
-    transform: translateX(0.8cm) !important;
-    border-top-left-radius: 0.5cm !important;
-    border-bottom-left-radius: 0.5cm !important;
-  }
-  /* Sposta Omino contento a destra di +1cm su Surface Duo (landscape 1114x705) */
-  img[alt="Omino contento"] {
-    transform: translate(15cm, -0.3cm) scale(2.85) !important;
-  }
+/* (RIMOSSO) Media query Surface Duo e varianti compatibilità */
 
-  /* Riduci leggermente l'immagine angolo decorativo (in alto a sinistra) */
-  img[alt="Angolo decorativo"] {
-    transform: translateX(0) scale(0.65) !important;
-  }
+/* (RIMOSSO) Surface Duo portrait (circa 540x720 CSS px, DPR >= 2) */
 
-  /* Impegno (desktop image) — sposta in basso di +3cm */
-  img[alt="Impegno"] {
-    transform: translateX(-0.2cm) translateY(1cm) scale(1.7) !important;
-  }
+/* (RIMOSSO) Surface Duo landscape (circa 720x540 CSS px, DPR >= 2) */
 
-  /* Sposta la teglia grande 3cm a destra su Surface Duo */
-  .teglia-grande {
-  --tw-translate-x: 6cm !important;
-  --tw-translate-y: -4cm !important;
-    --tw-scale-x: 0.50 !important; /* riduzione ulteriore */
-    --tw-scale-y: 0.50 !important; /* riduzione ulteriore */
-    max-height: 75% !important; /* limita di più l'altezza su Surface Duo */
-    transform: translate(6cm, -4cm) scale(0.7) !important;
-  }
-  /* Riduce uniformemente anche senza classe dedicata, usando variabili Tailwind */
-  img[alt="Teglia grande"] {
-  --tw-translate-x: 6cm !important;
-  --tw-translate-y: -4cm !important;
-    --tw-scale-x: 0.50 !important;
-    --tw-scale-y: 0.50 !important;
-    max-height: 75% !important;
-    transform: translate(6cm, -4cm) scale(0.7) !important;
-  }
-}
-
-/* Media query alternativa per Surface Duo (più ampia per compatibilità) */
-@media screen and (min-width: 1000px) and (max-width: 1200px) and (min-height: 650px) and (max-height: 750px) and (-webkit-min-device-pixel-ratio: 2) {
-  /* Aggiustamenti generali per dispositivi simili a Surface Duo */
-  
-  .nostra-storia-text {
-    transform: translateX(calc(0.5rem - 0.3cm)) translateY(7.5cm) scale(0.85) !important;
-  }
-  
-  .braccio-image {
-    transform: translateX(-8cm) translateY(-3cm) scale(0.7) !important;
-  }
-  
-  .teglia-piccola {
-    transform: translateX(-12cm) translateY(-4cm) scale(0.7) !important;
-  }
-  
-  .banner-pizza-grande {
-    transform: translateX(-2cm) translateY(-3cm) scale(0.8) !important;
-  }
-  
-  .tre-pizze-image {
-    transform: translateX(0.2cm) translateY(1cm) !important;
-    max-height: 80% !important;
-  }
-  
-  /* Sposta l'immagine "POSTO PIZZA OK 2" solo su dispositivi simili a Surface Duo */
-  .posto2-image {
-    transform: translateX(0.8cm) !important;
-    border-top-left-radius: 0.5cm !important;
-    border-bottom-left-radius: 0.5cm !important;
-  }
-  /* Sposta Omino contento a destra di +1cm su dispositivi simili a Surface Duo (landscape generico) */
-  img[alt="Omino contento"] {
-    transform: translate(15cm, -0.3cm) scale(2.85) !important;
-  }
-
-  /* Riduci leggermente l'immagine angolo decorativo (in alto a sinistra) */
-  img[alt="Angolo decorativo"] {
-    transform: translateX(0) scale(0.65) !important;
-  }
-
-  /* Impegno (desktop image) — sposta in basso di +3cm */
-  img[alt="Impegno"] {
-    transform: translateX(-0.2cm) translateY(1cm) scale(1.7) !important;
-  }
-
-  /* Sposta la teglia grande 3cm a destra su dispositivi simili a Surface Duo */
-  .teglia-grande {
-  --tw-translate-x: 6cm !important;
-  --tw-translate-y: -4cm !important;
-    --tw-scale-x: 0.50 !important; /* riduzione ulteriore */
-    --tw-scale-y: 0.50 !important; /* riduzione ulteriore */
-    max-height: 75% !important; /* limita di più l'altezza su Surface Duo */
-    transform: translate(6cm, -4cm) scale(0.7) !important;
-  }
-  /* Riduce uniformemente anche senza classe dedicata, usando variabili Tailwind */
-  img[alt="Teglia grande"] {
-  --tw-translate-x: 6cm !important;
-  --tw-translate-y: -4cm !important;
-    --tw-scale-x: 0.50 !important;
-    --tw-scale-y: 0.50 !important;
-    max-height: 75% !important;
-    transform: translate(6cm, -4cm) scale(0.7) !important;
-  }
-}
-
-/* Surface Duo portrait (circa 540x720 CSS px, DPR >= 2) */
-@media screen and (min-width: 520px) and (max-width: 560px) and (min-height: 700px) and (max-height: 740px) and (min-resolution: 2dppx) {
-  .tre-pizze-image {
-    transform: translateX(0.2cm) translateY(1cm) !important;
-    max-height: 80% !important;
-  }
-  .posto2-image {
-    transform: translateX(0.8cm) !important;
-    border-top-left-radius: 0.5cm !important;
-    border-bottom-left-radius: 0.5cm !important;
-  }
-  .teglia-piccola {
-    transform: translateX(-12cm) translateY(-4cm) scale(0.7) !important;
-  }
-
-  /* Abbassa il testo LA NOSTRA STORIA di 2cm (da 7cm a 9cm) in portrait 540x720 */
-  .nostra-storia-text {
-    transform: translateX(calc(0.5rem - 0.3cm)) translateY(8.5cm) scale(0.97) !important;
-  }
-
-  /* Sposta Omino contento (mobile) a destra di +1cm su Surface Duo (portrait 540x720) */
-  img[alt="Omino contento (mobile)"] {
-    transform: translate(1cm, -0.3cm) scale(3.55) !important;
-  }
-
-  /* Riduci leggermente l'immagine angolo decorativo (portrait 540x720) */
-  img[alt="Angolo decorativo"] {
-    transform: translateX(-0.2cm) scale(0.65) !important;
-  }
-
-  /* Impegno (mobile text) — sposta in basso di +3cm */
-  #banner-cola div.md\:hidden {
-    transform: translateX(1vw) translateY(calc(66dvh + 3cm)) scale(1.27) !important;
-  }
-
-  /* Sposta la teglia grande 3cm a destra (portrait) */
-  .teglia-grande {
-  --tw-translate-x: 6cm !important;
-  --tw-translate-y: -4cm !important;
-    --tw-scale-x: 0.50 !important; /* riduzione ulteriore */
-    --tw-scale-y: 0.50 !important; /* riduzione ulteriore */
-    max-height: 75% !important; /* limita di più l'altezza su Surface Duo */
-    transform: translate(6cm, -4cm) scale(0.7) !important;
-  }
-  /* Riduce uniformemente anche senza classe dedicata, usando variabili Tailwind */
-  img[alt="Teglia grande"] {
-  --tw-translate-x: 6cm !important;
-  --tw-translate-y: -4cm !important;
-    --tw-scale-x: 0.50 !important;
-    --tw-scale-y: 0.50 !important;
-    max-height: 75% !important;
-    transform: translate(6cm, -4cm) scale(0.7) !important;
-  }
-}
-
-/* Surface Duo landscape (circa 720x540 CSS px, DPR >= 2) */
-@media screen and (min-width: 700px) and (max-width: 740px) and (min-height: 520px) and (max-height: 560px) and (min-resolution: 2dppx) {
-  .tre-pizze-image {
-    transform: translateX(0.2cm) translateY(1cm) !important;
-    max-height: 80% !important;
-  }
-  .posto2-image {
-    transform: translateX(0.8cm) !important;
-    border-top-left-radius: 0.5cm !important;
-    border-bottom-left-radius: 0.5cm !important;
-  }
-  .teglia-piccola {
-    transform: translateX(-12cm) translateY(-4cm) scale(0.7) !important;
-  }
-
-  /* Abbassa il testo LA NOSTRA STORIA di 2cm (da 7cm a 9cm) in portrait 705x1114 */
-  .nostra-storia-text {
-    transform: translateX(calc(0.5rem - 0.3cm)) translateY(8.5cm) scale(0.97) !important;
-  }
-
-  /* Sposta Omino contento (mobile) a destra di +1cm su Surface Duo (portrait 705x1114) */
-  img[alt="Omino contento (mobile)"] {
-    transform: translate(1cm, -0.3cm) scale(3.55) !important;
-  }
-
-  /* Riduci leggermente l'immagine angolo decorativo (circa 720x540) */
-  img[alt="Angolo decorativo"] {
-    transform: translateX(-0.2cm) scale(0.65) !important;
-  }
-
-  /* Impegno (mobile text) — sposta in basso di +3cm */
-  #banner-cola div.md\:hidden {
-    transform: translateX(1vw) translateY(calc(66dvh + 3cm)) scale(1.27) !important;
-  }
-
-  /* Sposta la teglia grande 3cm a destra (landscape) */
-  .teglia-grande {
-  --tw-translate-x: 6cm !important;
-  --tw-translate-y: -4cm !important;
-    --tw-scale-x: 0.50 !important; /* riduzione ulteriore */
-    --tw-scale-y: 0.50 !important; /* riduzione ulteriore */
-    max-height: 75% !important; /* limita di più l'altezza su Surface Duo */
-    transform: translate(6cm, -5cm) scale(0.7) !important;
-  }
-  /* Riduce uniformemente anche senza classe dedicata, usando variabili Tailwind */
-  img[alt="Teglia grande"] {
-  --tw-translate-x: 6cm !important;
-  --tw-translate-y: -5cm !important;
-    --tw-scale-x: 0.50 !important;
-    --tw-scale-y: 0.50 !important;
-    max-height: 75% !important;
-    transform: translate(6cm, -2cm) scale(0.7) !important;
-  }
-}
-
-/* Media query Surface Duo in orientamento portrait (705x1114 CSS px) */
-@media screen and (min-width: 700px) and (max-width: 710px) and (min-height: 1100px) and (max-height: 1120px) and (-webkit-min-device-pixel-ratio: 2.5),
-       screen and (min-width: 700px) and (max-width: 710px) and (min-height: 1100px) and (max-height: 1120px) and (min-resolution: 2dppx) {
-  /* Solo l’immagine "3 PIZZE" deve scendere visibilmente */
-  .tre-pizze-image {
-    transform: translateX(0.2cm) translateY(1cm) !important;
-    max-height: 80% !important;
-  }
-  .posto2-image {
-    transform: translateX(0.8cm) !important;
-    border-top-left-radius: 0.5cm !important;
-    border-bottom-left-radius: 0.5cm !important;
-  }
-  .teglia-piccola {
-    transform: translateX(-12cm) translateY(-4cm) scale(0.7) !important;
-  }
-
-  /* Sposta la teglia grande 3cm a destra (portrait alto) */
-  .teglia-grande {
-  --tw-translate-x: 6cm !important;
-  --tw-translate-y: -4cm !important;
-    --tw-scale-x: 0.50 !important; /* riduzione ulteriore */
-    --tw-scale-y: 0.50 !important; /* riduzione ulteriore */
-    max-height: 60% !important; /* limita di più l'altezza su Surface Duo */
-  }
-  /* Riduce uniformemente anche senza classe dedicata, usando variabili Tailwind */
-  img[alt="Teglia grande"] {
-  --tw-translate-x: 6cm !important;
-  --tw-translate-y: -2cm !important;
-    --tw-scale-x: 0.50 !important;
-    --tw-scale-y: 0.50 !important;
-    max-height: 60% !important;
-  }
-
-  /* Riduci leggermente l'immagine angolo decorativo (portrait alto 705x1114) */
-  img[alt="Angolo decorativo"] {
-    transform: translateX(-0.2cm) scale(0.65) !important;
-  }
-
-  /* Impegno (mobile text) — sposta in basso di +3cm */
-  #banner-cola div.md\:hidden {
-    transform: translateX(1vw) translateY(calc(66dvh + 3cm)) scale(1.27) !important;
-  }
-
-}
+/* (RIMOSSO) Media query Surface Duo in orientamento portrait (705x1114 CSS px) */
 
 /* SOLUZIONE RESPONSIVE SPECIFICA SOLO PER LA SEZIONE CHI SIAMO */
 @media screen and (max-width: 768px) {
@@ -586,7 +253,7 @@ body {
 
   /* Braccio a destra: abbassa in base a altezza viewport */
   #la-nostra-pizza .braccio-image {
-    transform: translateY(calc(22dvh - 2cm)) scale(1.35) !important;
+    transform: translateY(calc(22dvh - 2.5cm)) scale(1.35) !important;
     transform-origin: bottom right !important;
     height: auto !important;
     max-width: 55vw !important;
@@ -651,95 +318,15 @@ body {
   }
 }
 
-/* Fallback specifico (match esatto 393x852) per iPhone 16 Pro */
-@media screen and (width: 393px) and (height: 852px) {
-  #chi-siamo img[alt="Logo Pizza OK bianco"] {
-    transform: translateX(-2.5vw) translateY(-3cm) scale(0.5) !important;
-    width: auto !important;
-    height: auto !important;
-    max-width: none !important;
-    max-height: none !important;
-  }
-}
+/* (RIMOSSO) Fallback specifico (match esatto 393x852) per iPhone 16 Pro */
 
-/* iPhone 16 Plus: usa unità viewport per coerenza (solo La Nostra Pizza) */
-@media screen and (width: 430px) and (height: 932px) and (orientation: portrait),
-       screen and (min-width: 428px) and (max-width: 432px) and (min-height: 928px) and (max-height: 936px) and (orientation: portrait) {
-  #la-nostra-pizza .braccio-image {
-    transform: translateY(22dvh) scale(1) !important;
-  }
-}
+/* (RIMOSSO) iPhone 16 Plus: usa unità viewport per coerenza (solo La Nostra Pizza) */
 
-/* iOS fix: Farciture — iPhone 16 Plus con unità viewport */
-@media screen and (width: 430px) and (height: 932px) and (orientation: portrait) {
-  #la-nostra-pizza img[alt="Farciture"],
-  #la-nostra-pizza .farciture-image {
-    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
-    transform-origin: bottom right !important;
-  }
-}
-/* iPhone 16 Plus robust (solo larghezza, portrait) */
-@media screen and (width: 430px) and (orientation: portrait) {
-  #la-nostra-pizza img[alt="Farciture"],
-  #la-nostra-pizza .farciture-image {
-    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
-    transform-origin: bottom right !important;
-  }
-}
-@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
-  #la-nostra-pizza img[alt="Farciture"],
-  #la-nostra-pizza .farciture-image {
-    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
-    transform-origin: bottom right !important;
-  }
-}
-@media only screen and (min-device-width: 428px) and (max-device-width: 432px) and (min-device-height: 928px) and (max-device-height: 936px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-  #la-nostra-pizza img[alt="Farciture"],
-  #la-nostra-pizza .farciture-image {
-    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
-    transform-origin: bottom right !important;
-  }
-}
-/* Range tollerante basato solo su larghezza per iOS DPR3, portrait */
-@media only screen and (min-width: 428px) and (max-width: 432px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-  #la-nostra-pizza img[alt="Farciture"],
-  #la-nostra-pizza .farciture-image {
-    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
-    transform-origin: bottom right !important;
-  }
-}
-/* Range larghezza senza DPR (fallback) */
-@media screen and (min-width: 428px) and (max-width: 432px) and (orientation: portrait) {
-  #la-nostra-pizza .farciture-image {
-    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
-    transform-origin: bottom right !important;
-  }
-}
-/* Fallback esteso per iPhone 16 Plus (range larghezza/altezza, massima specificità) */
-@media screen and (min-width: 428px) and (max-width: 432px) and (min-height: 900px) and (max-height: 960px) and (orientation: portrait) {
-  #la-nostra-pizza img[alt="Farciture"].absolute.right-0.bottom-0.farciture-image,
-  #la-nostra-pizza .absolute.right-0.bottom-0.farciture-image {
-    transform: translateX(6vw) translateY(28dvh) scale(0.9) !important;
-    transform-origin: bottom right !important;
-  }
-}
+/* (RIMOSSO) iOS fix: Farciture — iPhone 16 Plus con unità viewport */
+/* (RIMOSSO) iPhone 16 Plus robust e varianti device-width con DPR */
+/* (RIMOSSO) Range iOS basato su larghezza/DPR e fallback estesi */
 
-/* Android fix: Farciture — Samsung Galaxy S20 Ultra (portrait) */
-@media screen and (width: 412px) and (height: 915px) and (orientation: portrait) {
-  #la-nostra-pizza img[alt="Farciture"],
-  #la-nostra-pizza .farciture-image {
-    transform: translateX(1.2cm) translateY(5.5cm) scale(0.44) !important;
-    transform-origin: bottom right !important;
-  }
-}
-/* Android fix tolerant range (Galaxy S20 Ultra variants) */
-@media screen and (min-width: 410px) and (max-width: 415px) and (min-height: 900px) and (max-height: 930px) and (orientation: portrait) {
-  #la-nostra-pizza img[alt="Farciture"],
-  #la-nostra-pizza .farciture-image {
-    transform: translateX(1.2cm) translateY(5.5cm) scale(0.44) !important;
-    transform-origin: bottom right !important;
-  }
-}
+/* (RIMOSSO) Android fix specifici per Galaxy S20 Ultra e varianti */
 
 /* iOS fix: Farciture — normalizza posizione su iPhone 16 Pro */
 /* (rimosso) iOS fix Farciture per 16 Pro: non necessario, altri iOS sono ok */
@@ -747,16 +334,4 @@ body {
 /* iOS fix: Farciture — normalizza posizione su iPhone 14/15 */
 /* (rimosso) iOS fix Farciture per 14/15: non necessario, altri iOS sono ok */
 
-/* iPhone 16 Plus robust (iOS Safari specific) */
-@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
-  #la-nostra-pizza .braccio-image {
-    transform: translateY(calc(22dvh - 2cm)) scale(1.35) !important;
-  }
-}
-
-/* iOS portrait with width≈430, height≈932, DPR 3 (tollerante) */
-@media only screen and (min-device-width: 428px) and (max-device-width: 432px) and (min-device-height: 928px) and (max-device-height: 936px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-  #la-nostra-pizza .braccio-image {
-    transform: translateY(calc(22dvh - 2cm)) scale(1.35) !important;
-  }
-}
+/* (RIMOSSO) iPhone 16 Plus robust (Safari specific) e range tollerante braccio */

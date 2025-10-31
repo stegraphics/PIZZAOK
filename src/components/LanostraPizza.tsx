@@ -66,7 +66,7 @@ const LanostraPizza = () => {
             <img
               src={braccio}
               alt="Braccio"
-              className="braccio-image absolute right-0 bottom-0 h-[85%] md:h-[90%] w-auto object-contain pointer-events-none transform origin-bottom-right scale-[1] md:scale-[1.5] translate-y-[3cm] md:translate-y-[5cm]"
+              className="braccio-image absolute right-0 bottom-0 h-[85%] md:h-[90%] w-auto object-contain pointer-events-none transform origin-bottom-right scale-[1] md:scale-[1.5] translate-y-[4cm] md:translate-y-[6cm]"
               loading="eager"
               decoding="async"
             />
