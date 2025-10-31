@@ -120,13 +120,13 @@ body {
     padding-right: 1rem !important;
   }
   .banner-pizza-grande {
-    transform: translateX(-3vw) translateY(calc((-27 * var(--vh)) + 2cm)) scale(1.1) !important;
+    transform: translateX(-3vw) translateY(calc((-27 * var(--vh)) + 1cm)) scale(1.1) !important;
     left: 0 !important;
     bottom: 0 !important;
     max-width: 65vw !important;
   }
   .banner-salame {
-    transform: translateX(3vw) translateY(calc((-55 * var(--vh)) + 2cm)) !important;
+    transform: translateX(3vw) translateY(calc(-55 * var(--vh))) !important;
     right: 0 !important;
     bottom: 0 !important;
     max-width: 65vw !important;
@@ -246,7 +246,7 @@ body {
 @media screen and (max-width: 768px) {
   /* La Nostra Pizza: grande teglia più centrata e proporzionata */
   #la-nostra-pizza .teglia-grande {
-    transform: translateX(6vw) translateY(calc(-18 * var(--vh))) scale(0.9) !important;
+    transform: translateX(6vw) translateY(calc(-18 * var(--vh) - 1cm)) scale(0.7) !important;
     height: auto !important;
     max-width: 70vw !important;
   }
@@ -278,7 +278,7 @@ body {
     max-width: 50vw !important;
   }
   #la-nostra-pizza-frecce img[alt="Cottura"] {
-    transform: translateX(6vw) translateY(calc(-22 * var(--vh))) scale(0.9) !important;
+    transform: translateX(6vw) translateY(calc(-22 * var(--vh) - 1cm)) scale(0.9) !important;
     height: auto !important;
     max-width: 50vw !important;
   }

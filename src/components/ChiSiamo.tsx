@@ -48,7 +48,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
 
       {/* Blocco testo mobile al posto dell'immagine */}
       <div
-        className="nostra-storia-text absolute top-0 right-0 md:hidden z-20 pointer-events-none origin-top-right transform -translate-x-[2cm] translate-y-[calc(36dvh-1cm)] scale-[0.77] flex flex-col items-start gap-1 max-w-[95vw]"
+        className="nostra-storia-text absolute top-0 right-0 md:hidden z-20 pointer-events-none origin-top-right transform -translate-x-[2cm] translate-y-[calc(36*var(--vh))] scale-[0.77] flex flex-col items-start gap-1 max-w-[95vw]"
         style={{ fontFamily: 'Montserrat, sans-serif' }}
       >
         <span className="text-[#9f483f] font-bold uppercase text-[13px] tracking-wide whitespace-nowrap">
@@ -159,7 +159,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           />
           {/* Sostituzione mobile: testo al posto di impegno.png con stile La Nostra Storia */}
           <div
-            className="absolute left-0 top-0 md:hidden z-20 pointer-events-none transform origin-top-left translate-x-[1vw] translate-y-[66dvh] scale-[1.27]"
+            className="absolute left-0 top-0 md:hidden z-20 pointer-events-none transform origin-top-left translate-x-[1vw] translate-y-[calc(66*var(--vh)+4cm)] scale-[1.27]"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             <div className="flex flex-col items-start gap-1 max-w-[95vw]">
@@ -177,14 +177,14 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           <img
             src={pizzaGrande}
             alt="Pizza Grande"
-            className="absolute left-0 bottom-0 h-[380px] md:h-[480px] lg:h-[520px] w-auto object-contain transform origin-left scale-[1.1] md:scale-[1.3] translate-x-[-3vw] md:translate-x-[15cm] translate-y-[calc(-27dvh+2cm)] md:-translate-y-[3cm] z-10 pointer-events-none banner-pizza-grande"
+            className="absolute left-0 bottom-0 h-[380px] md:h-[480px] lg:h-[520px] w-auto object-contain transform origin-left scale-[1.1] md:scale-[1.3] translate-x-[-3vw] md:translate-x-[15cm] translate-y-[calc(-27*var(--vh)+1cm)] md:-translate-y-[3cm] z-10 pointer-events-none banner-pizza-grande"
             loading="lazy"
             decoding="async"
           />
           <img
             src={salame}
             alt="Salame"
-            className="absolute right-0 bottom-0 h-[380px] md:h-[480px] lg:h-[520px] w-auto object-contain transform translate-x-[3vw] md:translate-x-[8cm] translate-y-[calc(-55dvh+2cm)] md:-translate-y-[7cm] z-10 pointer-events-none banner-salame"
+            className="absolute right-0 bottom-0 h-[380px] md:h-[480px] lg:h-[520px] w-auto object-contain transform translate-x-[3vw] md:translate-x-[8cm] translate-y-[calc(-55*var(--vh))] md:-translate-y-[7cm] z-10 pointer-events-none banner-salame"
             loading="lazy"
             decoding="async"
           />
