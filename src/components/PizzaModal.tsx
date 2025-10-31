@@ -44,14 +44,7 @@ const PizzaModal: React.FC<PizzaModalProps> = ({ isOpen, onClose, pizzaImage, pi
         onClick={(e) => e.stopPropagation()}
       >
         <div 
-          className="modal-image" 
-          style={{ 
-            animation: 'none !important', 
-            transform: 'none !important',
-            transition: 'none !important',
-            position: 'static !important',
-            overflow: 'hidden'
-          }}
+          className="modal-image"
         >
           {(() => {
             const avif = pizzaImage.replace(/\.(png|jpg|jpeg)$/i, '.avif');
@@ -64,14 +57,6 @@ const PizzaModal: React.FC<PizzaModalProps> = ({ isOpen, onClose, pizzaImage, pi
                   src={pizzaImage}
                   alt={pizzaAlt}
                   className="mx-auto mb-6 rounded-lg w-[92vw] md:w-[400px] h-[60vh] md:h-auto object-contain"
-                  style={{ 
-                    animation: 'none !important', 
-                    transform: 'none !important',
-                    transition: 'none !important',
-                    position: 'static !important',
-                    display: 'block',
-                    overflow: 'hidden'
-                  }}
                   loading="lazy"
                   decoding="async"
                 />

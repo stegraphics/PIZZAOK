@@ -387,7 +387,7 @@ function App() {
             <div className="w-full text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 h-full">
                 <div className="flex justify-center items-end md:items-center h-full translate-y-[25dvh] md:translate-y-0">
-                  <img
+                  <PictureImg
                     src="/images/3 PIZZE.png"
                     alt="Tre pizze"
                     className="h-auto w-full md:w-auto max-h-[100%] md:max-h-[95%] object-contain tre-pizze-image"
