@@ -33,6 +33,7 @@ const Pizzerie = () => {
               const avif = src.replace(/\.(jpg|jpeg|png|webp)$/i, '.avif');
               const webp = src.replace(/\.(jpg|jpeg|png|webp)$/i, '.webp');
               const alt = src.includes('2') ? 'Posto Pizza OK 2' : 'Posto Pizza OK 1';
+              const isPosto = src.includes('POSTO%20PIZZA%20OK%202') || src.includes('POSTO%20PIZZA%20OK%201');
               return (
                 <picture
                   key={src}
@@ -43,7 +44,7 @@ const Pizzerie = () => {
                   <img
                     src={src}
                     alt={alt}
-                    className="w-full h-full object-cover md:object-contain"
+                    className={`w-full h-full object-cover md:object-contain ${isPosto ? 'posto2-image' : ''}`}
                     loading="lazy"
                     decoding="async"
                   />

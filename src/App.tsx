@@ -378,7 +378,7 @@ function App() {
       {/* Pizza Icone Forno Section */}
       <PizzaIconeForno onNavigate={setCurrentPage} />
       
-      {/* Rimuovo la sezione La Nostra Pizza dalla home */}
+      {/* La Nostra Pizza non deve apparire in home */}
       {/* <LanostraPizza /> */}
       <Pizzerie />
       <div className="w-full bg-[#9f483f] h-[12cm]">
@@ -390,7 +390,7 @@ function App() {
                   <img
                     src="/images/3 PIZZE.png"
                     alt="Tre pizze"
-                    className="h-auto w-full md:w-auto max-h-[100%] md:max-h-[95%] object-contain"
+                    className="h-auto w-full md:w-auto max-h-[100%] md:max-h-[95%] object-contain tre-pizze-image"
                     loading="lazy"
                     decoding="async"
                   />

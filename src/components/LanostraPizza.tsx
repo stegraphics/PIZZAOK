@@ -48,7 +48,7 @@ const LanostraPizza = () => {
           <img
             src={tegliaGrande}
             alt="Teglia grande"
-            className="h-[85%] md:h-[90%] w-auto object-contain transform translate-x-[2.61cm] md:translate-x-0 -translate-y-[3cm] md:translate-y-0 scale-[0.5] md:scale-[1]"
+            className="h-[85%] md:h-[90%] w-auto object-contain transform translate-x-[2.61cm] md:translate-x-0 -translate-y-[3cm] md:translate-y-0 scale-[0.5] md:scale-[1] teglia-grande"
             loading="eager"
             decoding="async"
           />
@@ -118,7 +118,7 @@ const LanostraPizza = () => {
              <img
                src={farciture}
                alt="Farciture"
-               className="absolute right-0 bottom-0 z-[10] w-auto h-[360px] sm:h-[420px] md:h-[520px] lg:h-[580px] object-contain transform translate-x-[1.5cm] md:translate-x-[6.5cm] translate-y-[4cm] md:translate-y-[6.5cm] scale-[0.5] md:scale-[0.7]"
+               className="farciture-image absolute right-0 bottom-0 z-[10] w-auto h-[360px] sm:h-[420px] md:h-[520px] lg:h-[580px] object-contain transform translate-x-[1.5cm] md:translate-x-[6.5cm] translate-y-[4cm] md:translate-y-[6.5cm] scale-[0.5] md:scale-[0.7]"
                loading="eager"
                decoding="async"
              />
