@@ -40,8 +40,7 @@ body {
 }
 
 /* Fix per dispositivi iOS grandi (iPhone 16 Pro Max, etc.) */
-@media screen and (max-width: 430px) and (min-height: 900px) and (-webkit-min-device-pixel-ratio: 3),
-       screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+@media screen and (min-width: 430px) and (max-width: 932px) and (-webkit-min-device-pixel-ratio: 3) {
   /* Aggiusta le immagini con translate-x in cm per dispositivi iOS grandi */
   .absolute img[class*="translate-x-["] {
     max-width: 90vw !important;
@@ -53,56 +52,10 @@ body {
     transform-origin: center !important;
   }
   
-  /* Specifica per l'immagine di sfondo: neutralizza la traslazione del container
-     e sposta l'immagine leggermente a sinistra per rientrare nel viewport */
-  .absolute.right-0.bottom-0 {
-    transform: translateX(0) !important;
-  }
+  /* Specifica per l'immagine di sfondo che si sposta troppo a destra */
   .absolute.right-0.bottom-0 img {
-    transform: translateX(-12vw) !important;
+    transform: translateX(20vw) !important;
     max-width: 70vw !important;
-  }
-
-  /* Override mirati per la sezione PIZZA GRANDE su iOS grandi */
-  .banner-pizza-grande {
-    /* Approx dai valori originali (0.7cm ~ 26px, 5cm ~ 189px) ma resi responsivi */
-    transform: translateX(-3vw) translateY(-27dvh) scale(1.1) !important;
-    left: 0 !important;
-    bottom: 0 !important;
-    max-width: 65vw !important;
-  }
-  .banner-salame {
-    transform: translateX(3vw) translateY(-55dvh) !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    max-width: 65vw !important;
-  }
-  
-  /* Override per braccio su iOS grandi - abbassa di 3cm aggiuntivi */
-  .braccio-image {
-    transform: translateY(6cm) scale(1) !important;
-    transform-origin: bottom right !important;
-  }
-  
-  /* Override per testo "LA NOSTRA STORIA" su iOS grandi - sposta leggermente più in basso */
-  .nostra-storia-text {
-    transform: translateX(calc(0.5rem - 0.45cm)) translateY(7.5cm) scale(0.97) !important;
-  }
-  
-  /* Override per teglia piccola su iOS grandi - sposta leggermente a sinistra */
-  .teglia-piccola {
-    transform: translateX(-11cm) translateY(-5cm) scale(0.59) !important;
-  }
-}
-
-/* Media query alternativa per iPhone 16 Pro Max */
-@media screen and (min-height: 900px) and (max-width: 450px) {
-  .nostra-storia-text {
-    transform: translateX(calc(0.5rem - 0.45cm)) translateY(7.5cm) scale(0.97) !important;
-  }
-  
-  .teglia-piccola {
-    transform: translateX(-11cm) translateY(-5cm) scale(0.59) !important;
   }
 }
 
