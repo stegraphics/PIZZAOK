@@ -14,7 +14,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
   }, []);
   return (
     <>
-    <section id="chi-siamo" className="py-20 bg-[#363f48] relative overflow-hidden">
+    <section id="chi-siamo" className="py-20 pb-0 md:pb-20 bg-[#363f48] relative isolate z-50 overflow-visible md:overflow-hidden min-h-0 md:min-h-0">
       {/* Overlay spostato a destra con modalità sovrapponi e opacità 30% */}
       <div className="hidden md:block absolute inset-0 z-0 pointer-events-none">
         <div className="absolute right-0 bottom-0 w-fit transform translate-x-[25cm]">
@@ -33,7 +33,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
       <img
         src="/images/angolo.png"
         alt="Angolo decorativo"
-        className="absolute top-0 left-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform translate-x-[-2vw] md:translate-x-0 origin-top-left scale-[0.7] md:scale-50"
+        className="absolute top-0 left-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform translate-x-[-2vw] md:translate-x-0 origin-top-left scale-[0.7] md:scale-50 hidden md:block"
         loading="lazy"
         decoding="async"
       />
@@ -46,23 +46,13 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
         decoding="async"
       />
 
-      {/* Blocco testo mobile al posto dell'immagine */}
-      <div
-        className="nostra-storia-text absolute top-0 right-0 md:hidden z-20 pointer-events-none origin-top-right transform -translate-x-[2cm] translate-y-[calc(36*var(--vh))] scale-[0.77] flex flex-col items-start gap-1 max-w-[95vw]"
-        style={{ fontFamily: 'Montserrat, sans-serif' }}
-      >
-        <span className="text-[#9f483f] font-bold uppercase text-[13px] tracking-wide whitespace-nowrap">
-          LA NOSTRA STORIA
-        </span>
-        <span className="text-[#9f483f] font-bold uppercase text-[10px] leading-[1.42] flex-1">
-          Pizza OK nasce a Crema nel 2025 come progetto di ristorazione contemporanea dedicato alla pizza al trancio. L'idea alla base è quella di dare nuova vita a una tradizione amata, proponendo un prodotto gustoso, di qualità e al passo con i tempi, capace di conquistare un pubblico trasversale e attento alle nuove tendenze del food.
-        </span>
-      </div>
+      {/* Blocco testo mobile rimosso su richiesta */}
+      <div className="nostra-storia-text hidden md:hidden" aria-hidden="true" />
       {/* Immagine centrale su mobile: pizza ok posto 2.webp */}
       <img
         src="/images/POSTO PIZZA OK 2.webp"
         alt="Pizza OK posto 2 (mobile)"
-        className="absolute top-1/2 left-1/2 z-0 mix-blend-overlay opacity-20 pointer-events-none h-auto w-auto object-contain transform origin-center scale-[1.8] -translate-x-1/2 -translate-y-1/2 translate-x-[12vw] block md:hidden"
+        className="absolute top-1/2 left-1/2 z-0 mix-blend-overlay opacity-20 pointer-events-none h-auto w-auto object-contain transform origin-center scale-[1.8] -translate-x-1/2 -translate-y-1/2 translate-x-[12vw] hidden md:hidden"
         loading="lazy"
         decoding="async"
       />
@@ -70,7 +60,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
       <img
         src={daAlto}
         alt="Da alto decorativo"
-        className="absolute top-0 md:top-auto right-0 md:bottom-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform origin-top-right md:origin-bottom-right scale-[0.43] md:scale-[0.33] translate-x-0 translate-y-0 md:-translate-x-[4cm] md:translate-y-[1cm]"
+        className="absolute top-0 md:top-auto right-0 md:bottom-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform origin-top-right md:origin-bottom-right scale-[0.43] md:scale-[0.33] translate-x-0 translate-y-0 md:-translate-x-[4cm] md:translate-y-[1cm] hidden md:block"
         loading="lazy"
         decoding="async"
       />
@@ -78,26 +68,48 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
       <img
         src="/images/logo bianco.webp"
         alt="Logo Pizza OK bianco"
-        className="absolute bottom-0 right-0 z-10 md:z-0 pointer-events-none h-auto w-auto object-contain transform origin-bottom-right scale-[0.5] md:scale-[1] -translate-x-[2.5vw] md:translate-x-0 -translate-y-[6dvh] md:translate-y-0"
+        className="hidden md:block absolute bottom-0 right-0 z-0 pointer-events-none h-auto w-auto object-contain transform origin-bottom-right md:scale-[1] md:translate-x-0 md:translate-y-0"
         loading="lazy"
         decoding="async"
       />
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Immagine OMINO OK.svg a sinistra */}
+          <div className="grid md:grid-cols-2 gap-0 md:gap-12 items-center">
+            {/* Immagine OMINO OK.svg a sinistra (rimossa su mobile) */}
             <div className="flex justify-center md:animate-fade-in-left">
               <img 
                 src={ominoOk}
                 alt="Omino Pizza OK"
-                className="w-full max-w-md h-auto cursor-pointer transform scale-[0.6] md:scale-100 -translate-x-[8vw] translate-y-[28dvh] md:translate-x-[1cm] md:translate-y-[2cm] md:transition-all md:duration-500 md:ease-in-out md:hover:scale-105 md:hover:rotate-3 md:hover:drop-shadow-2xl md:active:scale-95 md:active:rotate-0"
+                className="w-full max-w-md h-auto cursor-pointer transform scale-[0.6] md:scale-100 -translate-x-[8vw] translate-y-[28dvh] md:translate-x-[1cm] md:translate-y-[2cm] md:transition-all md:duration-500 md:ease-in-out md:hover:scale-105 md:hover:rotate-3 md:hover:drop-shadow-2xl md:active:scale-95 md:active:rotate-0 hidden md:block"
                 loading="lazy"
                 decoding="async"
               />
             </div>
+
+            {/* Solo mobile: sezione dedicata con sfondo #363f48 e immagine CARTA.png */}
+            <section id="chi-siamo-mobile-carta" className="md:hidden w-full bg-[#363f48] pt-0 pb-0 mb-0 flex items-start justify-center relative z-20 overflow-visible">
+              <img
+                src="/images/CARTA.png"
+                alt="CARTA (mobile)"
+                className="block mx-auto w-[69.23vw] max-w-[69.23vw] h-auto object-contain transform origin-top scale-[1.42]"
+                loading="lazy"
+                decoding="async"
+              />
+            </section>
+
+            {/* Solo mobile: nuova sezione sotto CARTA.png con sfondo #9f483f e immagine TRANCI INSIEME */}
+            <section id="chi-siamo-mobile-tranci" className="md:hidden w-screen bg-[#9f483f] py-0 min-h-0 px-0 -mx-4 sm:-mx-6 mt-[3.5cm] mb-0 flex items-center justify-center relative z-20 overflow-hidden">
+              <img
+                src="/images/TRANCI INSIEME.png"
+                alt="Tranci insieme (mobile)"
+                className="w-screen h-auto object-contain block transform scale-100"
+                loading="lazy"
+                decoding="async"
+              />
+            </section>
             
-            {/* Testo a destra */}
-            <div className="space-y-6 animate-fade-in-right">
+            {/* Testo a destra (solo desktop) */}
+            <div className="hidden md:block space-y-6 animate-fade-in-right">
               
               <div className="pt-6">
                 <button 
@@ -113,7 +125,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
       </div>
     </section>
     {/* Banner dedicato, separato dal footer */}
-    <section id="banner-storia" className="bg-[#9f483f]">
+    <section id="banner-storia" className="bg-[#9f483f] hidden md:block">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto min-h-[540px] md:h-[560px] lg:h-[568px] overflow-hidden">
           <div className="h-full flex flex-col md:flex-row items-center justify-between gap-6">
@@ -145,10 +157,10 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
         </div>
       </div>
     </section>
-    {/* Banner ripristinato: sfondo #363f48 con immagini PIZZA GRANDE a sinistra e salame a destra */}
-    <section id="banner-cola" className="bg-[#363f48] md:-mb-[2cm]">
+    {/* Banner ripristinato: sfondo #363f48 con immagini PIZZA GRANDE a sinistra e salame a destra (solo desktop) */}
+    <section id="banner-cola" className="bg-[#363f48] hidden md:block md:-mb-[2cm]">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto min-h-[calc(540px+6cm)] md:h-[560px] lg:h-[568px] relative overflow-visible pb-[6cm] md:pb-0">
+        <div className="max-w-6xl mx-auto min-h-[calc(540px+5.5cm)] md:h-[560px] lg:h-[568px] relative overflow-visible pb-[5.5cm] md:pb-0">
           {/* Immagini isolate e indipendenti, posizionate assolute */}
           <img
             src={impegno}

@@ -42,6 +42,19 @@ const Header = ({ onNavigate, currentPage }: { onNavigate?: (page: string) => vo
     }
   };
 
+  // Apri il MENU' FINALE (modal), anche se non siamo in Home
+  const openMenuFinale = () => {
+    const dispatchOpen = () => {
+      window.dispatchEvent(new Event('open-menu-finale'));
+    };
+    if (currentPage !== 'home') {
+      onNavigate?.('home');
+      setTimeout(dispatchOpen, 300);
+    } else {
+      dispatchOpen();
+    }
+  };
+
   // Chiudi dropdown su click esterno o ESC
   useEffect(() => {
     if (!isDeliveryOpen && !isContactOpen) return;
@@ -144,6 +157,7 @@ const Header = ({ onNavigate, currentPage }: { onNavigate?: (page: string) => vo
               >
                 Contattaci
               </button>
+              <button onClick={openMenuFinale} className="text-white hover:text-white/80 font-medium uppercase text-sm transition-colors duration-300">MENU'</button>
             </nav>
             {/* Mobile Menu Toggle */}
             <div className="absolute top-4 right-4 lg:hidden">
@@ -163,6 +177,7 @@ const Header = ({ onNavigate, currentPage }: { onNavigate?: (page: string) => vo
                 <button onClick={() => { onNavigate?.('chi-siamo'); setIsMenuOpen(false); }} className="block text-white hover:text-white/80 font-medium uppercase text-sm cursor-pointer transition-colors duration-300">Chi Siamo</button>
                 <button onClick={() => { onNavigate?.('la-nostra-pizza'); setIsMenuOpen(false); }} className="block text-white hover:text-white/80 font-medium uppercase text-sm cursor-pointer transition-colors duration-300">La Nostra Pizza</button>
                 <button onClick={() => { goToPizzerie(); setIsMenuOpen(false); }} className="block text-white hover:text-white/80 font-medium uppercase text-sm cursor-pointer transition-colors duration-300">Pizzerie</button>
+                <button onClick={() => { openMenuFinale(); setIsMenuOpen(false); }} className="block text-white hover:text-white/80 font-medium uppercase text-sm cursor-pointer transition-colors duration-300">MENU'</button>
                 <button
                   onClick={() => { setIsDeliveryOpen(true); setIsMenuOpen(false); }}
                   className="block text-white hover:text-white/80 font-medium uppercase text-sm transition-colors duration-300"

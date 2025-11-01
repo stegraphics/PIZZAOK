@@ -233,6 +233,45 @@ body {
 
 /* SOLUZIONE RESPONSIVE SPECIFICA SOLO PER LA SEZIONE CHI SIAMO */
 @media screen and (max-width: 768px) {
+  /* Chi Siamo: nascondi elementi non desiderati su mobile */
+  #chi-siamo img[alt="Angolo decorativo"],
+  #chi-siamo img[alt="Da alto decorativo"],
+  #chi-siamo img[alt="Omino Pizza OK"],
+  #chi-siamo .nostra-storia-text,
+  #chi-siamo img[alt="Pizza OK posto 2 (mobile)"] {
+    display: none !important;
+  }
+
+  /* Nascondi la sezione "NON SOLO UN TRANCIO" su mobile */
+  #banner-storia {
+    display: none !important;
+  }
+
+  /* Nascondi la sezione "banner cola" su mobile */
+  #banner-cola {
+    display: none !important;
+  }
+
+  /* Chi Siamo: eleva stacking e aggiungi spazio sotto per evitare sovrapposizioni */
+  #chi-siamo {
+    position: relative !important;
+    z-index: 100 !important;
+    margin-bottom: 0 !important; /* rimuove spazio bianco sotto la sezione su mobile */
+    padding-top: 0 !important; /* rimuove spazio superiore su mobile */
+    margin-top: 0 !important; /* evita offset iniziale sotto l'header */
+  }
+
+  /* Chi Siamo: mostra e centra CARTONE.png su mobile */
+  #chi-siamo img[alt="Cartone (mobile)"] {
+    display: block !important;
+    position: sticky !important; /* si ancora al viewport */
+    top: 4rem !important; /* altezza header mobile (h-16) */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    height: 85vh !important;
+    width: auto !important;
+    z-index: 1000 !important;
+  }
   #chi-siamo img[alt="Logo Pizza OK bianco"] {
     transform: translateX(-2.5vw) translateY(-3cm) scale(0.2) !important;
     width: 20% !important;
@@ -240,6 +279,9 @@ body {
     max-width: 80px !important;
     max-height: 80px !important;
   }
+  
+  /* Nascondi completamente la sezione Chi Siamo su mobile */
+  /* RIMOSSO: la sezione Chi Siamo deve essere visibile su mobile */
 }
 
 /* Mobile generico: normalizza proporzioni su schermi piccoli (max-width: 768px) */

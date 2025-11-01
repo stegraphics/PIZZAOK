@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface PizzaIconeFornoProps {
   onNavigate?: (page: string) => void;
@@ -14,6 +14,17 @@ const PizzaIconeForno: React.FC<PizzaIconeFornoProps> = ({ onNavigate }) => {
   const handleCloseMenu = () => {
     setShowMenu(false);
   };
+
+  // Permette di aprire il MENU' FINALE da altri componenti (es. Header)
+  useEffect(() => {
+    const onOpenMenuFinale = () => setShowMenu(true);
+    // Ascolta un evento personalizzato dispatchato sulla window
+    // TypeScript: cast a any per eventi custom
+    window.addEventListener('open-menu-finale' as any, onOpenMenuFinale as any);
+    return () => {
+      window.removeEventListener('open-menu-finale' as any, onOpenMenuFinale as any);
+    };
+  }, []);
 
   return (
     <>

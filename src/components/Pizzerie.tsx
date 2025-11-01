@@ -27,7 +27,7 @@ const Pizzerie = () => {
             decoding="async"
           />
         </picture>
-        <div className="relative md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 w-full md:w-[40%] min-w-[280px] max-w-[520px] px-4 md:px-0 mt-6 md:mt-0">
+        <div className="relative md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 w-full md:w-[40%] min-w-[280px] max-w-[520px] px-4 md:px-0 mt-6 md:mt-0 mx-auto">
           <div className="relative h-64 md:h-[10cm] overflow-hidden rounded-2xl">
             {images.map((src, i) => {
               const avif = src.replace(/\.(jpg|jpeg|png|webp)$/i, '.avif');
@@ -44,7 +44,7 @@ const Pizzerie = () => {
                   <img
                     src={src}
                     alt={alt}
-                    className={`w-full h-full object-cover md:object-contain ${isPosto ? 'posto2-image' : ''}`}
+                    className={`w-full h-full object-cover md:object-contain object-center md:object-center ${isPosto ? 'posto2-image' : ''}`}
                     loading="lazy"
                     decoding="async"
                   />
