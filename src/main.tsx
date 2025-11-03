@@ -28,8 +28,12 @@ function applyDeviceClasses() {
   const longSide = Math.max(window.innerWidth, window.innerHeight);
   const isTabletBand = shortSide >= 760 && shortSide <= 950 && longSide >= 1000 && longSide <= 1400;
   const isSurfaceLike = isWindows && isTouch && isTabletBand;
+  // iPad Pro band-only detection (11" e 12.9") per forzare classi runtime
+  const isIpadProBand = (shortSide >= 820 && shortSide <= 860 && longSide >= 1180 && longSide <= 1215) ||
+                        (shortSide >= 1005 && shortSide <= 1048 && longSide >= 1340 && longSide <= 1388);
   doc.classList.toggle('is-ipad', !!isIpad);
   doc.classList.toggle('is-surface-pro', !!isSurfaceLike);
+  doc.classList.toggle('is-ipad-pro', !!isIpadProBand);
 }
 
 // Imposta il viewport dinamico al caricamento e al resize

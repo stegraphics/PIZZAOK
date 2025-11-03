@@ -42,16 +42,14 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
   };
   const computeIsIpadPro = () => {
     try {
-      const ua = navigator.userAgent || '';
-      const isIpad = /\biPad\b/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       const w = window.innerWidth;
       const h = window.innerHeight;
       const short = Math.min(w, h);
       const long = Math.max(w, h);
       // iPad Pro 11" ~834 x 1194, iPad Pro 12.9" ~1024 x 1366 (tolleranze)
-      const inBand11 = short >= 820 && short <= 860 && long >= 1180 && long <= 1210;
-      const inBand129 = short >= 1005 && short <= 1045 && long >= 1340 && long <= 1385;
-      return isIpad && (inBand11 || inBand129);
+      const inBand11 = short >= 820 && short <= 860 && long >= 1180 && long <= 1215;
+      const inBand129 = short >= 1005 && short <= 1048 && long >= 1340 && long <= 1388;
+      return inBand11 || inBand129;
     } catch {
       return false;
     }
@@ -200,7 +198,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
   }, []);
   return (
     <>
-    <section id="chi-siamo" className={`py-20 pb-0 md:pb-[calc(5cm+5rem)] bg-[#363f48] relative isolate z-50 overflow-visible md:overflow-hidden min-h-0 md:min-h-0 ${shouldClean ? 'clean-3pizze' : ''}`}>
+    <section id="chi-siamo" className={`py-20 pb-0 md:pb-[calc(1cm+5rem)] bg-[#363f48] relative isolate z-50 overflow-visible md:overflow-hidden min-h-0 md:min-h-0 ${shouldClean ? 'clean-3pizze' : ''}`}>
       {/* Overlay spostato a destra con modalità sovrapponi e opacità 30% */}
       {/* Rimosso overlay Sfondo Pizza OK (POSTO PIZZA OK 2.webp) su richiesta */}
       {/* Angolo decorativo in alto a sinistra */}
@@ -232,7 +230,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
         <img
           src={daAlto}
           alt="Da alto decorativo"
-          className="absolute top-0 md:top-auto right-0 md:bottom-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform origin-top-right md:origin-bottom-right scale-[0.43] md:scale-[0.33] translate-x-0 translate-y-0 md:-translate-x-[4cm] md:translate-y-[1cm] hidden md:block"
+          className="absolute top-0 md:top-auto right-0 md:bottom-0 z-10 md:z-0 pointer-events-none h-auto w-auto transform origin-top-right md:origin-bottom-right scale-[0.43] md:scale-[0.33] translate-x-0 translate-y-0 md:-translate-x-[4cm] md:translate-y-[-2cm] hidden md:block"
           loading="lazy"
           decoding="async"
         />
@@ -262,7 +260,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
                 />
               </div>
             )}
-            <div className="carta-tablet-wrapper hidden md:flex justify-center items-center md:animate-fade-in-left">
+            <div className="carta-tablet-wrapper hidden md:flex lg:hidden justify-center items-center md:animate-fade-in-left">
               <img
                 src="/images/CARTA TABLET.png"
                 alt="CARTA Tablet"
@@ -311,41 +309,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
         </div>
       </div>
     </section>
-    {/* Banner dedicato, separato dal footer (rimosso su iPad Air/tablet) */}
-    {!shouldClean && (
-    <section id="banner-storia" className="bg-[#9f483f] hidden md:block">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto min-h-[540px] md:h-[560px] lg:h-[568px] overflow-hidden">
-          <div className="h-full flex flex-col md:flex-row items-center justify-between gap-6">
-            {/* Testo a sinistra */}
-            <div className="w-full max-w-xl md:max-w-xl py-2 md:py-4 pr-2 md:pr-6 text-white transform translate-y-[6dvh] md:translate-y-0">
-              <h3 className="text-2xl md:text-4xl font-bold text-white uppercase">
-                NON SOLO UN TRANCIO
-              </h3>
-              <div className="space-y-4 text-base md:text-lg text-white leading-relaxed">
-                <p>
-                  Un trancio di pizza può contenere più emozioni di mille parole. Dentro trovi la leggerezza di un sorriso, la forza di un momento condiviso, la bellezza delle cose semplici. È un invito a rallentare, a godersi il presente, a ritrovare il piacere di stare insieme.
-                </p>
-                <p>
-                  Nella nostra pizzeria ogni impasto è fatto con pazienza, ogni ingrediente racconta la sua origine, ogni scelta parla di amore per ciò che facciamo. Non serviamo solo pizza: serviamo un frammento di vita genuina, da gustare senza fretta.
-                </p>
-              </div>
-            </div>
-            {/* Immagine a destra (ripristinata) */}
-            <div className="flex items-center justify-center md:justify-end mt-0 md:mt-0">
-              <img
-                src={perWeb}
-                alt="Per web"
-                className="h-[540px] sm:h-[600px] md:h-[720px] lg:h-[740px] w-auto object-contain -mt-24 sm:-mt-28 md:mr-16 lg:mr-20 md:-mt-20 lg:-mt-24"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    )}
+    {/* Banner "NON SOLO UN TRANCIO" rimosso su richiesta (non mostrato su desktop) */}
         {/* Banner ripristinato: sfondo #964740 con immagini PIZZA GRANDE a sinistra e salame a destra (solo desktop) */}
         <section id="banner-cola" className={`bg-[#964740] hidden md:block md:-mb-[2cm] ${shouldClean ? 'clean-3pizze' : ''}`}>
       <div className="container mx-auto px-4">
@@ -353,8 +317,9 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           {/* Immagini isolate e indipendenti, posizionate assolute (nascoste su iPad Air/tablet) */}
           {!shouldClean && (
             <img
-              src={impegno}
-              alt="Impegno"
+              src="/images/IMPEGNO 1.png"
+              alt="Impegno 1"
+              onError={(e) => { try { e.currentTarget.src = impegno; e.currentTarget.alt = 'Impegno'; } catch {} }}
               className="absolute left-0 top-0 h-[280px] md:h-[340px] lg:h-[380px] w-auto object-contain transform origin-top-left scale-[1.7] translate-x-[-0.4cm] md:translate-x-[-0.2cm] translate-y-[11cm] md:-translate-y-[2cm] z-20 pointer-events-none hidden md:block"
               loading="lazy"
               decoding="async"

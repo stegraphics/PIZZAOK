@@ -119,7 +119,7 @@ const Header = ({ onNavigate, currentPage }: { onNavigate?: (page: string) => vo
       {/* Top Bar CTA rimosso per coerenza con la rimozione delle sezioni */}
 
       {/* Main Header */}
-      <header className={`${currentPage === 'la-nostra-pizza' ? 'bg-[#363f48]' : 'bg-[#964740]'} transition-all duration-300 ${isSticky ? 'fixed top-0 w-full z-50 shadow-lg' : 'z-50'} relative`}>
+      <header className={`${currentPage === 'la-nostra-pizza' ? 'bg-[#363f48]' : 'bg-[#964740]'} transition-all duration-300 ${isSticky ? 'fixed top-0 w-full z-[3000] shadow-lg' : 'z-[3000]'} relative`}>
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="flex items-center justify-between py-3 md:py-4 h-16 md:h-24 overflow-hidden">
             {/* Left Navigation */}
@@ -198,7 +198,7 @@ const Header = ({ onNavigate, currentPage }: { onNavigate?: (page: string) => vo
 
           {/* Mobile Dropdown Prenota da casa */}
           {isDeliveryOpen && (
-            <div ref={mobileDeliveryRef} className="lg:hidden absolute z-[1000] pointer-events-auto" style={{ top: '100%', marginTop: '2cm', left: '50%', transform: 'translateX(-50%)' }}>
+            <div ref={mobileDeliveryRef} className="lg:hidden absolute z-[4000] pointer-events-auto" style={{ top: '100%', marginTop: '2cm', left: '50%', transform: 'translateX(-50%)' }}>
               <div className="flex items-center justify-center space-x-4">
                 <a
                   href="https://deliveroo.it/it/menu/crema/crema/pizza-ok-viale-repubblica-17-19"
@@ -230,7 +230,7 @@ const Header = ({ onNavigate, currentPage }: { onNavigate?: (page: string) => vo
 
           {/* Mobile Dropdown Contattaci */}
           {isContactOpen && (
-            <div className="lg:hidden absolute z-50" style={{ top: '100%', marginTop: '12dvh', left: '50%', transform: 'translateX(-50%)' }}>
+            <div className="lg:hidden absolute z-[3500]" style={{ top: '100%', marginTop: '12dvh', left: '50%', transform: 'translateX(-50%)' }}>
               <div className="flex items-center justify-center">
                 <a
                   href="tel:0373185580"

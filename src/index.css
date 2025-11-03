@@ -513,6 +513,13 @@ body {
   padding-bottom: calc(5cm + 5rem + 6cm) !important;
 }
 
+/* Mostra CARTA TABLET su iPad/iPad Pro/Surface anche se hidden su desktop */
+.is-ipad #chi-siamo .carta-tablet-wrapper,
+.is-ipad-pro #chi-siamo .carta-tablet-wrapper,
+.is-surface-pro #chi-siamo .carta-tablet-wrapper {
+  display: flex !important;
+}
+
 /* Nascondi la sezione Banner Storia ("NON SOLO UN TRANCIO" + per web) su iPad Pro e Surface Pro 7 */
 .is-ipad #banner-storia,
 .is-ipad-pro #banner-storia,
@@ -522,9 +529,11 @@ body {
 
 /* Nascondi Impegno, Salame e Pizza Grande nel banner-cola su iPad/iPad Pro e Surface Pro 7 (fallback runtime) */
 .is-ipad #banner-cola img[alt="Impegno"],
+.is-ipad #banner-cola img[alt="Impegno 1"],
 .is-ipad #banner-cola img[alt="Pizza Grande"],
 .is-ipad #banner-cola img[alt="Salame"],
 .is-surface-pro #banner-cola img[alt="Impegno"],
+.is-surface-pro #banner-cola img[alt="Impegno 1"],
 .is-surface-pro #banner-cola img[alt="Pizza Grande"],
 .is-surface-pro #banner-cola img[alt="Salame"] {
   display: none !important;
@@ -567,6 +576,7 @@ body {
     display: block !important;
   }
   #banner-cola img[alt="Impegno"],
+  #banner-cola img[alt="Impegno 1"],
   #banner-cola img[alt="Pizza Grande"],
   #banner-cola img[alt="Salame"] {
     display: none !important;
