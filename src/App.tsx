@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ChiSiamo from './components/ChiSiamo';
@@ -71,6 +71,32 @@ function App() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+  // Rileva se siamo su Nest Hub / Nest Hub Max (classi runtime applicate in main.tsx)
+  const [hasNestHubClass, setHasNestHubClass] = useState<boolean>(() => {
+    try {
+      const doc = document.documentElement;
+      return doc.classList.contains('is-nest-hub') || doc.classList.contains('is-nest-hub-max');
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    const detectNestHubClass = () => {
+      try {
+        const doc = document.documentElement;
+        setHasNestHubClass(doc.classList.contains('is-nest-hub') || doc.classList.contains('is-nest-hub-max'));
+      } catch {}
+    };
+    detectNestHubClass();
+    window.addEventListener('resize', detectNestHubClass);
+    window.addEventListener('orientationchange', detectNestHubClass);
+    return () => {
+      window.removeEventListener('resize', detectNestHubClass);
+      window.removeEventListener('orientationchange', detectNestHubClass);
+    };
+  }, []);
 
   if (currentPage === 'chi-siamo') {
     return (
@@ -378,8 +404,6 @@ function App() {
       {/* Pizza Icone Forno Section */}
       <PizzaIconeForno onNavigate={setCurrentPage} />
       
-      {/* La Nostra Pizza non deve apparire in home */}
-      {/* <LanostraPizza /> */}
       <Pizzerie />
       <div className="w-full bg-[#9f483f] h-[50dvh] md:h-[40dvh] lg:h-[45dvh]">
         <div className="container mx-auto px-2 md:px-4 h-full">

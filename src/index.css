@@ -243,6 +243,12 @@ body {
     display: none !important;
   }
 
+  /* Chi Siamo: rimuovi qualsiasi riferimento a CARTA TABLET su mobile */
+  #chi-siamo .carta-tablet-wrapper,
+  #chi-siamo img[alt="CARTA Tablet"] {
+    display: none !important;
+  }
+
   /* Nascondi la sezione "NON SOLO UN TRANCIO" su mobile */
   #banner-storia {
     display: none !important;
@@ -497,6 +503,11 @@ body {
   display: none !important;
 }
 
+/* Nascondi il logo bianco in Chi Siamo solo su Nest Hub Max */
+.is-nest-hub-max #chi-siamo img[alt="Logo Pizza OK bianco"] {
+  display: none !important;
+}
+
 /* Fallback posizionamento runtime: iPad/Surface */
 .is-ipad #chi-siamo .carta-tablet-image,
 .is-surface-pro #chi-siamo .carta-tablet-image {
@@ -548,6 +559,296 @@ body {
 .is-ipad #chi-siamo .tablet-3pizze,
 .is-surface-pro #chi-siamo .tablet-3pizze {
   display: block !important;
+}
+
+/* ===================== NEST HUB / NEST HUB MAX (runtime) ===================== */
+/* Chi Siamo: nascondi elementi pesanti e il logo bianco */
+.is-nest-hub #chi-siamo img[alt="Omino Pizza OK"],
+.is-nest-hub #chi-siamo img[alt="Angolo decorativo"],
+.is-nest-hub #chi-siamo img[alt="Da alto decorativo"],
+.is-nest-hub #chi-siamo img[alt="Storia decorativo"],
+.is-nest-hub #chi-siamo .nostra-storia-text,
+.is-nest-hub #chi-siamo .torna-home-btn,
+.is-nest-hub-max #chi-siamo img[alt="Omino Pizza OK"],
+.is-nest-hub-max #chi-siamo img[alt="Angolo decorativo"],
+.is-nest-hub-max #chi-siamo img[alt="Da alto decorativo"],
+.is-nest-hub-max #chi-siamo img[alt="Logo Pizza OK bianco"],
+.is-nest-hub-max #chi-siamo img[alt="Storia decorativo"],
+.is-nest-hub-max #chi-siamo .nostra-storia-text,
+.is-nest-hub-max #chi-siamo .torna-home-btn {
+  display: none !important;
+}
+
+/* Chi Siamo: mostra wrapper CARTA TABLET e posiziona/scala per Nest Hub/Max */
+.is-nest-hub #chi-siamo .carta-tablet-wrapper,
+.is-nest-hub-max #chi-siamo .carta-tablet-wrapper {
+  display: flex !important;
+  justify-content: flex-start !important;
+  position: relative !important;
+}
+.is-nest-hub #chi-siamo .grid,
+.is-nest-hub-max #chi-siamo .grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important; /* forza una colonna */
+  gap: 0 !important;
+}
+.is-nest-hub #chi-siamo .container,
+.is-nest-hub-max #chi-siamo .container {
+  max-width: 100% !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+.is-nest-hub #chi-siamo .carta-tablet-image {
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  transform-origin: bottom left !important;
+  transform: translateX(-3vw) translateY(0) scale(1.4) !important;
+  z-index: 20 !important;
+  pointer-events: none !important;
+}
+.is-nest-hub-max #chi-siamo .carta-tablet-image {
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  transform-origin: bottom left !important;
+  transform: translateX(-3vw) translateY(0) scale(1.45) !important;
+  z-index: 20 !important;
+  pointer-events: none !important;
+}
+.is-nest-hub #chi-siamo,
+.is-nest-hub-max #chi-siamo {
+  padding-top: 24px !important;
+  padding-bottom: calc(4cm + 5rem + 4cm) !important;
+}
+
+/* Nest Hub/Max: pulisci la prima sezione Chi Siamo (senza contenuti) */
+.is-nest-hub #chi-siamo .container,
+.is-nest-hub-max #chi-siamo .container {
+  display: none !important;
+}
+.is-nest-hub #chi-siamo,
+.is-nest-hub-max #chi-siamo {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.is-nest-hub #nest-carta,
+.is-nest-hub-max #nest-carta {
+  display: block !important;
+}
+.is-nest-hub #nest-carta,
+.is-nest-hub-max #nest-carta {
+  overflow: hidden !important;
+}
+.is-nest-hub #nest-carta img[alt="CARTA Tablet (Nest Hub)"],
+.is-nest-hub-max #nest-carta img[alt="CARTA Tablet (Nest Hub)"] {
+  width: 71.5% !important; /* 71.5% * 1.4 ≈ 100% per restare dentro */
+  max-width: 720px !important;
+  height: auto !important;
+  transform: scale(1.4) !important;
+  transform-origin: center !important;
+  display: block !important;
+  margin: 0 auto !important; /* assicura centratura dentro la sezione */
+}
+
+.is-nest-hub-max #nest-carta img[alt="CARTA Tablet (Nest Hub)"] {
+  width: 58.9% !important; /* 58.9% * 1.7 ≈ 100% per restare dentro */
+  transform: scale(1.7) !important; /* aumento di 0.3x su Nest Hub Max */
+}
+
+.is-nest-hub #nest-carta img[alt="CARTA Tablet (Nest Hub)"] {
+  width: 66.7% !important; /* 66.7% * 1.5 ≈ 100% per restare dentro */
+  max-width: 720px !important;
+  height: auto !important;
+  transform: scale(1.5) !important; /* aumento di 0.1x solo su Nest Hub */
+  transform-origin: center !important;
+  display: block !important;
+  margin: 0 auto !important; /* centrata nella sezione */
+}
+
+/* Nest Hub Max (media query fallback): nascondi il logo bianco in Chi Siamo */
+@media only screen and (device-width: 1280px) and (device-height: 800px),
+       only screen and (device-width: 800px) and (device-height: 1280px) {
+  /* Mostra la sezione Nest CARTA sopra 3 PIZZE anche senza classe runtime */
+  #nest-carta { display: block !important; overflow: hidden !important; }
+  #nest-carta img[alt="CARTA Tablet (Nest Hub)"] { width: 58.9% !important; max-width: 720px !important; height: auto !important; transform: scale(1.7) !important; transform-origin: center !important; display: block !important; margin: 0 auto !important; }
+  #chi-siamo img[alt="Logo Pizza OK bianco"] {
+    display: none !important;
+  }
+  #chi-siamo .carta-tablet-wrapper { display: flex !important; justify-content: flex-start !important; position: relative !important; }
+  #chi-siamo .grid { display: grid !important; grid-template-columns: 1fr !important; gap: 0 !important; }
+  #chi-siamo .container { max-width: 100% !important; padding-left: 1rem !important; padding-right: 1rem !important; }
+  #chi-siamo .carta-tablet-image { position: absolute !important; left: 0 !important; bottom: 0 !important; transform-origin: bottom left !important; transform: translateX(-3vw) translateY(0) scale(1.45) !important; z-index: 20 !important; pointer-events: none !important; }
+  /* Fallback: pulisci prima sezione Chi Siamo senza contenuti anche se manca classe runtime */
+  #chi-siamo .container { display: none !important; }
+  #chi-siamo { padding-top: 0 !important; padding-bottom: 0 !important; min-height: 0 !important; height: auto !important; }
+}
+
+/* Banner Cola: nascondi elementi e mostra 3 PIZZE TABLET con scala adatta */
+.is-nest-hub #banner-cola img[alt="Impegno"],
+.is-nest-hub #banner-cola img[alt="Impegno 1"],
+.is-nest-hub #banner-cola img[alt="Pizza Grande"],
+.is-nest-hub #banner-cola img[alt="Salame"],
+.is-nest-hub-max #banner-cola img[alt="Impegno"],
+.is-nest-hub-max #banner-cola img[alt="Impegno 1"],
+.is-nest-hub-max #banner-cola img[alt="Pizza Grande"],
+.is-nest-hub-max #banner-cola img[alt="Salame"] {
+  display: none !important;
+}
+.is-nest-hub #banner-cola .tablet-3pizze,
+.is-nest-hub-max #banner-cola .tablet-3pizze {
+  display: block !important;
+}
+.is-nest-hub #banner-cola .tablet-3pizze {
+  transform: translateY(-1.2cm) scale(1.25) !important; /* -0.1x su Nest Hub */
+}
+.is-nest-hub-max #banner-cola .tablet-3pizze {
+  transform: translateY(-1.5cm) scale(1.3) !important; /* +0.4x su Nest Hub Max */
+}
+/* Forza la trasformazione anche sull'immagine principale quando shouldClean è attivo */
+.is-nest-hub #banner-cola img[alt="3 Pizze Tablet"],
+.is-nest-hub #banner-cola img[alt="3 Pizze Tablet (fallback)"] {
+  transform-origin: center !important;
+  transform: translateY(-1.2cm) scale(1.25) !important;
+}
+.is-nest-hub-max #banner-cola img[alt="3 Pizze Tablet"],
+.is-nest-hub-max #banner-cola img[alt="3 Pizze Tablet (fallback)"] {
+  transform-origin: center !important;
+  transform: translateY(-1.5cm) scale(1.3) !important;
+}
+
+/* Nest Hub / Nest Hub Max: riduci scala di 0.4x in "La nostra pizzeria" */
+.is-nest-hub #la-nostra-pizza .teglia-grande,
+.is-nest-hub-max #la-nostra-pizza .teglia-grande {
+  transform-origin: center !important;
+  transform: translateX(0) translateY(0) scale(0.3) 
+    !important; /* +0.2x dalle impostazioni correnti */
+  height: auto !important;
+}
+
+/* Nest Hub Max: rimuovi l'ominO pensieroso dalla sezione La Nostra Pizza */
+.is-nest-hub-max #la-nostra-pizza img[alt="Omino pensieroso"] {
+  display: none !important;
+}
+
+/* Sposta solo su Nest Hub Max: verso sinistra di 2cm e in basso di 5cm */
+.is-nest-hub-max #la-nostra-pizza .teglia-grande {
+  transform-origin: center !important;
+  transform: translateX(-6cm) translateY(7cm) scale(0.3) !important;
+  height: auto !important;
+}
+/* Sposta su Nest Hub: verso sinistra di 5cm e in basso di 7cm */
+.is-nest-hub #la-nostra-pizza .teglia-grande {
+  transform-origin: center !important;
+  transform: translateX(-8cm) translateY(7cm) scale(0.3) !important;
+  height: auto !important;
+}
+.is-nest-hub #la-nostra-pizza .teglia-piccola,
+.is-nest-hub-max #la-nostra-pizza .teglia-piccola {
+  transform-origin: center !important;
+  transform: translateX(-22cm) translateY(-10cm) scale(0.3) 
+    !important; /* +0.2x dalle impostazioni correnti */
+  height: auto !important;
+}
+
+/* Solo Nest Hub Max: alza Teglia piccola di 2cm (Y -12cm) */
+.is-nest-hub-max #la-nostra-pizza .teglia-piccola {
+  transform-origin: center !important;
+  transform: translateX(-22cm) translateY(-12cm) scale(0.3) !important;
+  height: auto !important;
+}
+.is-nest-hub #la-nostra-pizza .braccio-image,
+.is-nest-hub-max #la-nostra-pizza .braccio-image {
+  transform-origin: bottom right !important;
+  transform: translateY(6cm) scale(0.7) 
+    !important; /* +0.2x dalle impostazioni correnti */
+  height: auto !important;
+}
+
+/* Nest Hub Max: ripristina posizioni e riduci solo la scala di 0.2x (frecce) */
+.is-nest-hub-max #la-nostra-pizza-frecce img[alt="Impasto"] {
+  transform: translateX(-6vw) translateY(calc(-22 * var(--vh))) scale(0.7) !important; /* da 0.9 a 0.7 */
+  height: auto !important;
+}
+.is-nest-hub-max #la-nostra-pizza-frecce img[alt="Farina"] {
+  transform: translateX(-8vw) translateY(calc((12 * var(--vh)) + 2cm)) scale(0.7) !important; /* da 0.9 a 0.7 */
+  height: auto !important;
+}
+.is-nest-hub-max #la-nostra-pizza-frecce img[alt="Cottura"] {
+  transform: translateX(6vw) translateY(calc(-22 * var(--vh) - 1cm)) scale(0.7) !important; /* da 0.9 a 0.7 */
+  height: auto !important;
+}
+.is-nest-hub-max #la-nostra-pizza-frecce img[alt="Farciture"],
+.is-nest-hub-max #la-nostra-pizza-frecce .farciture-image {
+  transform-origin: bottom right !important;
+  transform: translateX(6.5cm) translateY(6.5cm) scale(0.5) !important; /* da 0.7 a 0.5 */
+  height: auto !important;
+}
+
+/* Nest Hub / Nest Hub Max: nascondi Impasto, Farina, Cottura, Farciture e Pizza con frecce */
+.is-nest-hub #la-nostra-pizza-frecce img[alt="Impasto"],
+.is-nest-hub-max #la-nostra-pizza-frecce img[alt="Impasto"],
+.is-nest-hub #la-nostra-pizza-frecce img[alt="Farina"],
+.is-nest-hub-max #la-nostra-pizza-frecce img[alt="Farina"],
+.is-nest-hub #la-nostra-pizza-frecce img[alt="Cottura"],
+.is-nest-hub-max #la-nostra-pizza-frecce img[alt="Cottura"],
+.is-nest-hub #la-nostra-pizza-frecce img[alt="Farciture"],
+.is-nest-hub-max #la-nostra-pizza-frecce img[alt="Farciture"],
+.is-nest-hub #la-nostra-pizza-frecce .farciture-image,
+.is-nest-hub-max #la-nostra-pizza-frecce .farciture-image,
+.is-nest-hub #la-nostra-pizza-frecce img[alt="Pizza frecce"],
+.is-nest-hub-max #la-nostra-pizza-frecce img[alt="Pizza frecce"],
+.is-nest-hub #la-nostra-pizza-frecce .pizza-frecce-image,
+.is-nest-hub-max #la-nostra-pizza-frecce .pizza-frecce-image {
+  display: none !important;
+}
+
+/* Nest Hub / Nest Hub Max: mostra TABLET FARINA al centro della sezione frecce */
+.is-nest-hub #la-nostra-pizza-frecce .tablet-farina,
+.is-nest-hub-max #la-nostra-pizza-frecce .tablet-farina,
+.is-nest-hub #la-nostra-pizza-frecce img[alt="Tablet Farina"],
+.is-nest-hub-max #la-nostra-pizza-frecce img[alt="Tablet Farina"] {
+  display: block !important;
+  transform-origin: center !important;
+  transform: scale(0.8) translateY(0) !important;
+  margin: 0 auto !important;
+}
+
+/* Header: aumenta il logo centrale su Nest Hub/Max e allinea alla ritmica delle sezioni */
+.is-nest-hub img[alt="Pizza OK Logo"] {
+  height: 160px !important; /* aumento rispetto al precedente 120px */
+  display: block !important;
+  transform-origin: center !important;
+  transform: translateY(-0.3cm) scale(1.5) !important;
+}
+.is-nest-hub-max img[alt="Pizza OK Logo"] {
+  height: 180px !important; /* leggermente più grande su Hub Max */
+  display: block !important;
+  transform-origin: center !important;
+  transform: translateY(-0.3cm) scale(1.5) !important;
+}
+/* Allineamento verticale dell'header con le sezioni per Nest Hub/Max */
+.is-nest-hub header,
+.is-nest-hub-max header {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Fallback Nest Hub Max (1280x800/800x1280): aumenta logo header e padding */
+@media only screen and (device-width: 1280px) and (device-height: 800px),
+       only screen and (device-width: 800px) and (device-height: 1280px) {
+  header img[alt="Pizza OK Logo"] { height: 180px !important; display: block !important; transform-origin: center !important; transform: translateY(-0.3cm) scale(1.5) !important; }
+  header { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+}
+
+/* Fallback Nest Hub (1024x600/600x1024): aumenta logo header e padding */
+@media only screen and (device-width: 1024px) and (device-height: 600px),
+       only screen and (device-width: 600px) and (device-height: 1024px) {
+  header img[alt="Pizza OK Logo"] { height: 160px !important; display: block !important; transform-origin: center !important; transform: translateY(-0.3cm) scale(1.5) !important; }
+  header { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
 }
 
 /* Quando la versione pulita è attiva, nascondi sempre il fallback per evitare doppie immagini */
@@ -604,6 +905,72 @@ body {
       transform-origin: center !important;
       transform: scale(1.3) translateY(-0.5cm) !important;
     }
+  }
+}
+
+/* Fallback Nest Hub Max: forza trasformazione su 3 PIZZE TABLET nel banner-cola */
+@media only screen and (device-width: 1280px) and (device-height: 800px),
+       only screen and (device-width: 800px) and (device-height: 1280px) {
+  #banner-cola img[alt^="3 Pizze Tablet"],
+  #banner-cola .tablet-3pizze {
+    transform-origin: center !important;
+    transform: translateY(-1.5cm) scale(1.3) !important;
+  }
+  /* Fallback Nest Hub Max: riduzioni scala La Nostra Pizza quando mancano le classi runtime */
+  #la-nostra-pizza .teglia-grande { transform-origin: center !important; transform: translateX(-6cm) translateY(7cm) scale(0.3) !important; height: auto !important; }
+  #la-nostra-pizza .teglia-piccola { transform-origin: center !important; transform: translateX(-22cm) translateY(-12cm) scale(0.3) !important; height: auto !important; }
+  #la-nostra-pizza .braccio-image { transform-origin: bottom right !important; transform: translateY(6cm) scale(0.7) !important; height: auto !important; }
+  #la-nostra-pizza img[alt="Omino pensieroso"] { display: none !important; }
+  /* Fallback Nest Hub Max: ripristina posizioni e riduci solo la scala di 0.2x (frecce) */
+  #la-nostra-pizza-frecce img[alt="Impasto"] { transform: translateX(-6vw) translateY(calc(-22 * var(--vh))) scale(0.7) !important; height: auto !important; }
+  #la-nostra-pizza-frecce img[alt="Farina"] { transform: translateX(-8vw) translateY(calc((12 * var(--vh)) + 2cm)) scale(0.7) !important; height: auto !important; }
+  #la-nostra-pizza-frecce img[alt="Cottura"] { transform: translateX(6vw) translateY(calc(-22 * var(--vh) - 1cm)) scale(0.7) !important; height: auto !important; }
+  #la-nostra-pizza-frecce img[alt="Farciture"], #la-nostra-pizza-frecce .farciture-image { transform-origin: bottom right !important; transform: translateX(6.5cm) translateY(6.5cm) scale(0.5) !important; height: auto !important; }
+
+  /* Fallback Nest Hub Max: nascondi Impasto, Farina, Cottura, Farciture e Pizza con frecce */
+  #la-nostra-pizza-frecce img[alt="Impasto"],
+  #la-nostra-pizza-frecce img[alt="Farina"],
+  #la-nostra-pizza-frecce img[alt="Cottura"],
+  #la-nostra-pizza-frecce img[alt="Farciture"],
+  #la-nostra-pizza-frecce .farciture-image,
+  #la-nostra-pizza-frecce img[alt="Pizza frecce"],
+  #la-nostra-pizza-frecce .pizza-frecce-image {
+    display: none !important;
+  }
+  /* Fallback Nest Hub Max: mostra TABLET FARINA al centro della sezione frecce */
+  #la-nostra-pizza-frecce .tablet-farina,
+  #la-nostra-pizza-frecce img[alt="Tablet Farina"] {
+    display: block !important;
+    transform-origin: center !important;
+    transform: scale(0.85) translateY(0) !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* Fallback Nest Hub (1024x600/600x1024): applica TABLET FARINA e nascondi gli altri elementi */
+@media only screen and (device-width: 1024px) and (device-height: 600px),
+       only screen and (device-width: 600px) and (device-height: 1024px) {
+  #la-nostra-pizza-frecce img[alt="Impasto"],
+  #la-nostra-pizza-frecce img[alt="Farina"],
+  #la-nostra-pizza-frecce img[alt="Cottura"],
+  #la-nostra-pizza-frecce img[alt="Farciture"],
+  #la-nostra-pizza-frecce .farciture-image,
+  #la-nostra-pizza-frecce img[alt="Pizza frecce"],
+  #la-nostra-pizza-frecce .pizza-frecce-image {
+    display: none !important;
+  }
+  #la-nostra-pizza-frecce .tablet-farina,
+  #la-nostra-pizza-frecce img[alt="Tablet Farina"] {
+    display: block !important;
+    transform-origin: center !important;
+    transform: scale(0.8) translateY(0) !important;
+    margin: 0 auto !important;
+  }
+  /* Fallback Nest Hub: sposta Teglia grande a sinistra di 5cm e in basso di 7cm */
+  #la-nostra-pizza .teglia-grande {
+    transform-origin: center !important;
+    transform: translateX(-8cm) translateY(7cm) scale(0.3) !important;
+    height: auto !important;
   }
 }
 
@@ -821,3 +1188,45 @@ body {
 }
 
 /* (ripristino) rimosse forzature di posizionamento/scala su tablet per CARTA TABLET */
+
+/* Nest Hub override: sposta Teglia piccola +3 cm a destra e rimuovi pensieroso */
+.is-nest-hub #la-nostra-pizza .teglia-piccola {
+  transform-origin: center !important;
+  transform: translateX(-19cm) translateY(-12cm) scale(0.3) !important;
+  height: auto !important;
+}
+.is-nest-hub #la-nostra-pizza img[alt="Omino pensieroso"] {
+  display: none !important;
+}
+
+/* Nest Hub override: sposta a sinistra di 2cm Vieni a trovarci e Omino contento */
+.is-nest-hub #la-nostra-pizza-bianca img[alt="Vieni a trovarci"] {
+  left: -4cm !important;
+}
+.is-nest-hub #la-nostra-pizza-bianca img[alt="Omino contento"] {
+  left: -4cm !important;
+}
+
+/* Fallback Nest Hub (1024x600/600x1024): stesse regole per Teglia piccola e pensieroso */
+@media only screen and (device-width: 1024px) and (device-height: 600px),
+       only screen and (device-width: 600px) and (device-height: 1024px) {
+  #la-nostra-pizza .teglia-piccola { transform-origin: center !important; transform: translateX(-19cm) translateY(-12cm) scale(0.3) !important; height: auto !important; }
+  #la-nostra-pizza img[alt="Omino pensieroso"] { display: none !important; }
+  /* Fallback Nest Hub: sposta a sinistra di 2cm Vieni a trovarci e Omino contento */
+  #la-nostra-pizza-bianca img[alt="Vieni a trovarci"] { left: -4cm !important; }
+  #la-nostra-pizza-bianca img[alt="Omino contento"] { left: -4cm !important; }
+}
+
+/* Nest Hub: riduci di 0.1x la scala del braccio (da 0.7 a 0.6) */
+.is-nest-hub #la-nostra-pizza .braccio-image {
+  transform-origin: bottom right !important;
+  transform: translateY(3.5cm) scale(0.6) !important;
+  height: auto !important;
+}
+
+/* Fallback Nest Hub (1024x600/600x1024): applica riduzione braccio a 0.6 */
+@media only screen and (device-width: 1024px) and (device-height: 600px),
+       only screen and (device-width: 600px) and (device-height: 1024px) {
+  #la-nostra-pizza .braccio-image { transform-origin: bottom right !important; transform: translateY(3.5cm) scale(0.6) !important; height: auto !important; }
+  #la-nostra-pizza .braccio-image { transform-origin: bottom right !important; transform: translateY(3.5cm) scale(0.6) !important; height: auto !important; }
+}

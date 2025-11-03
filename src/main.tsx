@@ -31,15 +31,23 @@ function applyDeviceClasses() {
   // iPad Pro band-only detection (11" e 12.9") per forzare classi runtime
   const isIpadProBand = (shortSide >= 820 && shortSide <= 860 && longSide >= 1180 && longSide <= 1215) ||
                         (shortSide >= 1005 && shortSide <= 1048 && longSide >= 1340 && longSide <= 1388);
+  // Nest Hub (7") ~ 1024x600 e Nest Hub Max (10") ~ 1280x800
+  const isNestHubBand = (shortSide >= 580 && shortSide <= 620 && longSide >= 1000 && longSide <= 1050);
+  const isNestHubMaxBand = (shortSide >= 780 && shortSide <= 820 && longSide >= 1260 && longSide <= 1305);
   doc.classList.toggle('is-ipad', !!isIpad);
   doc.classList.toggle('is-surface-pro', !!isSurfaceLike);
   doc.classList.toggle('is-ipad-pro', !!isIpadProBand);
+  doc.classList.toggle('is-nest-hub', !!isNestHubBand);
+  doc.classList.toggle('is-nest-hub-max', !!isNestHubMaxBand);
 }
 
 // Imposta il viewport dinamico al caricamento e al resize
 setDynamicViewport();
 applyDeviceClasses();
-window.addEventListener('resize', setDynamicViewport);
+window.addEventListener('resize', () => {
+  setDynamicViewport();
+  applyDeviceClasses();
+});
 window.addEventListener('orientationchange', () => {
   setTimeout(() => {
     setDynamicViewport();

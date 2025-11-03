@@ -130,13 +130,22 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
       return false;
     }
   });
+  // Legge anche le classi runtime per Nest Hub / Nest Hub Max
+  const [hasNestHubClass, setHasNestHubClass] = useState<boolean>(() => {
+    try {
+      const doc = document.documentElement;
+      return doc.classList.contains('is-nest-hub') || doc.classList.contains('is-nest-hub-max');
+    } catch {
+      return false;
+    }
+  });
   // Su richiesta: applica la pulizia (rimozione Impegno/Salame/Pizza Grande e inserisci 3 PIZZE TABLET)
   // anche su iPad Pro e iPad Mini oltre che su iPad Air/tablet/Surface.
-  const shouldClean = isIpadAir || isIpadPro || isIpadMini || isTabletBand || isSurfaceLike || hasDeviceClass || isCoarseTablet;
+  const shouldClean = isIpadAir || isIpadPro || isIpadMini || isTabletBand || isSurfaceLike || hasDeviceClass || hasNestHubClass || isCoarseTablet;
   // CARTA TABLET: mostra su iPad Mini, iPad Pro, iPad Air e Surface Pro 7.
   // Includo anche fallback via classi runtime.
   const shouldShowCartaTablet = (
-    isIpadMini || isIpadPro || isIpadAir || isSurfaceLike || hasDeviceClass
+    isIpadMini || isIpadPro || isIpadAir || isSurfaceLike || hasDeviceClass || hasNestHubClass
   );
 
   useEffect(() => {
@@ -154,6 +163,12 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
         setHasDeviceClass(doc.classList.contains('is-ipad') || doc.classList.contains('is-surface-pro'));
       } catch {}
     };
+    const detectNestHubClass = () => {
+      try {
+        const doc = document.documentElement;
+        setHasNestHubClass(doc.classList.contains('is-nest-hub') || doc.classList.contains('is-nest-hub-max'));
+      } catch {}
+    };
     const detectCoarseTablet = () => setIsCoarseTablet(computeIsCoarseTablet());
     const detectIpadAirBand = () => setIsIpadAirBand(computeIsIpadAirBand());
     const detectBand = () => {
@@ -167,6 +182,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
     detectBand();
     detectSurface();
     detectDeviceClass();
+    detectNestHubClass();
     detectCoarseTablet();
     detectIpadAirBand();
     window.addEventListener('resize', detectIpad);
@@ -177,6 +193,8 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
     window.addEventListener('orientationchange', detectSurface);
     window.addEventListener('resize', detectDeviceClass);
     window.addEventListener('orientationchange', detectDeviceClass);
+    window.addEventListener('resize', detectNestHubClass);
+    window.addEventListener('orientationchange', detectNestHubClass);
     window.addEventListener('resize', detectCoarseTablet);
     window.addEventListener('orientationchange', detectCoarseTablet);
     window.addEventListener('resize', detectIpadAirBand);
@@ -190,6 +208,8 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
       window.removeEventListener('orientationchange', detectSurface);
       window.removeEventListener('resize', detectDeviceClass);
       window.removeEventListener('orientationchange', detectDeviceClass);
+      window.removeEventListener('resize', detectNestHubClass);
+      window.removeEventListener('orientationchange', detectNestHubClass);
       window.removeEventListener('resize', detectCoarseTablet);
       window.removeEventListener('orientationchange', detectCoarseTablet);
       window.removeEventListener('resize', detectIpadAirBand);
@@ -262,7 +282,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
             )}
             <div className="carta-tablet-wrapper hidden md:flex lg:hidden justify-center items-center md:animate-fade-in-left">
               <img
-                src="/images/CARTA TABLET.png"
+                src="/images/CARTA.png"
                 alt="CARTA Tablet"
                 className="carta-tablet-image block w-[78%] max-w-[720px] h-auto object-contain transform origin-center will-change-transform"
                 loading="lazy"
@@ -309,9 +329,26 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
         </div>
       </div>
     </section>
+
+    {/* SOLO Nest Hub / Nest Hub Max: sezione aggiuntiva sopra 3 PIZZE TABLET con CARTA TABLET */}
+    {hasNestHubClass && (
+      <section id="nest-carta" className="bg-[#363f48] py-8 md:py-12 relative z-40">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-center">
+            <img
+              src="/images/CARTA TABLET.png"
+              alt="CARTA Tablet (Nest Hub)"
+              className="block w-[78%] max-w-[720px] h-auto object-contain transform origin-center will-change-transform"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </section>
+    )}
     {/* Banner "NON SOLO UN TRANCIO" rimosso su richiesta (non mostrato su desktop) */}
         {/* Banner ripristinato: sfondo #964740 con immagini PIZZA GRANDE a sinistra e salame a destra (solo desktop) */}
-        <section id="banner-cola" className={`bg-[#964740] hidden md:block md:-mb-[2cm] ${shouldClean ? 'clean-3pizze' : ''}`}>
+    <section id="banner-cola" className={`bg-[#964740] hidden md:block md:-mb-[2cm] ${shouldClean ? 'clean-3pizze' : ''}`}>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto min-h-[calc(540px+5.5cm)] md:h-[560px] lg:h-[568px] relative overflow-visible pb-[5.5cm] md:pb-0">
           {/* Immagini isolate e indipendenti, posizionate assolute (nascoste su iPad Air/tablet) */}
