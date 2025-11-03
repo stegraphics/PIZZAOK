@@ -8,6 +8,7 @@
   --vw: 1vw;
 }
 
+
 /* Rimuove la barra di scorrimento orizzontale globalmente */
 html, body {
   overflow-x: hidden;
@@ -377,3 +378,436 @@ body {
 /* (rimosso) iOS fix Farciture per 14/15: non necessario, altri iOS sono ok */
 
 /* (RIMOSSO) iPhone 16 Plus robust (Safari specific) e range tollerante braccio */
+/* Override specifico iPad Air per la colonna "Contatti" del footer */
+/* Copre iPad Air 10.9" (820x1180) in portrait e landscape */
+@media only screen and (device-width: 820px) and (device-height: 1180px),
+       only screen and (device-width: 1180px) and (device-height: 820px) {
+  .footer-contatti {
+    position: relative;
+    transform: translateY(0.5cm) !important;
+  }
+}
+
+/* Copertura aggiuntiva per modelli simili (834x1112) */
+@media only screen and (device-width: 834px) and (device-height: 1112px),
+       only screen and (device-width: 1112px) and (device-height: 834px) {
+  .footer-contatti {
+    position: relative;
+    transform: translateY(0.5cm) !important;
+  }
+}
+
+/* HIDE elementi La Nostra Pizza su iPad Air/Mini/Pro e Surface Pro 7 */
+@media only screen and (device-width: 820px) and (device-height: 1180px),
+       only screen and (device-width: 1180px) and (device-height: 820px),
+       /* iPad Mini 8.3" */
+       only screen and (device-width: 744px) and (device-height: 1133px),
+       only screen and (device-width: 1133px) and (device-height: 744px),
+       /* iPad Pro 11" */
+       only screen and (device-width: 834px) and (device-height: 1194px),
+       only screen and (device-width: 1194px) and (device-height: 834px),
+       /* iPad Pro 12.9" */
+       only screen and (device-width: 1024px) and (device-height: 1366px),
+       only screen and (device-width: 1366px) and (device-height: 1024px),
+       /* Surface Pro 7 */
+       only screen and (device-width: 912px) and (device-height: 1368px),
+       only screen and (device-width: 1368px) and (device-height: 912px) {
+  #la-nostra-pizza .hide-target {
+    display: none !important;
+  }
+  #la-nostra-pizza .tablet-teglie {
+    display: block !important;
+    z-index: 20;
+  }
+  #la-nostra-pizza .mobile-pizze-insieme {
+    display: none !important;
+  }
+  /* Sezione inferiore: rimuovi elementi desktop e mobile */
+  #la-nostra-pizza-frecce .hide-target {
+    display: none !important;
+  }
+  #la-nostra-pizza-frecce .mobile-pizza-lower {
+    display: none !important;
+  }
+  /* Sezione inferiore: mostra immagine specifica per tablet */
+  #la-nostra-pizza-frecce .tablet-farina {
+    display: block !important;
+    z-index: 20;
+  }
+}
+
+/* Chi Siamo — nascondi elementi su iPad Air/Mini/Pro e Surface Pro 7 */
+@media only screen and (device-width: 820px) and (device-height: 1180px),
+       only screen and (device-width: 1180px) and (device-height: 820px),
+       /* iPad Mini 8.3" */
+       only screen and (device-width: 744px) and (device-height: 1133px),
+       only screen and (device-width: 1133px) and (device-height: 744px),
+       /* iPad Pro 11" */
+       only screen and (device-width: 834px) and (device-height: 1194px),
+       only screen and (device-width: 1194px) and (device-height: 834px),
+       /* iPad Pro 12.9" */
+       only screen and (device-width: 1024px) and (device-height: 1366px),
+       only screen and (device-width: 1366px) and (device-height: 1024px),
+       /* Surface Pro 7 */
+       only screen and (device-width: 912px) and (device-height: 1368px),
+       only screen and (device-width: 1368px) and (device-height: 912px) {
+  #chi-siamo img[alt="Omino Pizza OK"],
+  #chi-siamo img[alt="Angolo decorativo"],
+  #chi-siamo img[alt="Da alto decorativo"],
+  #chi-siamo img[alt="Logo Pizza OK bianco"],
+  #chi-siamo img[alt="Storia decorativo"],
+  #chi-siamo .nostra-storia-text,
+  #chi-siamo .torna-home-btn {
+    display: none !important;
+  }
+  /* Posiziona CARTA TABLET in basso a sinistra su tablet target */
+  #chi-siamo .carta-tablet-image {
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    transform-origin: bottom left !important;
+    transform: translateX(-1cm) translateY(14.5cm) scale(1.5) !important;
+    z-index: 20 !important;
+    pointer-events: none !important;
+  }
+  #chi-siamo {
+    padding-bottom: calc(5cm + 5rem + 6cm) !important;
+  }
+  /* Nascondi Banner Storia su iPad/Mini/Air/Pro e Surface Pro 7 */
+  #banner-storia {
+    display: none !important;
+  }
+}
+
+/* Fallback runtime classi: iPad/Surface */
+.is-ipad #chi-siamo img[alt="Omino Pizza OK"],
+.is-ipad #chi-siamo img[alt="Angolo decorativo"],
+.is-ipad #chi-siamo img[alt="Da alto decorativo"],
+.is-ipad #chi-siamo img[alt="Logo Pizza OK bianco"],
+.is-ipad #chi-siamo img[alt="Storia decorativo"],
+.is-ipad #chi-siamo .nostra-storia-text,
+.is-ipad #chi-siamo .torna-home-btn,
+.is-surface-pro #chi-siamo img[alt="Omino Pizza OK"],
+.is-surface-pro #chi-siamo img[alt="Angolo decorativo"],
+.is-surface-pro #chi-siamo img[alt="Da alto decorativo"],
+.is-surface-pro #chi-siamo img[alt="Logo Pizza OK bianco"],
+.is-surface-pro #chi-siamo img[alt="Storia decorativo"],
+.is-surface-pro #chi-siamo .nostra-storia-text,
+.is-surface-pro #chi-siamo .torna-home-btn {
+  display: none !important;
+}
+
+/* Fallback posizionamento runtime: iPad/Surface */
+.is-ipad #chi-siamo .carta-tablet-image,
+.is-surface-pro #chi-siamo .carta-tablet-image {
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  transform-origin: bottom left !important;
+  transform: translateX(-1cm) translateY(14.5cm) scale(1.5) !important;
+  z-index: 20 !important;
+  pointer-events: none !important;
+}
+.is-ipad #chi-siamo,
+.is-surface-pro #chi-siamo {
+  padding-bottom: calc(5cm + 5rem + 6cm) !important;
+}
+
+/* Nascondi la sezione Banner Storia ("NON SOLO UN TRANCIO" + per web) su iPad Pro e Surface Pro 7 */
+.is-ipad #banner-storia,
+.is-ipad-pro #banner-storia,
+.is-surface-pro #banner-storia {
+  display: none !important;
+}
+
+/* Nascondi Impegno, Salame e Pizza Grande nel banner-cola su iPad/iPad Pro e Surface Pro 7 (fallback runtime) */
+.is-ipad #banner-cola img[alt="Impegno"],
+.is-ipad #banner-cola img[alt="Pizza Grande"],
+.is-ipad #banner-cola img[alt="Salame"],
+.is-surface-pro #banner-cola img[alt="Impegno"],
+.is-surface-pro #banner-cola img[alt="Pizza Grande"],
+.is-surface-pro #banner-cola img[alt="Salame"] {
+  display: none !important;
+}
+/* Mostra immagine fallback 3 PIZZE TABLET nel banner-cola su iPad/Surface (runtime) */
+.is-ipad #banner-cola .tablet-3pizze,
+.is-surface-pro #banner-cola .tablet-3pizze {
+  display: block !important;
+}
+
+/* Mostra immagine fallback 3 PIZZE TABLET nella sezione Chi Siamo solo via classi runtime (evita duplicazioni) */
+.is-ipad #chi-siamo .tablet-3pizze,
+.is-surface-pro #chi-siamo .tablet-3pizze {
+  display: block !important;
+}
+
+/* Quando la versione pulita è attiva, nascondi sempre il fallback per evitare doppie immagini */
+#chi-siamo.clean-3pizze .tablet-3pizze {
+  display: none !important;
+}
+/* Estendi la regola anche al banner-cola per evitare duplicazioni su iPad Pro */
+#banner-cola.clean-3pizze .tablet-3pizze {
+  display: none !important;
+}
+
+/* Media query: nascondi Impegno/Salame/Pizza Grande su iPad Pro 11/12.9 e Surface Pro 7 */
+@media only screen and (device-width: 834px) and (device-height: 1194px),
+       only screen and (device-width: 1194px) and (device-height: 834px),
+       /* iPad Pro 12.9" */
+       only screen and (device-width: 1024px) and (device-height: 1366px),
+       only screen and (device-width: 1366px) and (device-height: 1024px),
+       /* iPad Mini 8.3" */
+       only screen and (device-width: 744px) and (device-height: 1133px),
+       only screen and (device-width: 1133px) and (device-height: 744px),
+       /* Surface Pro 7 */
+       only screen and (device-width: 912px) and (device-height: 1368px),
+       only screen and (device-width: 1368px) and (device-height: 912px) {
+  /* iPad/Surface: forza visibilità del banner-cola (override hidden md:block) */
+  #banner-cola {
+    display: block !important;
+  }
+  #banner-cola img[alt="Impegno"],
+  #banner-cola img[alt="Pizza Grande"],
+  #banner-cola img[alt="Salame"] {
+    display: none !important;
+  }
+  /* Mostra immagine fallback 3 PIZZE TABLET via media query */
+  #banner-cola .tablet-3pizze {
+    display: block !important;
+  }
+  /* iPad Pro: riduci scala di 0.2x complessivi (ora 1.3x) per 3 PIZZE TABLET */
+  @media only screen and (device-width: 834px) and (device-height: 1194px),
+         only screen and (device-width: 1194px) and (device-height: 834px),
+         only screen and (device-width: 1024px) and (device-height: 1366px),
+         only screen and (device-width: 1366px) and (device-height: 1024px) {
+    #banner-cola img[alt^="3 Pizze Tablet"],
+    #banner-cola .tablet-3pizze {
+      transform-origin: center !important;
+      transform: scale(1.3) translateY(-0.5cm) !important;
+    }
+  }
+  /* iPad Mini: stessa trasformazione di iPad Pro per 3 PIZZE TABLET */
+  @media only screen and (device-width: 744px) and (device-height: 1133px),
+         only screen and (device-width: 1133px) and (device-height: 744px) {
+    #banner-cola img[alt^="3 Pizze Tablet"],
+    #banner-cola .tablet-3pizze {
+      transform-origin: center !important;
+      transform: scale(1.3) translateY(-0.5cm) !important;
+    }
+  }
+}
+
+/* Override SOLO Surface Pro 7: aumenta scala di +0.1x (da 1.5 a 1.6) */
+@media only screen and (device-width: 912px) and (device-height: 1368px),
+       only screen and (device-width: 1368px) and (device-height: 912px) {
+  #chi-siamo .carta-tablet-image {
+    transform: translateX(-1.7cm) translateY(14.2cm) scale(1.506) !important;
+  }
+}
+
+/* Fallback runtime SOLO Surface Pro: scala +0.1x */
+.is-surface-pro #chi-siamo .carta-tablet-image {
+  transform: translateX(-1.7cm) translateY(14.2cm) scale(1.506) !important;
+}
+
+/* Override SOLO iPad Pro: riduci scala di 0.09x (da 1.5 a 1.41) */
+@media only screen and (device-width: 1024px) and (device-height: 1366px),
+       only screen and (device-width: 1366px) and (device-height: 1024px),
+       only screen and (device-width: 834px) and (device-height: 1194px),
+       only screen and (device-width: 1194px) and (device-height: 834px) {
+  #chi-siamo .carta-tablet-image {
+    transform: translateX(-0.4cm) translateY(14.5cm) scale(1.41) !important;
+  }
+}
+
+/* Fallback runtime SOLO iPad Pro */
+.is-ipad-pro #chi-siamo .carta-tablet-image {
+  transform: translateX(-0.4cm) translateY(14.5cm) scale(1.41) !important;
+}
+
+/* Override SOLO iPad Mini: aumenta scala di +1x (da 1.0 a 2.0) */
+@media only screen and (device-width: 744px) and (device-height: 1133px),
+       only screen and (device-width: 1133px) and (device-height: 744px) {
+  #chi-siamo .carta-tablet-image {
+    /* Allinea a iPad Air: posizione e scala base */
+    transform: translateX(-1cm) translateY(14.5cm) scale(1.5) !important;
+  }
+}
+
+
+/* Fallback robusto via classi runtime (iPad/iPadOS e Surface Pro) */
+.is-ipad #la-nostra-pizza .hide-target,
+.is-surface-pro #la-nostra-pizza .hide-target {
+  display: none !important;
+}
+.is-ipad #la-nostra-pizza .tablet-teglie,
+.is-surface-pro #la-nostra-pizza .tablet-teglie {
+  display: block !important;
+  z-index: 20;
+}
+.is-ipad #la-nostra-pizza .mobile-pizze-insieme,
+.is-surface-pro #la-nostra-pizza .mobile-pizze-insieme {
+  display: none !important;
+}
+
+/* Sezione inferiore: fallback runtime su iPad/Surface */
+.is-ipad #la-nostra-pizza-frecce .hide-target,
+.is-surface-pro #la-nostra-pizza-frecce .hide-target,
+.is-ipad #la-nostra-pizza-frecce .mobile-pizza-lower,
+.is-surface-pro #la-nostra-pizza-frecce .mobile-pizza-lower {
+  display: none !important;
+}
+
+/* Sezione inferiore: su iPad/Surface mostra TABLET FARINA */
+.is-ipad #la-nostra-pizza-frecce .tablet-farina,
+.is-surface-pro #la-nostra-pizza-frecce .tablet-farina {
+  display: block !important;
+  z-index: 20;
+}
+
+/* Sezione bianca sotto frecce: nascondi Vieni/Contento su iPad/Surface */
+@media only screen and (device-width: 820px) and (device-height: 1180px),
+       only screen and (device-width: 1180px) and (device-height: 820px),
+       /* iPad Mini 8.3" */
+       only screen and (device-width: 744px) and (device-height: 1133px),
+       only screen and (device-width: 1133px) and (device-height: 744px),
+       /* iPad Pro 11" */
+       only screen and (device-width: 834px) and (device-height: 1194px),
+       only screen and (device-width: 1194px) and (device-height: 834px),
+       /* iPad Pro 12.9" */
+       only screen and (device-width: 1024px) and (device-height: 1366px),
+       only screen and (device-width: 1366px) and (device-height: 1024px),
+       /* Surface Pro 7 */
+       only screen and (device-width: 912px) and (device-height: 1368px),
+       only screen and (device-width: 1368px) and (device-height: 912px) {
+  #la-nostra-pizza-bianca .hide-target {
+    display: none !important;
+  }
+}
+
+.is-ipad #la-nostra-pizza-bianca .hide-target,
+.is-surface-pro #la-nostra-pizza-bianca .hide-target {
+  display: none !important;
+}
+
+/* Sezione bianca: mostra CONTENTO TABLET solo su tablet */
+@media only screen and (device-width: 820px) and (device-height: 1180px),
+       only screen and (device-width: 1180px) and (device-height: 820px),
+       /* iPad Mini 8.3" */
+       only screen and (device-width: 744px) and (device-height: 1133px),
+       only screen and (device-width: 1133px) and (device-height: 744px),
+       /* iPad Pro 11" */
+       only screen and (device-width: 834px) and (device-height: 1194px),
+       only screen and (device-width: 1194px) and (device-height: 834px),
+       /* iPad Pro 12.9" */
+       only screen and (device-width: 1024px) and (device-height: 1366px),
+       only screen and (device-width: 1366px) and (device-height: 1024px),
+       /* Surface Pro 7 */
+       only screen and (device-width: 912px) and (device-height: 1368px),
+       only screen and (device-width: 1368px) and (device-height: 912px) {
+  /* Su tablet: nascondi la grafica mobile per evitare duplicazioni */
+  #la-nostra-pizza-bianca img[alt="Vieni Contento (mobile)"] {
+    display: none !important;
+  }
+  #la-nostra-pizza-bianca .contento-tablet {
+    display: block !important;
+    z-index: 20;
+  }
+}
+
+@media (min-width: 768px) {
+  .is-ipad #la-nostra-pizza-bianca .contento-tablet,
+  .is-surface-pro #la-nostra-pizza-bianca .contento-tablet {
+    display: block !important;
+    z-index: 20;
+  }
+}
+
+/* Tablet (iPad Air/Mini/Pro, Surface Pro 7): sposta Contento Tablet a destra e scala 2x */
+@media only screen and (device-width: 820px) and (device-height: 1180px),
+       only screen and (device-width: 1180px) and (device-height: 820px),
+       /* iPad Mini 8.3" */
+       only screen and (device-width: 744px) and (device-height: 1133px),
+       only screen and (device-width: 1133px) and (device-height: 744px),
+       /* iPad Pro 11" */
+       only screen and (device-width: 834px) and (device-height: 1194px),
+       only screen and (device-width: 1194px) and (device-height: 834px),
+       /* iPad Pro 12.9" */
+       only screen and (device-width: 1024px) and (device-height: 1366px),
+       only screen and (device-width: 1366px) and (device-height: 1024px),
+       /* Surface Pro 7 */
+       only screen and (device-width: 912px) and (device-height: 1368px),
+       only screen and (device-width: 1368px) and (device-height: 912px) {
+  #la-nostra-pizza-bianca .contento-tablet {
+    position: absolute !important;
+    right: 0 !important;
+    left: auto !important;
+    bottom: 0 !important;
+    margin: 0 !important;
+    transform-origin: bottom right !important;
+    transform: scale(3) translateX(0) translateY(0) !important;
+    z-index: 30 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Mobile phones: nascondi sempre CONTENTO TABLET */
+@media (max-width: 767px) {
+  #la-nostra-pizza-bianca .contento-tablet {
+    display: none !important;
+  }
+}
+
+/* Fallback runtime classi (iPad/Surface): stessa regola di posizionamento/scalatura */
+@media (min-width: 768px) {
+  .is-ipad #la-nostra-pizza-bianca .contento-tablet,
+  .is-surface-pro #la-nostra-pizza-bianca .contento-tablet {
+    position: absolute !important;
+    right: 0 !important;
+    left: auto !important;
+    bottom: 0 !important;
+    margin: 0 !important;
+    transform-origin: bottom right !important;
+    transform: scale(3) translateX(0) translateY(0) !important;
+    z-index: 30 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Extra targeting per iPad Mini via viewport e input (più robusto) */
+@media screen and (pointer: coarse) and (hover: none) and (min-width: 740px) and (max-width: 768px) and (min-height: 1100px) and (max-height: 1145px) {
+  #la-nostra-pizza .hide-target { display: none !important; }
+  #la-nostra-pizza .tablet-teglie { display: block !important; z-index: 20; }
+}
+@media screen and (pointer: coarse) and (hover: none) and (min-width: 1100px) and (max-width: 1145px) and (min-height: 740px) and (max-height: 768px) {
+  #la-nostra-pizza .hide-target { display: none !important; }
+  #la-nostra-pizza .tablet-teglie { display: block !important; z-index: 20; }
+}
+
+/* Solo iPad Pro: aumenta altezza banner frecce di 1cm e padding sopra/sotto */
+@media only screen and (device-width: 834px) and (device-height: 1194px),
+       only screen and (device-width: 1194px) and (device-height: 834px) {
+  /* iPad Pro 11" */
+  #la-nostra-pizza-frecce {
+    padding-top: 1cm !important;
+    padding-bottom: 1cm !important;
+  }
+  #la-nostra-pizza-frecce .max-w-6xl {
+    min-height: calc(540px + 1cm) !important;
+    height: calc(560px + 1cm) !important;
+  }
+}
+@media only screen and (device-width: 1024px) and (device-height: 1366px),
+       only screen and (device-width: 1366px) and (device-height: 1024px) {
+  /* iPad Pro 12.9" */
+  #la-nostra-pizza-frecce {
+    padding-top: 1cm !important;
+    padding-bottom: 1cm !important;
+  }
+  #la-nostra-pizza-frecce .max-w-6xl {
+    min-height: calc(540px + 1cm) !important;
+    height: calc(568px + 1cm) !important;
+  }
+}
+
+/* (ripristino) rimosse forzature di posizionamento/scala su tablet per CARTA TABLET */

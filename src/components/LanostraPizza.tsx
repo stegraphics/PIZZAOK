@@ -39,6 +39,8 @@ import vieniMobileAvif from '../../images/vieni mobile.avif';
 import vieniMobileWebp from '../../images/vieni mobile.webp';
 
 const LanostraPizza = () => {
+  // Rimozione dispositivi via CSS: aggiungiamo classi marker e gestiamo in index.css
+
   return (
     <>
       {/* Banner principale esistente */}
@@ -48,14 +50,14 @@ const LanostraPizza = () => {
           <img
             src={tegliaGrande}
             alt="Teglia grande"
-            className="hidden md:block h-[85%] md:h-[90%] w-auto object-contain transform translate-x-[2.61cm] md:translate-x-0 -translate-y-[3cm] md:translate-y-0 scale-[0.5] md:scale-[1] teglia-grande"
+            className="hidden md:block h-[85%] md:h-[90%] w-auto object-contain transform translate-x-[2.61cm] md:translate-x-0 -translate-y-[3cm] md:translate-y-0 scale-[0.5] md:scale-[1] teglia-grande hide-target"
             loading="eager"
             decoding="async"
           />
           <img
             src={pensieroso}
             alt="Omino pensieroso"
-            className="h-[35%] md:h-[40%] w-auto object-contain pointer-events-none transform translate-x-[3cm] origin-bottom-right scale-[3] ml-[5cm] hidden md:block"
+            className="h-[35%] md:h-[40%] w-auto object-contain pointer-events-none transform translate-x-[3cm] origin-bottom-right scale-[3] ml-[5cm] hidden md:block hide-target"
             loading="eager"
             decoding="async"
           />
@@ -66,12 +68,20 @@ const LanostraPizza = () => {
             <img
               src={braccio}
               alt="Braccio"
-              className="braccio-image absolute right-0 bottom-0 h-[85%] md:h-[90%] w-auto object-contain pointer-events-none transform origin-bottom-right scale-[1] md:scale-[1.5] translate-y-[4cm] md:translate-y-[6cm]"
+              className="braccio-image absolute right-0 bottom-0 h-[85%] md:h-[90%] w-auto object-contain pointer-events-none transform origin-bottom-right scale-[1] md:scale-[1.5] translate-y-[4cm] md:translate-y-[6cm] hide-target"
               loading="eager"
               decoding="async"
             />
           </picture>
         </div>
+        {/* Tablet: immagine TABLET TEGLIE visibile solo su iPad/Surface */}
+        <img
+          src="/images/TABLET TEGLIE.png"
+          alt="Tablet Teglie"
+          className="tablet-teglie hidden absolute right-0 top-1/2 -translate-y-1/2 h-[85%] w-auto object-contain"
+          loading="eager"
+          decoding="async"
+        />
         {/* Teglia piccola a tre quarti della sezione, posizionata verso l'alto */}
         <picture className="hidden md:block">
           <source srcSet={tegliaPiccolaAvif} type="image/avif" />
@@ -79,7 +89,7 @@ const LanostraPizza = () => {
           <img
             src={tegliaPiccola}
             alt="Teglia piccola"
-            className="teglia-piccola absolute left-[75%] top-[10%] h-[85%] md:h-[90%] w-auto object-contain transform -translate-x-[10cm] md:-translate-x-[16cm] -translate-y-[5cm] md:-translate-y-[3cm] scale-[0.59] md:scale-[1]"
+            className="teglia-piccola absolute left-[75%] top-[10%] h-[85%] md:h-[90%] w-auto object-contain transform -translate-x-[10cm] md:-translate-x-[16cm] -translate-y-[5cm] md:-translate-y-[3cm] scale-[0.59] md:scale-[1] hide-target"
             loading="eager"
             decoding="async"
           />
@@ -89,7 +99,7 @@ const LanostraPizza = () => {
         <img
           src="/images/PIZZE INSIEME.png"
           alt="Pizze insieme (mobile)"
-          className="absolute right-0 top-1/2 -translate-y-1/2 h-[80%] w-auto object-contain block md:hidden"
+          className="mobile-pizze-insieme absolute right-0 top-1/2 -translate-y-1/2 h-[80%] w-auto object-contain block md:hidden"
           loading="eager"
           decoding="async"
         />
@@ -99,54 +109,62 @@ const LanostraPizza = () => {
       <section id="la-nostra-pizza-frecce" className="w-full bg-[#363f48]">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto min-h-[540px] md:h-[560px] lg:h-[568px] relative flex items-center justify-center overflow-visible">
-            {/* Impasto: visibile solo su desktop */}
+            {/* Impasto: visibile solo su desktop (nascosto su iPad/Surface) */}
              <img
                src={impasto}
                alt="Impasto"
-               className="absolute left-0 w-auto h-[360px] sm:h-[420px] md:h-[520px] lg:h-[580px] object-contain transform -translate-x-[2cm] md:-translate-x-[3cm] -translate-y-[3.5cm] md:-translate-y-[3cm] scale-[0.5] md:scale-[0.7] hidden md:block"
+               className="absolute left-0 w-auto h-[360px] sm:h-[420px] md:h-[520px] lg:h-[580px] object-contain transform -translate-x-[2cm] md:-translate-x-[3cm] -translate-y-[3.5cm] md:-translate-y-[3cm] scale-[0.5] md:scale-[0.7] hidden md:block hide-target"
                loading="eager"
                decoding="async"
              />
-            {/* Farina: visibile solo su desktop */}
+            {/* Farina: visibile solo su desktop (nascosto su iPad/Surface) */}
              <img
                src={farina}
                alt="Farina"
-               className="absolute left-0 w-auto h-[360px] sm:h-[420px] md:h-[520px] lg:h-[580px] object-contain transform -translate-x-[2cm] md:-translate-x-[6cm] translate-y-[4cm] scale-[0.5] md:scale-[0.7] hidden md:block"
+               className="absolute left-0 w-auto h-[360px] sm:h-[420px] md:h-[520px] lg:h-[580px] object-contain transform -translate-x-[2cm] md:-translate-x-[6cm] translate-y-[4cm] scale-[0.5] md:scale-[0.7] hidden md:block hide-target"
                loading="eager"
                decoding="async"
              />
-            {/* Cottura: visibile solo su desktop */}
+            {/* Cottura: visibile solo su desktop (nascosto su iPad/Surface) */}
              <img
                src={cottura}
                alt="Cottura"
-               className="absolute right-0 w-auto h-[360px] sm:h-[420px] md:h-[520px] lg:h-[580px] object-contain transform translate-x-[2cm] md:translate-x-[5cm] -translate-y-[5cm] md:-translate-y-[3cm] scale-[0.5] md:scale-[0.7] hidden md:block"
+               className="absolute right-0 w-auto h-[360px] sm:h-[420px] md:h-[520px] lg:h-[580px] object-contain transform translate-x-[2cm] md:translate-x-[5cm] -translate-y-[5cm] md:-translate-y-[3cm] scale-[0.5] md:scale-[0.7] hidden md:block hide-target"
                loading="eager"
                decoding="async"
              />
-             {/* Farciture: visibile solo su desktop */}
+             {/* Farciture: visibile solo su desktop (nascosto su iPad/Surface) */}
              <img
                src={farciture}
                alt="Farciture"
-               className="farciture-image absolute right-0 bottom-0 z-[10] w-auto h-[360px] sm:h-[420px] md:h-[520px] lg:h-[580px] object-contain transform translate-x-[1.5cm] md:translate-x-[6.5cm] translate-y-[4cm] md:translate-y-[6.5cm] scale-[0.5] md:scale-[0.7] hidden md:block"
+               className="farciture-image absolute right-0 bottom-0 z-[10] w-auto h-[360px] sm:h-[420px] md:h-[520px] lg:h-[580px] object-contain transform translate-x-[1.5cm] md:translate-x-[6.5cm] translate-y-[4cm] md:translate-y-[6.5cm] scale-[0.5] md:scale-[0.7] hidden md:block hide-target"
                loading="eager"
                decoding="async"
              />
-            {/* Solo mobile: sostituisci con PIZZA PASSAGGI.png */}
-            <img
+            {/* Solo mobile: sostituisci con PIZZA PASSAGGI.png (nascosto su iPad/Surface) */}
+             <img
               src="/images/PIZZA PASSAGGI.png"
               alt="Pizza passaggi (mobile)"
-              className="w-auto h-[460px] sm:h-[520px] md:h-[640px] lg:h-[720px] object-contain transform scale-[1.2] block md:hidden"
+              className="mobile-pizza-lower w-auto h-[460px] sm:h-[520px] md:h-[640px] lg:h-[720px] object-contain transform scale-[1.2] block md:hidden"
+              loading="eager"
+              decoding="async"
+            />
+            {/* Tablet (iPad/Surface): mostra TABLET FARINA al centro della sezione */}
+            <img
+              src="/images/TABLET FARINA.png"
+              alt="Tablet Farina"
+              className="tablet-farina hidden w-auto h-[520px] md:h-[640px] lg:h-[720px] object-contain"
               loading="eager"
               decoding="async"
             />
             {/* Desktop and larger screens keep original */}
-            <picture className="hidden md:block">
+             <picture className="hidden md:block">
                <source srcSet={pizzaFrecceAvif} type="image/avif" />
                <source srcSet={pizzaFrecceWebp} type="image/webp" />
                <img
                  src={pizzaFrecce}
                  alt="Pizza frecce"
-                 className="w-auto h-[460px] sm:h-[520px] md:h-[640px] lg:h-[720px] object-contain transform scale-[1.2] hidden md:block"
+                 className="pizza-frecce-image hide-target w-auto h-[460px] sm:h-[520px] md:h-[640px] lg:h-[720px] object-contain transform scale-[1.2] hidden md:block"
                  loading="eager"
                  decoding="async"
                />
@@ -161,6 +179,14 @@ const LanostraPizza = () => {
           <div className="max-w-6xl mx-auto min-h-[540px] md:h-[560px] lg:h-[568px] relative flex items-center justify-center">
           </div>
         </div>
+        {/* Tablet-only: Contento Tablet (mostra solo su iPad/Surface) */}
+        <img
+          src="/images/CONTENTO TABLET.png"
+          alt="Contento Tablet"
+          className="contento-tablet hidden absolute left-0 bottom-0 h-[30%] md:h-[35%] w-auto object-contain pointer-events-none"
+          loading="eager"
+          decoding="async"
+        />
         {/* Mobile-only version */}
         {/* Mobile: usa immagine combinata VIENI CONTENTO */}
         <img
@@ -177,7 +203,7 @@ const LanostraPizza = () => {
           <img
             src={vieni}
             alt="Vieni a trovarci"
-            className="absolute left-0 bottom-0 h-[25%] md:h-[30%] w-auto object-contain pointer-events-none transform md:translate-x-[5cm] md:-translate-y-[2cm] origin-bottom-left md:scale-[2.7] hidden md:block"
+            className="absolute left-0 bottom-0 h-[25%] md:h-[30%] w-auto object-contain pointer-events-none transform md:translate-x-[5cm] md:-translate-y-[2cm] origin-bottom-left md:scale-[2.7] hidden md:block hide-target"
             loading="eager"
             decoding="async"
           />
@@ -187,7 +213,7 @@ const LanostraPizza = () => {
         <img
           src={contento}
           alt="Omino contento"
-          className="absolute left-0 bottom-0 h-[30%] md:h-[35%] w-auto object-contain pointer-events-none transform md:translate-x-[14cm] origin-bottom-left md:scale-[2.85] hidden md:block"
+          className="absolute left-0 bottom-0 h-[30%] md:h-[35%] w-auto object-contain pointer-events-none transform md:translate-x-[14cm] origin-bottom-left md:scale-[2.85] hidden md:block hide-target"
           loading="eager"
           decoding="async"
         />

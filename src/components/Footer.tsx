@@ -78,8 +78,29 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, currentPage }) => {
     }
   ];
 
+  // Rilevamento iPad Air per regolazioni di layout specifiche
+  const computeIsIpad = () => {
+    const ua = navigator.userAgent || '';
+    const isIPadOS = /\biPad\b/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    return isIPadOS && hasTouch;
+  };
+
+  const [isIpadAir, setIsIpadAir] = React.useState<boolean>(() => computeIsIpad());
+
+  React.useEffect(() => {
+    const detectIpad = () => setIsIpadAir(computeIsIpad());
+    detectIpad();
+    window.addEventListener('resize', detectIpad);
+    window.addEventListener('orientationchange', detectIpad);
+    return () => {
+      window.removeEventListener('resize', detectIpad);
+      window.removeEventListener('orientationchange', detectIpad);
+    };
+  }, []);
+
   return (
-    <footer className={`${currentPage === 'chi-siamo' ? 'bg-[#363f48] md:bg-[#964740]' : 'bg-[#363f47]'} text-white`}>
+    <footer className={`bg-[#363f48] text-white`}>
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mb-6">
@@ -94,7 +115,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, currentPage }) => {
                   decoding="async"
                 />
               </div>
-              <p className={`text-lg font-semibold ${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#363f48]' : 'text-[#b74639]'} mb-4 -mt-8`}>
+              <p className={`text-lg font-semibold ${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#964740]' : 'text-[#b74639]'} mb-4 -mt-8`}>
                 TUTTO UN ALTRO GUSTO
               </p>
               <p className="text-gray-300 mb-6 leading-relaxed">
@@ -103,9 +124,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, currentPage }) => {
               </p>
               <div className="flex space-x-4">
                 <a href="https://www.instagram.com/pizzaokcrema?igsh=MWc2MzVyOTlpZ3ZjNw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram Pizza OK">
-                  <Instagram className={`w-6 h-6 text-gray-300 ${currentPage === 'chi-siamo' ? 'hover:text-[#363f48]' : 'hover:text-[#b74639]'} cursor-pointer transition-colors`} />
+                  <Instagram className={`w-6 h-6 text-gray-300 ${currentPage === 'chi-siamo' ? 'hover:text-[#964740]' : 'hover:text-[#b74639]'} cursor-pointer transition-colors`} />
                 </a>
-                <Facebook className={`w-6 h-6 text-gray-300 ${currentPage === 'chi-siamo' ? 'hover:text-[#363f48]' : 'hover:text-[#b74639]'} cursor-pointer transition-colors`} />
+                <Facebook className={`w-6 h-6 text-gray-300 ${currentPage === 'chi-siamo' ? 'hover:text-[#964740]' : 'hover:text-[#b74639]'} cursor-pointer transition-colors`} />
               </div>
             </div>
 
@@ -118,7 +139,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, currentPage }) => {
                     <a
                       href={link.href}
                       onClick={(e) => { e.preventDefault(); handleQuickLinkClick(link.name); }}
-                      className={`text-gray-300 ${currentPage === 'chi-siamo' ? 'hover:text-[#9f483f] md:hover:text-[#363f48]' : 'hover:text-[#b74639]'} transition-colors duration-200 cursor-pointer`}
+                      className={`text-gray-300 ${currentPage === 'chi-siamo' ? 'hover:text-[#9f483f] md:hover:text-[#964740]' : 'hover:text-[#b74639]'} transition-colors duration-200 cursor-pointer`}
                     >
                       {link.name}
                     </a>
@@ -134,44 +155,81 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, currentPage }) => {
                 <div className="text-sm">
                   <h5 className="font-semibold text-white mb-1">PIZZA OK CREMA</h5>
                   <p className="text-gray-300">Via Repubblica 17</p>
-                  <p className={`${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#363f48]' : 'text-[#b74639]'} font-semibold mt-1`}>0373 185 0580</p>
+                  <p className={`${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#964740]' : 'text-[#b74639]'} font-semibold mt-1`}>0373 185 0580</p>
                 </div>
               </div>
             </div>
 
             {/* Contact Info */}
-            <div className="transform translate-y-[0.5cm] md:translate-y-[2cm]">
-              <h4 className="text-xl font-bold mb-6">Contatti</h4>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <Mail className={`w-5 h-5 ${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#363f48]' : 'text-[#b74639]'} mt-0.5 flex-shrink-0`} />
-                  <div>
-                    <p className="text-white font-semibold">Email</p>
-                    <a
-                      href="mailto:Pizzaokdicrema@gmail.com"
-                      className={`text-gray-300 ${currentPage === 'chi-siamo' ? 'hover:text-[#9f483f] md:hover:text-[#363f48]' : 'hover:text-[#b74639]'} transition-colors`}
-                    >
-                      Pizzaokdicrema@gmail.com
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <Clock className={`w-5 h-5 ${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#363f48]' : 'text-[#b74639]'} mt-0.5 flex-shrink-0`} />
-                  <div>
-                    <p className="text-white font-semibold">Orari</p>
-                    <p className="text-gray-300">Lun-Dom: 10:00-22:30</p>
-                  </div>
-                </div>
+            {isIpadAir ? (
+              <div>
+                <div className={`transform translate-y-[0.5cm] md:translate-y-[0.5cm] footer-contatti`}>
+                  <h4 className="text-xl font-bold mb-6">Contatti</h4>
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <Mail className={`w-5 h-5 ${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#964740]' : 'text-[#b74639]'} mt-0.5 flex-shrink-0`} />
+                      <div>
+                        <p className="text-white font-semibold">Email</p>
+                        <a
+                          href="mailto:Pizzaokdicrema@gmail.com"
+                          className={`text-gray-300 ${currentPage === 'chi-siamo' ? 'hover:text-[#9f483f] md:hover:text-[#964740]' : 'hover:text-[#b74639]'} transition-colors`}
+                        >
+                          Pizzaokdicrema@gmail.com
+                        </a>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <Clock className={`w-5 h-5 ${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#964740]' : 'text-[#b74639]'} mt-0.5 flex-shrink-0`} />
+                      <div>
+                        <p className="text-white font-semibold">Orari</p>
+                        <p className="text-gray-300">Lun-Dom: 10:00-22:30</p>
+                      </div>
+                    </div>
 
-                <div className="flex items-start space-x-3">
-                  <MapPin className={`w-5 h-5 ${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#363f48]' : 'text-[#b74639]'} mt-0.5 flex-shrink-0`} />
-                  <div>
-                    <p className="text-white font-semibold">Crema</p>
+                    <div className="flex items-start space-x-3">
+                      <MapPin className={`w-5 h-5 ${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#964740]' : 'text-[#b74639]'} mt-0.5 flex-shrink-0`} />
+                      <div>
+                        <p className="text-white font-semibold">Crema</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="transform translate-y-[0.5cm] md:translate-y-[2cm] footer-contatti">
+                <h4 className="text-xl font-bold mb-6">Contatti</h4>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <Mail className={`w-5 h-5 ${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#964740]' : 'text-[#b74639]'} mt-0.5 flex-shrink-0`} />
+                    <div>
+                      <p className="text-white font-semibold">Email</p>
+                      <a
+                        href="mailto:Pizzaokdicrema@gmail.com"
+                        className={`text-gray-300 ${currentPage === 'chi-siamo' ? 'hover:text-[#9f483f] md:hover:text-[#964740]' : 'hover:text-[#b74639]'} transition-colors`}
+                      >
+                        Pizzaokdicrema@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <Clock className={`w-5 h-5 ${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#964740]' : 'text-[#b74639]'} mt-0.5 flex-shrink-0`} />
+                    <div>
+                      <p className="text-white font-semibold">Orari</p>
+                      <p className="text-gray-300">Lun-Dom: 10:00-22:30</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <MapPin className={`w-5 h-5 ${currentPage === 'chi-siamo' ? 'text-[#9f483f] md:text-[#964740]' : 'text-[#b74639]'} mt-0.5 flex-shrink-0`} />
+                    <div>
+                      <p className="text-white font-semibold">Crema</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* CTA Section rimossa per coerenza con la rimozione delle sezioni */}
