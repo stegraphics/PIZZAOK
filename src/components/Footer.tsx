@@ -163,7 +163,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, currentPage }) => {
             {/* Contact Info */}
             {isIpadAir ? (
               <div>
-                <div className={`transform translate-y-[0.5cm] md:translate-y-[0.5cm] footer-contatti`}>
+                <div className={`transform translate-y-[0.5cm] md:translate-y-[2cm] footer-contatti`}>
                   <h4 className="text-xl font-bold mb-6">Contatti</h4>
                   <div className="space-y-4">
                     <div className="flex items-start space-x-3">

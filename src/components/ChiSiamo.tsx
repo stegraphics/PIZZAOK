@@ -310,7 +310,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
             )}
             <div className={`carta-tablet-wrapper hidden md:flex ${isZenbookFold ? 'lg:flex' : 'lg:hidden'} justify-center items-center md:animate-fade-in-left`}>
               <img
-                src={isZenbookFold ? "/images/CARTA TABLET.png" : "/images/CARTA.png"}
+                src="/images/CARTA TABLET.png"
                 alt="CARTA Tablet"
                 className="carta-tablet-image block w-[78%] max-w-[720px] h-auto object-contain transform origin-center will-change-transform"
                 loading="lazy"
@@ -321,7 +321,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
             {/* Solo mobile: sezione dedicata con sfondo #363f48 e immagine CARTA.png */}
             <section id="chi-siamo-mobile-carta" className="md:hidden w-full bg-[#363f48] pt-0 pb-0 mb-0 flex items-start justify-center relative z-20 overflow-visible">
               <img
-                src={isZenbookFold ? "/images/CARTA TABLET.png" : "/images/CARTA.png"}
+                src="/images/CARTA TABLET.png"
                 alt="CARTA (mobile)"
                 className="block mx-auto w-[69.23vw] max-w-[69.23vw] h-auto object-contain transform origin-top scale-[1.42]"
                 loading="lazy"
@@ -385,7 +385,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
               src="/images/IMPEGNO 1.png"
               alt="Impegno 1"
               onError={(e) => { try { e.currentTarget.src = impegno; e.currentTarget.alt = 'Impegno'; } catch {} }}
-              className="absolute left-0 top-0 h-[280px] md:h-[340px] lg:h-[380px] w-auto object-contain transform origin-top-left scale-[1.7] translate-x-[-0.4cm] md:translate-x-[-0.2cm] translate-y-[11cm] md:-translate-y-[2cm] z-20 pointer-events-none hidden md:block"
+              className="impegno-img absolute left-0 top-0 h-[280px] md:h-[340px] lg:h-[380px] w-auto object-contain transform origin-top-left scale-[1.7] translate-x-[0cm] md:translate-x-[0cm] translate-y-[11cm] md:-translate-y-[2cm] z-20 pointer-events-none hidden md:block"
               loading="lazy"
               decoding="async"
             />

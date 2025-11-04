@@ -41,9 +41,8 @@ function applyDeviceClasses() {
   // Banda larga touch per laptop/tablet pieghevoli (es. 12.5"/17")
   // Abbasso la soglia per includere 853×1200 (Zenbook Fold in verticale)
   const isLargeTouchWindowsBand = isWindows && isTouch && shortSide >= 820 && longSide >= 1180;
-  // Fallback: Windows con viewport ampio, anche senza touch
-  const isWindowsLargeViewport = isWindows && shortSide >= 820 && longSide >= 1180;
-  const isZenbookFold = forceZenbookFold || isZenbookFoldUA || isWindowsLargeViewport || isLargeTouchWindowsBand;
+  // Rimuovo fallback: NON classificare desktop Windows ampi come Zenbook Fold se non touch/UA
+  const isZenbookFold = forceZenbookFold || isZenbookFoldUA || isLargeTouchWindowsBand;
   doc.classList.toggle('is-ipad', !!isIpad);
   doc.classList.toggle('is-surface-pro', !!isSurfaceLike);
   doc.classList.toggle('is-ipad-pro', !!isIpadProBand);
