@@ -17,6 +17,7 @@ function applyDeviceClasses() {
   const rawUA = navigator.userAgent || '';
   const ua = rawUA.toLowerCase();
   const platform = (navigator.platform || '').toLowerCase();
+  const forceZenbookFold = (() => { try { return localStorage.getItem('forceZenbookFold') === '1'; } catch { return false; } })();
   // iPad rilevato SOLO se UA contiene iPad oppure iPadOS in modalità desktop (MacIntel + touch)
   const isIpadUA = /\bipad\b/i.test(rawUA);
   const isIpadOSDesktopUA = platform === 'macintel' && navigator.maxTouchPoints > 1; // iPadOS safari/desktop mode
@@ -34,11 +35,21 @@ function applyDeviceClasses() {
   // Nest Hub (7") ~ 1024x600 e Nest Hub Max (10") ~ 1280x800
   const isNestHubBand = (shortSide >= 580 && shortSide <= 620 && longSide >= 1000 && longSide <= 1050);
   const isNestHubMaxBand = (shortSide >= 780 && shortSide <= 820 && longSide >= 1260 && longSide <= 1305);
+  // Asus Zenbook Fold (Windows + touch + UA ASUS/Zenbook)
+  const isZenbookFoldUA = ua.includes('zenbook') || ua.includes('asus') || ua.includes('fold');
+  // Banda larga touch per laptop/tablet pieghevoli (es. 12.5"/17")
+  // Banda larga touch per laptop/tablet pieghevoli (es. 12.5"/17")
+  // Abbasso la soglia per includere 853×1200 (Zenbook Fold in verticale)
+  const isLargeTouchWindowsBand = isWindows && isTouch && shortSide >= 820 && longSide >= 1180;
+  // Fallback: Windows con viewport ampio, anche senza touch
+  const isWindowsLargeViewport = isWindows && shortSide >= 820 && longSide >= 1180;
+  const isZenbookFold = forceZenbookFold || isZenbookFoldUA || isWindowsLargeViewport || isLargeTouchWindowsBand;
   doc.classList.toggle('is-ipad', !!isIpad);
   doc.classList.toggle('is-surface-pro', !!isSurfaceLike);
   doc.classList.toggle('is-ipad-pro', !!isIpadProBand);
   doc.classList.toggle('is-nest-hub', !!isNestHubBand);
   doc.classList.toggle('is-nest-hub-max', !!isNestHubMaxBand);
+  doc.classList.toggle('is-zenbook-fold', !!isZenbookFold);
 }
 
 // Imposta il viewport dinamico al caricamento e al resize

@@ -106,6 +106,28 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
     }
   };
   const [isSurfaceLike, setIsSurfaceLike] = useState<boolean>(() => computeIsSurfaceLike());
+  // Rilevamento Asus Zenbook Fold: considera UA, banda large touch su Windows e classe runtime
+  const computeIsZenbookFold = () => {
+    try {
+      const ua = (navigator.userAgent || '').toLowerCase();
+      const platform = (navigator.platform || '').toLowerCase();
+      const isWindows = ua.includes('windows') || platform.includes('win');
+      const isTouch = navigator.maxTouchPoints > 0;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const short = Math.min(w, h);
+      const long = Math.max(w, h);
+      const isZenUA = ua.includes('zenbook') || ua.includes('asus') || ua.includes('fold');
+      // Includo 853×1200 (Zenbook Fold in verticale) abbassando la soglia
+      const isLargeTouchWindowsBand = isWindows && isTouch && short >= 820 && long >= 1180;
+      const hasRuntimeClass = (() => { try { return document.documentElement.classList.contains('is-zenbook-fold'); } catch { return false; } })();
+      const forceZenbookFold = (() => { try { return localStorage.getItem('forceZenbookFold') === '1'; } catch { return false; } })();
+      return forceZenbookFold || hasRuntimeClass || isZenUA || isLargeTouchWindowsBand;
+    } catch {
+      return false;
+    }
+  };
+  const [isZenbookFold, setIsZenbookFold] = useState<boolean>(() => computeIsZenbookFold());
   // Tablet-like tramite input coarse e banda dimensionale
   const computeIsCoarseTablet = () => {
     try {
@@ -157,6 +179,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
   useEffect(() => {
     const detectIpad = () => setIsIpadAir(computeIsIpad());
     const detectSurface = () => setIsSurfaceLike(computeIsSurfaceLike());
+    const detectZenbook = () => setIsZenbookFold(computeIsZenbookFold());
     const detectDeviceClass = () => {
       try {
         const doc = document.documentElement;
@@ -181,6 +204,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
     detectIpad();
     detectBand();
     detectSurface();
+    detectZenbook();
     detectDeviceClass();
     detectNestHubClass();
     detectCoarseTablet();
@@ -191,6 +215,8 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
     window.addEventListener('orientationchange', detectBand);
     window.addEventListener('resize', detectSurface);
     window.addEventListener('orientationchange', detectSurface);
+    window.addEventListener('resize', detectZenbook);
+    window.addEventListener('orientationchange', detectZenbook);
     window.addEventListener('resize', detectDeviceClass);
     window.addEventListener('orientationchange', detectDeviceClass);
     window.addEventListener('resize', detectNestHubClass);
@@ -206,6 +232,8 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
       window.removeEventListener('orientationchange', detectBand);
       window.removeEventListener('resize', detectSurface);
       window.removeEventListener('orientationchange', detectSurface);
+      window.removeEventListener('resize', detectZenbook);
+      window.removeEventListener('orientationchange', detectZenbook);
       window.removeEventListener('resize', detectDeviceClass);
       window.removeEventListener('orientationchange', detectDeviceClass);
       window.removeEventListener('resize', detectNestHubClass);
@@ -280,9 +308,9 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
                 />
               </div>
             )}
-            <div className="carta-tablet-wrapper hidden md:flex lg:hidden justify-center items-center md:animate-fade-in-left">
+            <div className={`carta-tablet-wrapper hidden md:flex ${isZenbookFold ? 'lg:flex' : 'lg:hidden'} justify-center items-center md:animate-fade-in-left`}>
               <img
-                src="/images/CARTA.png"
+                src={isZenbookFold ? "/images/CARTA TABLET.png" : "/images/CARTA.png"}
                 alt="CARTA Tablet"
                 className="carta-tablet-image block w-[78%] max-w-[720px] h-auto object-contain transform origin-center will-change-transform"
                 loading="lazy"
@@ -293,7 +321,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
             {/* Solo mobile: sezione dedicata con sfondo #363f48 e immagine CARTA.png */}
             <section id="chi-siamo-mobile-carta" className="md:hidden w-full bg-[#363f48] pt-0 pb-0 mb-0 flex items-start justify-center relative z-20 overflow-visible">
               <img
-                src="/images/CARTA.png"
+                src={isZenbookFold ? "/images/CARTA TABLET.png" : "/images/CARTA.png"}
                 alt="CARTA (mobile)"
                 className="block mx-auto w-[69.23vw] max-w-[69.23vw] h-auto object-contain transform origin-top scale-[1.42]"
                 loading="lazy"
