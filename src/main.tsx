@@ -27,7 +27,8 @@ function applyDeviceClasses() {
   const isTouch = navigator.maxTouchPoints > 0;
   const shortSide = Math.min(window.innerWidth, window.innerHeight);
   const longSide = Math.max(window.innerWidth, window.innerHeight);
-  const isTabletBand = shortSide >= 760 && shortSide <= 950 && longSide >= 1000 && longSide <= 1400;
+  // Allinea la banda tablet a quella usata nel componente (più permissiva)
+  const isTabletBand = shortSide >= 740 && shortSide <= 980 && longSide >= 1100 && longSide <= 1500;
   const isSurfaceLike = isWindows && isTouch && isTabletBand;
   // iPad Pro band-only detection (11" e 12.9") per forzare classi runtime
   const isIpadProBand = (shortSide >= 820 && shortSide <= 860 && longSide >= 1180 && longSide <= 1215) ||

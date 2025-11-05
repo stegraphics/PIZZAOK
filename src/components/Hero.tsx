@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import heroTitle from '../../images/SCOPRI PIACERE.png';
 // Foto header importate dal percorso images/foto header
-import headerImg1 from '../../images/foto header/8ott25-pizzaok 2 WEB.jpg';
-import headerImg2 from '../../images/foto header/8ott25-pizzaok 15 WEB.jpg';
+// Usare le immagini da public/images per i primi due scatti
+const headerImg1 = '/images/8ott25-pizzaok 17 WEB.jpg';
+const headerImg2 = '/images/8ott25-pizzaok 57 WEB.jpg';
 import headerImg3 from '../../images/foto header/8ott25-pizzaok 48 WEB.jpg';
 import headerImg4 from '../../images/foto header/8ott25-pizzaok 68 WEB.jpg';
 import headerImg5 from '../../images/foto header/8ott25-pizzaok 105 WEB.jpg';

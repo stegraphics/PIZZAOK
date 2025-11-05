@@ -283,6 +283,7 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           decoding="async"
         />
       )}
+
       {/* Logo bianco in basso a destra */}
       {!shouldClean && (
         <img
@@ -450,6 +451,16 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           />
         </div>
         </div>
+      </div>
+      {/* Surface Pro 7: overlay dedicato per CARTA TABLET nella prima sezione grigia (posizionato dentro la sezione) */}
+      <div className="sp7-carta-tablet hidden md:block" aria-hidden="true">
+        <img
+          src="/images/CARTA TABLET.png"
+          alt="Carta Tablet SP7"
+          className="sp7-carta-tablet-img pointer-events-none"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </section>
     </>

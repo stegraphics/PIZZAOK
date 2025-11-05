@@ -745,41 +745,16 @@ body {
   transform: translateY(-1.5cm) scale(1.3) !important;
 }
 
-/* Responsive generico: da 769px in su — layout ordinato, niente rimozioni */
+/* Responsive generico: da 769px in su — layout ordinato */
 @media screen and (min-width: 769px) {
   #chi-siamo { position: relative !important; overflow: hidden !important; }
   #chi-siamo .container { max-width: 100% !important; padding-left: 1rem !important; padding-right: 1rem !important; }
-  /* Responsive: nascondi Logo bianco e CARTA TABLET */
+  /* Responsive: nascondi solo Logo bianco */
   #chi-siamo img[alt="Logo Pizza OK bianco"],
   #banner-cola img[alt="Logo Pizza OK bianco"] {
     display: none !important;
   }
-  #chi-siamo .carta-tablet-wrapper,
-  #chi-siamo .carta-tablet-image,
-  #chi-siamo img[alt="CARTA Tablet"],
-  #banner-cola .carta-tablet-wrapper,
-  #banner-cola .carta-tablet-image,
-  #banner-cola img[alt="CARTA Tablet"] {
-    display: none !important;
-  }
-  /* Device-specific: forza hide anche se regole precedenti la mostrano */
-  .is-ipad #chi-siamo .carta-tablet-wrapper,
-  .is-ipad-pro #chi-siamo .carta-tablet-wrapper,
-  .is-surface-pro #chi-siamo .carta-tablet-wrapper,
-  .is-zenbook-fold #chi-siamo .carta-tablet-wrapper,
-  .is-nest-hub #chi-siamo .carta-tablet-wrapper,
-  .is-nest-hub-max #chi-siamo .carta-tablet-wrapper,
-  .is-ipad #chi-siamo .carta-tablet-image,
-  .is-ipad-pro #chi-siamo .carta-tablet-image,
-  .is-surface-pro #chi-siamo .carta-tablet-image,
-  .is-zenbook-fold #chi-siamo .carta-tablet-image,
-  .is-nest-hub #chi-siamo .carta-tablet-image,
-  .is-nest-hub-max #chi-siamo .carta-tablet-image {
-    display: none !important;
-  }
-  /* CARTA TABLET: rimosso su richiesta da 770px in su */
-  #chi-siamo .carta-tablet-wrapper { display: none !important; }
-  #chi-siamo .carta-tablet-image { display: none !important; }
+  /* Non nascondere CARTA TABLET tra 769–1023px; gestita da regole tablet e fallback */
   /* Pizza Grande e Salame: posizionamento ordinato ai bordi */
   #banner-cola .banner-pizza-grande { transform: translateX(10cm) translateY(-3cm) scale(1.2) !important; transform-origin: bottom left !important; }
   #banner-cola .banner-salame { transform: translateX(6cm) translateY(-6cm) scale(1.2) !important; transform-origin: bottom right !important; }
@@ -807,6 +782,12 @@ body {
   #banner-cola .carta-tablet-wrapper,
   #banner-cola .carta-tablet-image,
   #banner-cola img[alt="CARTA Tablet"] {
+    display: none !important;
+  }
+
+  /* Desktop: nascondi anche l'overlay dedicato Surface Pro 7 */
+  .sp7-carta-tablet,
+  .sp7-carta-tablet-img {
     display: none !important;
   }
 
@@ -1112,13 +1093,13 @@ body {
 @media only screen and (device-width: 912px) and (device-height: 1368px),
        only screen and (device-width: 1368px) and (device-height: 912px) {
   #chi-siamo .carta-tablet-image {
-    transform: translateX(-1.7cm) translateY(14.2cm) scale(1.506) !important;
+    transform: translateX(-0.2cm) translateY(15.7cm) scale(1.306) !important;
   }
 }
 
 /* Fallback runtime SOLO Surface Pro: scala +0.1x */
 .is-surface-pro #chi-siamo .carta-tablet-image {
-  transform: translateX(-1.7cm) translateY(14.2cm) scale(1.506) !important;
+  transform: translateX(-0.2cm) translateY(15.7cm) scale(1.306) !important;
 }
 
 /* Override SOLO iPad Pro: riduci scala di 0.09x (da 1.5 a 1.41) */
@@ -1460,14 +1441,14 @@ body {
   transform-origin: center !important;
   transform: translateX(-4cm) scale(0.585) !important; /* spostata di ulteriori 2cm a sinistra */
 }
-/* Chi Siamo — layout responsive GENERALE da 769px in su */
-@media screen and (min-width: 769px) {
+/* Chi Siamo — layout tablet landscape 769–1023px */
+@media screen and (min-width: 769px) and (max-width: 1023px) {
   /* Riduci spazio interno e altezza minima */
   #chi-siamo {
     padding-top: 2rem !important; /* ripristina un po’ di spazio interno */
     padding-bottom: 2rem !important; /* ripristina un po’ di spazio interno */
     margin-bottom: 0 !important;
-    min-height: calc(560px + 2cm) !important; /* sezione non ridotta, stabile su desktop */
+    min-height: calc(560px + 2cm) !important; /* sezione non ridotta, stabile su tablet */
   }
   /* Mantieni OMINO grande, ma fuori flusso così non alza la sezione */
   #chi-siamo img[alt="Omino Pizza OK"] {
@@ -1477,12 +1458,12 @@ body {
     height: auto !important;
     width: auto !important;
     transform-origin: bottom left !important;
-    transform: translateX(13cm) translateY(12cm) scale(1) !important;
+    transform: translateX(12cm) translateY(10.5cm) scale(1) !important; /* leggermente più compatto su tablet */
   }
   /* Immagine "Da alto" in basso a destra come da anteprima */
   #chi-siamo img[alt="Da alto decorativo"] {
     transform-origin: bottom right !important;
-    transform: translateX(-4cm) translateY(0cm) scale(0.33) !important;
+    transform: translateX(-3cm) translateY(0cm) scale(0.33) !important;
   }
   /* Bottone Torna alla Home più in basso senza espandere l’altezza */
   #chi-siamo .torna-home-btn {
@@ -1494,10 +1475,88 @@ body {
   }
 }
 
+/* Chi Siamo — layout DESKTOP >=1024px (ripristino altezza e posizionamenti) */
+@media screen and (min-width: 1024px) {
+  /* Altezza e spazi adeguati su desktop */
+  #chi-siamo {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    margin-bottom: 0 !important;
+    min-height: calc(700px + 2cm) !important; /* più alto per evitare tagli */
+  }
+  /* Mantieni OMINO fuori flusso con posizionamento desktop originale */
+  #chi-siamo img[alt="Omino Pizza OK"] {
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    height: auto !important;
+    width: auto !important;
+    transform-origin: bottom left !important;
+    transform: translateX(13cm) translateY(12cm) scale(1) !important;
+  }
+  /* Immagine "Da alto decorativo" in basso a destra come da desktop */
+  #chi-siamo img[alt="Da alto decorativo"] {
+    transform-origin: bottom right !important;
+    transform: translateX(-4cm) translateY(0cm) scale(0.33) !important;
+  }
+  /* Bottone Torna alla Home in posizione visibile senza aumentare altezza */
+  #chi-siamo .torna-home-btn {
+    transform: translateY(8cm) !important;
+  }
+  /* Allinea verticalmente la griglia interna */
+  #chi-siamo .grid {
+    align-items: center !important;
+  }
+}
+
 /* Desktop largo (>=1024px): forza allineamento della colonna Contatti del footer */
 @media screen and (min-width: 1024px) {
   footer .footer-contatti {
     position: relative;
     transform: translateY(2cm) !important;
+  }
+}
+
+/* Carta Tablet — riattiva su iPad Air/Pro e Surface Pro 7 (override finale) */
+@media screen and (min-width: 769px) {
+  /* Mostra wrapper e immagine nella sezione Chi Siamo per dispositivi tablet specifici */
+  .is-ipad #chi-siamo .carta-tablet-wrapper,
+  .is-ipad-pro #chi-siamo .carta-tablet-wrapper,
+  .is-surface-pro #chi-siamo .carta-tablet-wrapper {
+    display: flex !important;
+  }
+  .is-ipad #chi-siamo .carta-tablet-image,
+  .is-ipad-pro #chi-siamo .carta-tablet-image,
+  .is-surface-pro #chi-siamo .carta-tablet-image {
+    display: block !important;
+  }
+}
+
+/* Fallback senza classi runtime — Surface Pro 7 (912×1368) */
+@media only screen and (device-width: 912px) and (device-height: 1368px),
+       only screen and (device-width: 1368px) and (device-height: 912px) {
+  #chi-siamo { position: relative !important; }
+  /* Evita duplicati: nascondi il wrapper originale e usa solo l'overlay dedicato */
+  #chi-siamo .carta-tablet-wrapper { display: none !important; }
+  #chi-siamo .carta-tablet-image { display: none !important; }
+  /* Overlay dedicato SP7: forza visibilità e posizionamento */
+  .sp7-carta-tablet {
+    display: none !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 5 !important;
+    pointer-events: none !important;
+  }
+  .sp7-carta-tablet-img {
+    display: none !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    transform: none !important;
+    z-index: 5 !important;
+    pointer-events: none !important;
   }
 }
