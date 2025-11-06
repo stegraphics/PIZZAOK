@@ -1161,19 +1161,19 @@ body {
   transform: translateX(-0.2cm) translateY(15.7cm) scale(1.306) !important;
 }
 
-/* Override SOLO iPad Pro: riduci scala di 0.09x (da 1.5 a 1.41) */
+/* Override SOLO iPad Pro: ripristina posizione più in basso e riduci scala */
 @media only screen and (device-width: 1024px) and (device-height: 1366px),
        only screen and (device-width: 1366px) and (device-height: 1024px),
        only screen and (device-width: 834px) and (device-height: 1194px),
        only screen and (device-width: 1194px) and (device-height: 834px) {
   #chi-siamo .carta-tablet-image {
-    transform: translateX(-0.4cm) translateY(18.5cm) scale(1.41) !important; /* iPad Pro: +1.5cm verso il basso */
+    transform: translateX(-0.4cm) translateY(18.5cm) scale(1.41) !important; /* iPad Pro: più in basso come prima */
   }
 }
 
 /* Fallback runtime SOLO iPad Pro */
 .is-ipad-pro #chi-siamo .carta-tablet-image {
-  transform: translateX(-0.4cm) translateY(18.5cm) scale(1.41) !important; /* iPad Pro: +1.5cm verso il basso */
+  transform: translateX(-0.4cm) translateY(18.5cm) scale(1.41) !important; /* iPad Pro: più in basso come prima */
 }
 
 /* Override SOLO iPad Mini: aumenta scala di +1x (da 1.0 a 2.0) */
