@@ -1167,13 +1167,13 @@ body {
        only screen and (device-width: 834px) and (device-height: 1194px),
        only screen and (device-width: 1194px) and (device-height: 834px) {
   #chi-siamo .carta-tablet-image {
-    transform: translateX(-0.4cm) translateY(14.5cm) scale(1.41) !important;
+    transform: translateX(-0.4cm) translateY(18.5cm) scale(1.41) !important; /* iPad Pro: +1.5cm verso il basso */
   }
 }
 
 /* Fallback runtime SOLO iPad Pro */
 .is-ipad-pro #chi-siamo .carta-tablet-image {
-  transform: translateX(-0.4cm) translateY(14.5cm) scale(1.41) !important;
+  transform: translateX(-0.4cm) translateY(18.5cm) scale(1.41) !important; /* iPad Pro: +1.5cm verso il basso */
 }
 
 /* Override SOLO iPad Mini: aumenta scala di +1x (da 1.0 a 2.0) */
@@ -1181,7 +1181,26 @@ body {
        only screen and (device-width: 1133px) and (device-height: 744px) {
   #chi-siamo .carta-tablet-image {
     /* Allinea a iPad Air: posizione e scala base */
-    transform: translateX(-1cm) translateY(14.5cm) scale(1.5) !important;
+    transform: translateX(-1cm) translateY(14.5cm) scale(1.0) !important;
+  }
+}
+
+/* Override SOLO iPad Air: sposta CARTA TABLET di +1cm in basso, +0.6cm a destra (totale) e scala -0.1x */
+@media only screen and (device-width: 820px) and (device-height: 1180px),
+       only screen and (device-width: 1180px) and (device-height: 820px) {
+  #chi-siamo .carta-tablet-image {
+    transform: translateX(-0.4cm) translateY(15.5cm) scale(1.31) !important; /* iPad Air: +1cm verso il basso, +0.6cm a destra, scala -0.1x */
+  }
+}
+
+/* Override iPad Air via viewport (copre emulator e Safari con viewport scaling) */
+@media only screen and (width: 820px) and (height: 1180px),
+       only screen and (width: 1180px) and (height: 820px),
+       /* iPad Air-like 834×1112 */
+       only screen and (width: 834px) and (height: 1112px),
+       only screen and (width: 1112px) and (height: 834px) {
+  #chi-siamo .carta-tablet-image {
+    transform: translateX(-0.4cm) translateY(15.5cm) scale(1.31) !important; /* iPad Air: +1cm verso il basso, +0.6cm a destra, scala -0.1x */
   }
 }
 
@@ -1680,9 +1699,28 @@ body {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: center !important;
-    transform: none !important;
-    z-index: 5 !important;
-    pointer-events: none !important;
+  object-position: center !important;
+  transform: none !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+  }
+}
+/* Salvaguardia iPad Air viewport: forza 15.5cm in portrait e landscape
+   e supera l’override di .is-ipad-pro quando il runtime class è erroneo */
+@media only screen and (width: 820px) and (height: 1180px),
+       only screen and (width: 1180px) and (height: 820px),
+       only screen and (width: 834px) and (height: 1112px),
+       only screen and (width: 1112px) and (height: 834px) {
+  /* Regola base Air */
+  #chi-siamo .carta-tablet-image {
+    transform: translateX(-0.4cm) translateY(15.5cm) scale(1.31) !important;
+  }
+  /* Se il runtime class segna pro per errore, sovrascrivi comunque su Air */
+  .is-ipad-pro #chi-siamo .carta-tablet-image {
+    transform: translateX(-0.4cm) translateY(15.5cm) scale(1.31) !important;
+  }
+  /* Copri anche .is-ipad se presente */
+  .is-ipad #chi-siamo .carta-tablet-image {
+    transform: translateX(-0.4cm) translateY(15.5cm) scale(1.31) !important;
   }
 }
