@@ -357,6 +357,17 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           </div>
         </div>
       </div>
+
+      {/* Overlay CARTA TABLET: deve stare nella sezione grigia (#chi-siamo) */}
+      <div className="sp7-carta-tablet hidden md:block" aria-hidden="true">
+        <img
+          src="/images/CARTA TABLET.png"
+          alt="Carta Tablet SP7"
+          className="sp7-carta-tablet-img pointer-events-none"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
     </section>
 
     {/* SOLO Nest Hub / Nest Hub Max: sezione aggiuntiva sopra 3 PIZZE TABLET con CARTA TABLET */}
@@ -451,16 +462,6 @@ const ChiSiamo = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
           />
         </div>
         </div>
-      </div>
-      {/* Surface Pro 7: overlay dedicato per CARTA TABLET nella prima sezione grigia (posizionato dentro la sezione) */}
-      <div className="sp7-carta-tablet hidden md:block" aria-hidden="true">
-        <img
-          src="/images/CARTA TABLET.png"
-          alt="Carta Tablet SP7"
-          className="sp7-carta-tablet-img pointer-events-none"
-          loading="lazy"
-          decoding="async"
-        />
       </div>
     </section>
     </>
