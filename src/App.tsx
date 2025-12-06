@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { track } from './lib/pixel';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ChiSiamo from './components/ChiSiamo';
@@ -22,6 +23,11 @@ function App() {
   const handlePizzaClick = (pizzaInfo: { image: string; name: string; alt: string; ingredients: string }) => {
     setSelectedPizza(pizzaInfo);
     setIsModalOpen(true);
+    // Traccia visualizzazione contenuto (apertura scheda pizza)
+    track('ViewContent', {
+      content_name: pizzaInfo.name,
+      content_category: 'Pizza',
+    });
   };
   
   const handleScrollLeft = () => {
